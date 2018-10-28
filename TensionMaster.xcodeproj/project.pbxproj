@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7CC769D4136A11103C78AF0B /* Pods_TensionMaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C28538FF8E972B781DA2AAA /* Pods_TensionMaster.framework */; };
 		870021F82185E2A8009D7856 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870021F72185E2A8009D7856 /* AppDelegate.swift */; };
 		870021FA2185E2A8009D7856 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870021F92185E2A8009D7856 /* ViewController.swift */; };
 		870021FD2185E2A8009D7856 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 870021FB2185E2A8009D7856 /* Main.storyboard */; };
 		870021FF2185E2AA009D7856 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 870021FE2185E2AA009D7856 /* Assets.xcassets */; };
 		870022022185E2AA009D7856 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 870022002185E2AA009D7856 /* LaunchScreen.storyboard */; };
+		8700220A2186071E009D7856 /* SoundAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870022092186071E009D7856 /* SoundAnalyzer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		23C795E94866F881D27FE3C5 /* Pods-TensionMaster.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TensionMaster.release.xcconfig"; path = "Pods/Target Support Files/Pods-TensionMaster/Pods-TensionMaster.release.xcconfig"; sourceTree = "<group>"; };
+		6C28538FF8E972B781DA2AAA /* Pods_TensionMaster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TensionMaster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		870021F42185E2A8009D7856 /* TensionMaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TensionMaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		870021F72185E2A8009D7856 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		870021F92185E2A8009D7856 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +26,8 @@
 		870021FE2185E2AA009D7856 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		870022012185E2AA009D7856 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		870022032185E2AA009D7856 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		870022092186071E009D7856 /* SoundAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundAnalyzer.swift; sourceTree = "<group>"; };
+		F4ED84B3029FA54C463E5987 /* Pods-TensionMaster.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TensionMaster.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TensionMaster/Pods-TensionMaster.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CC769D4136A11103C78AF0B /* Pods_TensionMaster.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +47,8 @@
 			children = (
 				870021F62185E2A8009D7856 /* TensionMaster */,
 				870021F52185E2A8009D7856 /* Products */,
+				FC6B684254D6BD4D577A6411 /* Pods */,
+				BB1890D8C489B4478AA86D6D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,8 +69,26 @@
 				870021FE2185E2AA009D7856 /* Assets.xcassets */,
 				870022002185E2AA009D7856 /* LaunchScreen.storyboard */,
 				870022032185E2AA009D7856 /* Info.plist */,
+				870022092186071E009D7856 /* SoundAnalyzer.swift */,
 			);
 			path = TensionMaster;
+			sourceTree = "<group>";
+		};
+		BB1890D8C489B4478AA86D6D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6C28538FF8E972B781DA2AAA /* Pods_TensionMaster.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FC6B684254D6BD4D577A6411 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F4ED84B3029FA54C463E5987 /* Pods-TensionMaster.debug.xcconfig */,
+				23C795E94866F881D27FE3C5 /* Pods-TensionMaster.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,6 +98,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 870022062185E2AA009D7856 /* Build configuration list for PBXNativeTarget "TensionMaster" */;
 			buildPhases = (
+				F565FF69DD399DC88F1F2EE4 /* [CP] Check Pods Manifest.lock */,
 				870021F02185E2A8009D7856 /* Sources */,
 				870021F12185E2A8009D7856 /* Frameworks */,
 				870021F22185E2A8009D7856 /* Resources */,
@@ -130,11 +158,33 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		F565FF69DD399DC88F1F2EE4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TensionMaster-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		870021F02185E2A8009D7856 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8700220A2186071E009D7856 /* SoundAnalyzer.swift in Sources */,
 				870021FA2185E2A8009D7856 /* ViewController.swift in Sources */,
 				870021F82185E2A8009D7856 /* AppDelegate.swift in Sources */,
 			);
@@ -280,6 +330,7 @@
 		};
 		870022072185E2AA009D7856 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4ED84B3029FA54C463E5987 /* Pods-TensionMaster.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +349,7 @@
 		};
 		870022082185E2AA009D7856 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23C795E94866F881D27FE3C5 /* Pods-TensionMaster.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
