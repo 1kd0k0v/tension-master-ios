@@ -12,6 +12,13 @@ import AudioKit
 struct SoundAnalyzerSample {
     let amplitude: Double
     let frequency: Double
+    var tensionNumber: Double {
+        let d = 1.27
+        let s = 98.0
+        
+        let co = 4.6e-7 * d * d * s
+        return co * frequency * frequency
+    }
 }
 
 protocol SoundAnalyzerDelegate: class {
@@ -23,13 +30,13 @@ class SoundAnalyzer {
     static let shared = SoundAnalyzer()
     var delegate: SoundAnalyzerDelegate?
     var isAnalyzing = false
+    private var timerQueue = DispatchQueue(label: "Timer", qos: .background, attributes: .concurrent)
     private var updateTimer: Timer?
     
     // AudioKit releated.
     lazy var mic = AKMicrophone()
     lazy var tracker = AKFrequencyTracker(mic)
     lazy var booster = AKBooster(tracker, gain: 0)
-    
     
     func start(completion: @escaping (Bool) -> Void) {
         if isAnalyzing {
@@ -47,15 +54,16 @@ class SoundAnalyzer {
                 completion(false)
                 return
             }
-            // Trigger update functionality.
-            self.updateTimer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { _ in
-                let sample = SoundAnalyzerSample(amplitude: self.tracker.amplitude,
-                                                 frequency: self.tracker.frequency)
-                
-//                print("amplitude: \(String(format: "%0.3f", sample.amplitude))                frequency: \(String(format: "%0.1f", sample.frequency))")
-                if sample.amplitude > 0.08 && sample.frequency > 400 && sample.frequency < 700 {
-                    self.delegate?.soundAnalyzerSample(sample)
+            // Trigger update functionality in dedicated timer queue.
+            // Interval = 0.005 ==> 200 ticks (updates) per second.
+            self.timerQueue.async {
+                let currentRunLoop = RunLoop.current
+                self.updateTimer = Timer(timeInterval: 0.005, repeats: true) { _ in
+                    self.delegate?.soundAnalyzerSample(SoundAnalyzerSample(amplitude: self.tracker.amplitude,
+                                                                           frequency: self.tracker.frequency))
                 }
+                currentRunLoop.add(self.updateTimer!, forMode: .common)
+                currentRunLoop.run()
             }
             
             // Notify.
@@ -88,8 +96,10 @@ class SoundAnalyzer {
         } catch {
             print("Cannot stop the audio kit...")   // Check how to handle it better...
         }
-        self.updateTimer?.invalidate()
-        self.updateTimer = nil
+        timerQueue.sync {
+            self.updateTimer?.invalidate()
+            self.updateTimer = nil
+        }
         self.isAnalyzing = false
     }
     

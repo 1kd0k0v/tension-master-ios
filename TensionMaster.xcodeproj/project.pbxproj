@@ -9,11 +9,14 @@
 /* Begin PBXBuildFile section */
 		7CC769D4136A11103C78AF0B /* Pods_TensionMaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C28538FF8E972B781DA2AAA /* Pods_TensionMaster.framework */; };
 		870021F82185E2A8009D7856 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870021F72185E2A8009D7856 /* AppDelegate.swift */; };
-		870021FA2185E2A8009D7856 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870021F92185E2A8009D7856 /* ViewController.swift */; };
 		870021FD2185E2A8009D7856 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 870021FB2185E2A8009D7856 /* Main.storyboard */; };
 		870021FF2185E2AA009D7856 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 870021FE2185E2AA009D7856 /* Assets.xcassets */; };
 		870022022185E2AA009D7856 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 870022002185E2AA009D7856 /* LaunchScreen.storyboard */; };
 		8700220A2186071E009D7856 /* SoundAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870022092186071E009D7856 /* SoundAnalyzer.swift */; };
+		8700220E21865643009D7856 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8700220D21865643009D7856 /* SettingsTableViewController.swift */; };
+		8700221021866292009D7856 /* PickerMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8700220F21866292009D7856 /* PickerMediator.swift */; };
+		87002212218665ED009D7856 /* HeadSizePickerMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87002211218665ED009D7856 /* HeadSizePickerMediator.swift */; };
+		870022142187BA02009D7856 /* MeasureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870022132187BA02009D7856 /* MeasureViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,12 +24,15 @@
 		6C28538FF8E972B781DA2AAA /* Pods_TensionMaster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TensionMaster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		870021F42185E2A8009D7856 /* TensionMaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TensionMaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		870021F72185E2A8009D7856 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		870021F92185E2A8009D7856 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		870021FC2185E2A8009D7856 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		870021FE2185E2AA009D7856 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		870022012185E2AA009D7856 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		870022032185E2AA009D7856 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		870022092186071E009D7856 /* SoundAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundAnalyzer.swift; sourceTree = "<group>"; };
+		8700220D21865643009D7856 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		8700220F21866292009D7856 /* PickerMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerMediator.swift; sourceTree = "<group>"; };
+		87002211218665ED009D7856 /* HeadSizePickerMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadSizePickerMediator.swift; sourceTree = "<group>"; };
+		870022132187BA02009D7856 /* MeasureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasureViewController.swift; sourceTree = "<group>"; };
 		F4ED84B3029FA54C463E5987 /* Pods-TensionMaster.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TensionMaster.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TensionMaster/Pods-TensionMaster.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,15 +69,50 @@
 		870021F62185E2A8009D7856 /* TensionMaster */ = {
 			isa = PBXGroup;
 			children = (
+				870022152187BA23009D7856 /* Utility */,
+				870022162187BA47009D7856 /* UI */,
 				870021F72185E2A8009D7856 /* AppDelegate.swift */,
-				870021F92185E2A8009D7856 /* ViewController.swift */,
 				870021FB2185E2A8009D7856 /* Main.storyboard */,
 				870021FE2185E2AA009D7856 /* Assets.xcassets */,
 				870022002185E2AA009D7856 /* LaunchScreen.storyboard */,
 				870022032185E2AA009D7856 /* Info.plist */,
-				870022092186071E009D7856 /* SoundAnalyzer.swift */,
 			);
 			path = TensionMaster;
+			sourceTree = "<group>";
+		};
+		870022152187BA23009D7856 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				870022092186071E009D7856 /* SoundAnalyzer.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		870022162187BA47009D7856 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				870022172187BA7B009D7856 /* Helpers */,
+				870022182187BA84009D7856 /* Screens */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		870022172187BA7B009D7856 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8700220F21866292009D7856 /* PickerMediator.swift */,
+				87002211218665ED009D7856 /* HeadSizePickerMediator.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		870022182187BA84009D7856 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				870022132187BA02009D7856 /* MeasureViewController.swift */,
+				8700220D21865643009D7856 /* SettingsTableViewController.swift */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		BB1890D8C489B4478AA86D6D /* Frameworks */ = {
@@ -184,8 +225,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				870022142187BA02009D7856 /* MeasureViewController.swift in Sources */,
+				8700220E21865643009D7856 /* SettingsTableViewController.swift in Sources */,
+				8700221021866292009D7856 /* PickerMediator.swift in Sources */,
 				8700220A2186071E009D7856 /* SoundAnalyzer.swift in Sources */,
-				870021FA2185E2A8009D7856 /* ViewController.swift in Sources */,
+				87002212218665ED009D7856 /* HeadSizePickerMediator.swift in Sources */,
 				870021F82185E2A8009D7856 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
