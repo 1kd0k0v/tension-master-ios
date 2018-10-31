@@ -13,8 +13,12 @@ struct SoundAnalyzerSample {
     let amplitude: Double
     let frequency: Double
     var tensionNumber: Double {
-        let d = 1.27
-        let s = 98.0
+        let settings = Settings.shared
+        let d = settings.stringDiameter
+        var s = settings.headSize   // It should be in inches!
+        if settings.headSizeUnit == .cm {
+            s = s / 6.4516
+        }
         
         let co = 4.6e-7 * d * d * s
         return co * frequency * frequency

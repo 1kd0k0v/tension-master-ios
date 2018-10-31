@@ -17,6 +17,8 @@ class MeasureViewController: UIViewController {
     @IBOutlet private var currentFrequencyLabel: UILabel!
     @IBOutlet private var amplitudeLabel: UILabel!
     @IBOutlet private var currentAmplitudeLabel: UILabel!
+    
+    private var lastUpdateSample: SoundAnalyzerSample?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +30,25 @@ class MeasureViewController: UIViewController {
             print("Stared - \(started)")
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Update with the last sample in case the settings are changed.
+        if let sample = lastUpdateSample {
+            update(sample: sample)
+        }
+    }
+    
+    // MARK: - Private Methods
+    private func update(sample: SoundAnalyzerSample) {
+        lastUpdateSample = sample
+        
+        tensionNumberLabel.text = String(format: "%0.2f", sample.tensionNumber)
+        // Debug info.
+        frequencyLabel.text = String(format: "%0.f", sample.frequency)
+        amplitudeLabel.text = String(format: "%0.2f", sample.amplitude)
+    }
 
 }
 
@@ -36,10 +57,7 @@ extension MeasureViewController: SoundAnalyzerDelegate {
     func soundAnalyzerSample(_ sample: SoundAnalyzerSample) {
         DispatchQueue.main.async { [weak self] in
             if sample.amplitude > 0.08 && sample.frequency > 400 && sample.frequency < 700 {
-                self?.tensionNumberLabel.text = String(format: "%0.2f", sample.tensionNumber)
-                // Debug info.
-                self?.frequencyLabel.text = String(format: "%0.f", sample.frequency)
-                self?.amplitudeLabel.text = String(format: "%0.2f", sample.amplitude)
+                self?.update(sample: sample)
             }
             // Debug info
             self?.currentFrequencyLabel.text = String(format: "Freq - %0.f", sample.frequency)

@@ -14,20 +14,32 @@ enum MeasureMode: String {
 }
 
 enum StringType: String {
-    case polyester
-    case naturalGut
-    case syntheticGut
-    case kevlar
+    case polyester = "Polyester"
+    case naturalGut = "Natural Gut"
+    case syntheticGut = "Synthetic Gut"
+    case kevlar = "Kevlar"
+    static var allRepresentations: [String] {
+        return [polyester.rawValue,
+                naturalGut.rawValue,
+                syntheticGut.rawValue,
+                kevlar.rawValue]
+    }
 }
 
 enum SizeUnit: String {
-    case inch = "in"
-    case cm = "cm"
+    case inch = "in²"
+    case cm = "cm²"
+    static var allRepresentations: [String] {
+        return [inch.rawValue, cm.rawValue]
+    }
 }
 
 enum TensionUnit: String {
     case lb
     case kg
+    static var allRepresentations: [String] {
+        return [lb.rawValue, kg.rawValue]
+    }
 }
 
 private struct SettingsHolder {
@@ -57,7 +69,7 @@ class Settings {
     
     let headSizeInchRange = 70...130    // inches
     let headSizeCmRange = 500...800     // cm
-    let stringDiameterRange = 1.00...1.50    // mm
+    let stringDiameterStride = stride(from: 1.0, through: 1.5, by: 0.01)    // mm
     
     var measureMode: MeasureMode {
         get {
@@ -101,7 +113,7 @@ class Settings {
         }
         set {
             settingsHolder.stringType = newValue
-            UserDefaults.standard.set(newValue, forKey: Keys.stringType)
+            UserDefaults.standard.set(newValue.rawValue, forKey: Keys.stringType)
         }
     }
     var tensionUnit: TensionUnit {
@@ -110,7 +122,7 @@ class Settings {
         }
         set {
             settingsHolder.tensionUnit = newValue
-            UserDefaults.standard.set(newValue, forKey: Keys.tensionUnit)
+            UserDefaults.standard.set(newValue.rawValue, forKey: Keys.tensionUnit)
         }
     }
     var tensionAdjustment: Double {

@@ -252,8 +252,8 @@
                                                         <constraint firstAttribute="height" constant="159.5" id="q1l-22-Zb5"/>
                                                     </constraints>
                                                     <connections>
-                                                        <outlet property="dataSource" destination="vBa-ie-k9J" id="Mxw-ch-Ang"/>
-                                                        <outlet property="delegate" destination="vBa-ie-k9J" id="lbl-27-1Ns"/>
+                                                        <outlet property="dataSource" destination="y5i-tV-ZK5" id="8h4-AX-lQE"/>
+                                                        <outlet property="delegate" destination="y5i-tV-ZK5" id="n6M-eU-U2X"/>
                                                     </connections>
                                                 </pickerView>
                                             </subviews>
@@ -305,8 +305,8 @@
                                                         <constraint firstAttribute="height" constant="159.5" id="sfQ-cR-lpj"/>
                                                     </constraints>
                                                     <connections>
-                                                        <outlet property="dataSource" destination="vBa-ie-k9J" id="aQC-pY-7sF"/>
-                                                        <outlet property="delegate" destination="vBa-ie-k9J" id="7ad-rN-FIa"/>
+                                                        <outlet property="dataSource" destination="XVn-sD-VAo" id="FgG-Ql-28r"/>
+                                                        <outlet property="delegate" destination="XVn-sD-VAo" id="heD-nD-m0t"/>
                                                     </connections>
                                                 </pickerView>
                                             </subviews>
@@ -358,8 +358,8 @@
                                                         <constraint firstAttribute="height" constant="159.5" id="4iK-0f-JSy"/>
                                                     </constraints>
                                                     <connections>
-                                                        <outlet property="dataSource" destination="vBa-ie-k9J" id="zAP-Ex-gBQ"/>
-                                                        <outlet property="delegate" destination="vBa-ie-k9J" id="B8g-ev-lds"/>
+                                                        <outlet property="dataSource" destination="wan-Hb-Hyf" id="VMD-Em-jlI"/>
+                                                        <outlet property="delegate" destination="wan-Hb-Hyf" id="JPo-He-uVS"/>
                                                     </connections>
                                                 </pickerView>
                                             </subviews>
@@ -417,12 +417,18 @@
                         <outlet property="stringDiameterCell" destination="UMf-9s-cTC" id="NRe-Hz-LA6"/>
                         <outlet property="stringDiameterPicker" destination="Oz3-qv-P86" id="Boo-Cf-3rW"/>
                         <outlet property="stringDiameterPickerCell" destination="AAe-vd-M8y" id="Ike-SM-qi9"/>
+                        <outlet property="stringDiameterPickerMediator" destination="y5i-tV-ZK5" id="4f3-nI-2pJ"/>
+                        <outlet property="stringDiameterValueLabel" destination="0Xx-Vs-Nji" id="VDf-4V-MAI"/>
                         <outlet property="stringTypeCell" destination="oDq-Bg-qTV" id="cFY-aW-Mc1"/>
                         <outlet property="stringTypePicker" destination="5mp-yl-QEp" id="ojY-Yu-Uc4"/>
                         <outlet property="stringTypePickerCell" destination="VoQ-bt-Y8O" id="Y2L-y0-gNu"/>
+                        <outlet property="stringTypePickerMediator" destination="XVn-sD-VAo" id="h7R-Rp-xFy"/>
+                        <outlet property="stringTypeValueLabel" destination="JBr-FJ-F7J" id="2Af-By-9Cp"/>
                         <outlet property="tensionUnitsCell" destination="3f8-yv-OWi" id="7EO-Dk-Vvb"/>
                         <outlet property="tensionUnitsPicker" destination="gln-7y-Enn" id="AHD-ak-WY4"/>
                         <outlet property="tensionUnitsPickerCell" destination="xpp-kR-bxw" id="Q1b-CT-GHf"/>
+                        <outlet property="tensionUnitsPickerMediator" destination="wan-Hb-Hyf" id="Y9E-af-IhP"/>
+                        <outlet property="tensionUnitsValueLabel" destination="ULN-5r-Hue" id="AdE-yl-FaT"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cgz-H0-pdF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -430,6 +436,24 @@
                     <connections>
                         <outlet property="delegate" destination="vBa-ie-k9J" id="JIe-gs-NVu"/>
                         <outlet property="pickerView" destination="9OZ-MU-006" id="2Cq-JU-azf"/>
+                    </connections>
+                </customObject>
+                <customObject id="y5i-tV-ZK5" customClass="StringDiameterPickerMediator" customModule="TensionMaster" customModuleProvider="target">
+                    <connections>
+                        <outlet property="delegate" destination="vBa-ie-k9J" id="972-1F-bu3"/>
+                        <outlet property="pickerView" destination="Oz3-qv-P86" id="Yip-VN-8rb"/>
+                    </connections>
+                </customObject>
+                <customObject id="XVn-sD-VAo" customClass="StringTypePickerMediator" customModule="TensionMaster" customModuleProvider="target">
+                    <connections>
+                        <outlet property="delegate" destination="vBa-ie-k9J" id="ijH-Bg-16B"/>
+                        <outlet property="pickerView" destination="5mp-yl-QEp" id="TW3-LG-3qK"/>
+                    </connections>
+                </customObject>
+                <customObject id="wan-Hb-Hyf" customClass="TensionUnitPickerMediator" customModule="TensionMaster" customModuleProvider="target">
+                    <connections>
+                        <outlet property="delegate" destination="vBa-ie-k9J" id="J3g-VJ-7xj"/>
+                        <outlet property="pickerView" destination="gln-7y-Enn" id="uGB-wV-MKm"/>
                     </connections>
                 </customObject>
             </objects>

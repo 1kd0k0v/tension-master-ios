@@ -15,21 +15,22 @@ enum HeadSizePickerMediatorMode {
 
 class HeadSizePickerMediator: PickerMediator, UIPickerViewDataSource {
 
-    lazy var headSizesInches = Array(50...100)
-    lazy var headSizesCm = Array(200...400)
-    var headSizes: [Int] {
+    lazy var headSizesInches = Array(Settings.shared.headSizeInchRange).map(Double.init)
+    lazy var headSizesCm = Array(Settings.shared.headSizeCmRange).map(Double.init)
+    var headSizes: [Double] {
         switch mode {
         case .inches: return headSizesInches
         case .cm: return headSizesCm
         }
     }
-    lazy var headSizeMeasures = ["in²", "cm²"]
-    var mode = HeadSizePickerMediatorMode.inches {
-        didSet {
-            if oldValue != mode {
-                pickerView.reloadComponent(0)
-                pickerView.selectRow(headSizes.count / 2, inComponent: 0, animated: true)
-            }
+    lazy var headSizeUnits = SizeUnit.allRepresentations
+    var mode = HeadSizePickerMediatorMode.inches
+    // Applying a new mode animated.
+    func applyMode(_ mode: HeadSizePickerMediatorMode) {
+        if self.mode != mode {
+            self.mode = mode
+            pickerView.reloadComponent(0)
+            pickerView.selectRow(headSizes.count / 2, inComponent: 0, animated: true)
         }
     }
     
@@ -37,7 +38,7 @@ class HeadSizePickerMediator: PickerMediator, UIPickerViewDataSource {
         if component == 0 {
             return "\(headSizes[row])"
         } else {
-            return headSizeMeasures[row]
+            return headSizeUnits[row]
         }
     }
     
@@ -46,15 +47,15 @@ class HeadSizePickerMediator: PickerMediator, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return component == 0 ? headSizes.count : headSizeMeasures.count
+        return component == 0 ? headSizes.count : headSizeUnits.count
     }
     
     override func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if component == 1 {
             if row == 0 {
-                mode = .inches
+                applyMode(.inches)
             } else {
-                mode = .cm
+                applyMode(.cm)
             }
         }
         super.pickerView(pickerView, didSelectRow: row, inComponent: component)

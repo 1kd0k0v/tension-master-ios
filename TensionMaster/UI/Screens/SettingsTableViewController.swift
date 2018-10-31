@@ -17,23 +17,64 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet var headSizePickerMediator: HeadSizePickerMediator!
     
     @IBOutlet var stringDiameterCell: UITableViewCell!
+    @IBOutlet var stringDiameterValueLabel: UILabel!
     @IBOutlet var stringDiameterPickerCell: UITableViewCell!
     @IBOutlet var stringDiameterPicker: UIPickerView!
+    @IBOutlet var stringDiameterPickerMediator: StringDiameterPickerMediator!
     
     @IBOutlet var stringTypeCell: UITableViewCell!
+    @IBOutlet var stringTypeValueLabel: UILabel!
     @IBOutlet var stringTypePickerCell: UITableViewCell!
     @IBOutlet var stringTypePicker: UIPickerView!
+    @IBOutlet var stringTypePickerMediator: StringTypePickerMediator!
     
     @IBOutlet var tensionUnitsCell: UITableViewCell!
+    @IBOutlet var tensionUnitsValueLabel: UILabel!
     @IBOutlet var tensionUnitsPickerCell: UITableViewCell!
     @IBOutlet var tensionUnitsPicker: UIPickerView!
+    @IBOutlet var tensionUnitsPickerMediator: TensionUnitPickerMediator!
     
     var expandedPickerCell: UITableViewCell?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        headSizePicker.selectRow(headSizePickerMediator.headSizes.count / 2, inComponent: 0, animated: true)
+        // Load settings data.
+        reloadSettings()
+    }
+    
+    // MARK: - Private Methods
+    func reloadSettings() {
+        let settings = Settings.shared
+        // Head size.
+        let headSizeUnit = settings.headSizeUnit.rawValue
+        let headSize = settings.headSize
+        if let index = headSizePickerMediator.headSizeUnits.firstIndex(of: headSizeUnit) {
+            headSizePickerMediator.mode = (index == 0) ? .inches : .cm
+            headSizePicker.selectRow(index, inComponent: 1, animated: false)
+        }
+        if let index = headSizePickerMediator.headSizes.firstIndex(of: headSize) {
+            headSizePicker.selectRow(index, inComponent: 0, animated: false)
+        }
+        headSizeValueLabel.text = "\(headSize) \(headSizeUnit)"
+        // String diameter
+        let stringDiameter = settings.stringDiameter
+        if let index = stringDiameterPickerMediator.stringDiameters.firstIndex(of: stringDiameter) {
+            stringDiameterPicker.selectRow(index, inComponent: 0, animated: false)
+        }
+        stringDiameterValueLabel.text = "\(String(format: "%0.2f", stringDiameter)) mm"
+        // String type
+        let stringType = settings.stringType.rawValue
+        if let index = stringTypePickerMediator.stringTypes.firstIndex(of: stringType) {
+            stringTypePicker.selectRow(index, inComponent: 0, animated: false)
+        }
+        stringTypeValueLabel.text = stringType
+        // Tension unit
+        let tensionUnit = settings.tensionUnit.rawValue
+        if let index = tensionUnitsPickerMediator.tensionUnits.firstIndex(of: tensionUnit) {
+            tensionUnitsPicker.selectRow(index, inComponent: 0, animated: false)
+        }
+        tensionUnitsValueLabel.text = tensionUnit
     }
 
     // MARK: - UITableViewDelegate
@@ -84,61 +125,6 @@ class SettingsTableViewController: UITableViewController {
         }
     }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension SettingsTableViewController: PickerMediatorDelegate {
@@ -147,44 +133,52 @@ extension SettingsTableViewController: PickerMediatorDelegate {
                         forPicker picker: UIPickerView,
                         didSelectRow row: Int,
                         inComponent component: Int) {
+        let selectedValue = pickerMediator.selectedValue(component: 0)
+        // Head size picker.
         if picker == headSizePicker {
-            let firstPart = pickerMediator.selectedValue(component: 0)
-            let secondPart = pickerMediator.selectedValue(component: 1)
-            headSizeValueLabel.text = "\(firstPart)\(secondPart)"
-            if component == 1 {
-                if row == 0 {
-                    // in² picked.
-                } else {
-                    // cm² picked.
-                    
-                }
+            let selectedUnit = pickerMediator.selectedValue(component: 1)
+            // Save it to settings.
+            if let headSize = Double(selectedValue) {
+                Settings.shared.headSize = headSize
+            } else {
+                assertionFailure("Cannot convert string to Double: \(selectedValue)")
             }
+            if let headSizeUnit = SizeUnit(rawValue: selectedUnit) {
+                Settings.shared.headSizeUnit = headSizeUnit
+            } else {
+                assertionFailure("Cannot convert string to SizeUnit: \(selectedUnit)")
+            }
+            // Display it.
+            headSizeValueLabel.text = "\(selectedValue) \(selectedUnit)"
+        } else if picker == stringDiameterPicker {
+            // String diameter picker.
+            if let stringDiameter = Double(selectedValue) {
+                Settings.shared.stringDiameter = stringDiameter
+            } else {
+                assertionFailure("Cannot convert string to Double: \(selectedValue)")
+            }
+            // Display it.
+            stringDiameterValueLabel.text = "\(selectedValue) mm"
+        } else if picker == stringTypePicker {
+            // String type picker.
+            if let stringType = StringType(rawValue: selectedValue) {
+                Settings.shared.stringType = stringType
+            } else {
+                assertionFailure("Cannot convert string to StringType: \(selectedValue)")
+            }
+            // Display it.
+            stringTypeValueLabel.text = selectedValue
+        } else if picker == tensionUnitsPicker {
+            // Tension units picker.
+            if let tensionUnit = TensionUnit(rawValue: selectedValue) {
+                Settings.shared.tensionUnit = tensionUnit
+            } else {
+                assertionFailure("Cannot convert string to TensionUnit: \(selectedValue)")
+            }
+            // Display it.
+            tensionUnitsValueLabel.text = selectedValue
         }
     }
     
 }
 
-extension SettingsTableViewController: UIPickerViewDataSource {
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 2
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        switch component {
-        case 0:
-            return 20
-        default:
-            return 2
-        }
-    }
-    
-}
-
-extension SettingsTableViewController: UIPickerViewDelegate {
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "cmp:\(component)|row:\(row)"
-    }
-    
-}
