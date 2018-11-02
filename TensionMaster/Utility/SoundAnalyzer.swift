@@ -21,7 +21,12 @@ struct SoundAnalyzerSample {
         }
         
         let co = 4.6e-7 * d * d * s
-        return co * frequency * frequency
+        let tensionInKg = co * frequency * frequency
+        if settings.tensionUnit == .kg {
+            return tensionInKg
+        } else {
+            return tensionInKg * 2.20462262
+        }
     }
 }
 
