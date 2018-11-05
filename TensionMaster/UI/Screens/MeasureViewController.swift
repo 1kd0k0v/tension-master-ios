@@ -11,6 +11,7 @@ import UIKit
 class MeasureViewController: UIViewController {
     
     @IBOutlet private var circleView: UIView!
+    @IBOutlet private var measureModeLabel: UILabel!
     @IBOutlet private var tensionNumberLabel: UILabel!
     @IBOutlet private var tensionUnitLabel: UILabel!
     
@@ -58,6 +59,7 @@ class MeasureViewController: UIViewController {
     
     private func updateAdditionalInfo() {
         let settings = Settings.shared
+        measureModeLabel.text = "\(settings.measureMode.rawValue) Mode"
         tensionUnitLabel.text = settings.tensionUnit.rawValue
         headSizeLabel.text = "\(Int(settings.headSize)) \(settings.headSizeUnit.rawValue)"
         stringDiameterLabel.text = "\(String(format: "%0.2f", settings.stringDiameter)) mm"

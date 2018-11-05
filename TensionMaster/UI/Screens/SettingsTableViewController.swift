@@ -9,6 +9,8 @@
 import UIKit
 
 class SettingsTableViewController: UITableViewController {
+    
+    @IBOutlet var modeLabel: UILabel!
 
     @IBOutlet var headSizeCell: UITableViewCell!
     @IBOutlet var headSizeValueLabel: UILabel!
@@ -43,9 +45,18 @@ class SettingsTableViewController: UITableViewController {
         reloadSettings()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Load only the selected mode since this is the only thing that can change outside this screen.
+        modeLabel.text = "\(Settings.shared.measureMode.rawValue)"
+    }
+    
     // MARK: - Private Methods
     func reloadSettings() {
         let settings = Settings.shared
+        // Selected mode.
+        modeLabel.text = "\(settings.measureMode.rawValue)"
         // Head size.
         let headSizeUnit = settings.headSizeUnit.rawValue
         let headSize = settings.headSize

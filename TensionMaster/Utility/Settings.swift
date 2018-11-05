@@ -9,8 +9,8 @@
 import Foundation
 
 enum MeasureMode: String {
-    case fabric
-    case personal
+    case fabric = "Fabric"
+    case personal = "Personal"
 }
 
 enum StringType: String {
