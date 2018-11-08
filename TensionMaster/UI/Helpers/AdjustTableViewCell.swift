@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioKitUI
 
 protocol AdjustTableViewCellDelegate: class {
     func adjustCellSelectAdjust(_ cell: AdjustTableViewCell)
@@ -24,6 +25,9 @@ class AdjustTableViewCell: UITableViewCell {
     
     @IBOutlet private var adjustmentLabel: UILabel!
     
+    @IBOutlet private var plotView: EZAudioPlot!
+    private var plot: AKNodeOutputPlot?
+    
     weak var delegate: AdjustTableViewCellDelegate?
 
     override func awakeFromNib() {
@@ -34,6 +38,25 @@ class AdjustTableViewCell: UITableViewCell {
         let tensionUnit = Settings.shared.tensionUnit
         fabricUnitLabel.text = tensionUnit.rawValue
         personalUnitLabel.text = tensionUnit.rawValue
+        setupPlot()
+    }
+    
+    private func setupPlot() {
+        let plot = AKNodeOutputPlot(SoundAnalyzer.shared.mic, frame: plotView.bounds)
+        plot.plotType = .buffer
+        plot.gain = 1.4 // This number is multiplied by amplitude.
+        plot.color = UIColor.green
+        plotView.addSubview(plot)
+        self.plot = plot
+    }
+    
+    // MARK: - Public Methods
+    func pausePlot() {
+        plot?.pause()
+    }
+    
+    func resumePlot() {
+        plot?.resume()
     }
     
     func update(adjustment: Double) {

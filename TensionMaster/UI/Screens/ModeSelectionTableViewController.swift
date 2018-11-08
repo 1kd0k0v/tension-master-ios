@@ -21,6 +21,18 @@ class ModeSelectionTableViewController: UITableViewController {
 
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        adjustCell?.resumePlot()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        adjustCell?.pausePlot()
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         if settings.measureMode == .fabric {
             return 1
@@ -49,7 +61,7 @@ class ModeSelectionTableViewController: UITableViewController {
         if indexPath.section == 0 {
             return 44
         } else {
-            return 220
+            return 320
         }
     }
     

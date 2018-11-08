@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioKitUI
 
 class MeasureViewController: UIViewController {
     
@@ -15,20 +16,19 @@ class MeasureViewController: UIViewController {
     @IBOutlet private var tensionNumberLabel: UILabel!
     @IBOutlet private var tensionUnitLabel: UILabel!
     
-    @IBOutlet private var frequencyLabel: UILabel!
-    @IBOutlet private var currentFrequencyLabel: UILabel!
-    @IBOutlet private var amplitudeLabel: UILabel!
-    @IBOutlet private var currentAmplitudeLabel: UILabel!
-    
     @IBOutlet private var headSizeLabel: UILabel!
     @IBOutlet private var stringDiameterLabel: UILabel!
     @IBOutlet private var stringTypeLabel: UILabel!
+    
+    @IBOutlet private var plotView: EZAudioPlot!
+    private var plot: AKNodeOutputPlot?
     
     private var lastUpdateSample: SoundAnalyzerSample?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupPlot()
         circleView.layer.cornerRadius = circleView.bounds.width / 2
         
         SoundAnalyzer.shared.delegate = self
@@ -47,14 +47,31 @@ class MeasureViewController: UIViewController {
         updateAdditionalInfo()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        plot?.resume()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        plot?.pause()
+    }
+    
     // MARK: - Private Methods
+    private func setupPlot() {
+        let plot = AKNodeOutputPlot(SoundAnalyzer.shared.mic, frame: plotView.bounds)
+        plot.plotType = .buffer
+        plot.gain = 1.5 // This number is multiplied by amplitude.
+        plot.color = UIColor.green
+        plotView.addSubview(plot)
+        self.plot = plot
+    }
     private func update(sample: SoundAnalyzerSample) {
         lastUpdateSample = sample
         
         tensionNumberLabel.text = String(format: "%0.2f", sample.tensionNumber)
-        // Debug info.
-        frequencyLabel.text = String(format: "%0.f", sample.frequency)
-        amplitudeLabel.text = String(format: "%0.2f", sample.amplitude)
     }
     
     private func updateAdditionalInfo() {
@@ -75,9 +92,6 @@ extension MeasureViewController: SoundAnalyzerDelegate {
             if sample.amplitude > 0.08 && sample.frequency > 400 && sample.frequency < 700 {
                 self?.update(sample: sample)
             }
-            // Debug info
-            self?.currentFrequencyLabel.text = String(format: "Freq - %0.f", sample.frequency)
-            self?.currentAmplitudeLabel.text = String(format: "Amp - %0.2f", sample.amplitude)
         }
     }
     
