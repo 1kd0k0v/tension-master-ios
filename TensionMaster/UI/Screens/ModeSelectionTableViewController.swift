@@ -114,7 +114,7 @@ extension ModeSelectionTableViewController: AdjustTableViewCellDelegate {
         let alert = UIAlertController(title: "Enter tension", message: "Please enter your just stringed racquet tension.", preferredStyle: .alert)
         alert.addTextField { textField in
             textField.placeholder = "String tension"
-            textField.keyboardType = .numbersAndPunctuation
+            textField.keyboardType = .decimalPad
         }
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
