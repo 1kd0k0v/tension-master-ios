@@ -43,6 +43,7 @@ class AdjustTableViewCell: UITableViewCell {
     
     private func setupPlot() {
         let plot = AKNodeOutputPlot(SoundAnalyzer.shared.mic, frame: plotView.bounds)
+        plot.autoresizingMask = .flexibleWidth
         plot.plotType = .buffer
         plot.gain = 1.4 // This number is multiplied by amplitude.
         plot.color = UIColor.green
