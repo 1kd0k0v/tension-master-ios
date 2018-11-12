@@ -198,15 +198,12 @@ private extension SettingsTableViewController {
     }
     
     func sharePressed() {
-        presentInformativeAlert(text: "Share")
-        // Share functionality from "TradeBit Portfolio" app.
-//        guard let link = news?.website, let url = URL(string: link) else {
-//            showAlert(title: "Sorry", message: "No link provided :(")
+//        guard let url = URL(string: "https://play.google.com/store/apps/details?id=com.racquetbuddy") else {
 //            return
 //        }
-//        let text = "TradeBit: " + (news?.title ?? "Check out this exciting news")
-//        let shareVC = UIActivityViewController(activityItems: [text, url], applicationActivities: nil)
-//        present(shareVC, animated: true)
+        let text = "Hey check out my app at: https://play.google.com/store/apps/details?id=com.racquetbuddy"
+        let shareVC = UIActivityViewController(activityItems: [text/*, url*/], applicationActivities: nil)
+        present(shareVC, animated: true)
     }
     
     func feedbackPressed() {
@@ -223,8 +220,8 @@ private extension SettingsTableViewController {
         composeVC.mailComposeDelegate = self
         
         // Configure the fields of the interface.
-        composeVC.setToRecipients(["support@tradebit.me"])
-        composeVC.setSubject("Hello TradeBit!")
+        composeVC.setToRecipients(["ikdokov@gmail.com"])
+        composeVC.setSubject("Tension Master")
         
         // Present the view controller modally.
         self.present(composeVC, animated: true, completion: nil)
