@@ -15,6 +15,8 @@ class ModeSelectionTableViewController: UITableViewController {
     var fabricModeCell: UITableViewCell?
     var personalModeCell: UITableViewCell?
     var adjustCell: AdjustTableViewCell?
+    
+    private var lastUpdateSample: SoundAnalyzerSample?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +26,16 @@ class ModeSelectionTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        SoundAnalyzer.shared.delegate = self
         adjustCell?.resumePlot()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+        if SoundAnalyzer.shared.delegate === self {
+            SoundAnalyzer.shared.delegate = nil
+        }
         adjustCell?.pausePlot()
     }
     
@@ -133,9 +139,26 @@ extension ModeSelectionTableViewController: AdjustTableViewCellDelegate {
             if let text = alert.textFields?.first?.text, let adjustment = Double(text) {
                 self.settings.tensionAdjustment = adjustment
                 self.tableView.reloadData()
+                // Update the adjust cell also after changing the tension adjustment.
+                if let sample = self.lastUpdateSample {
+                    self.adjustCell?.update(sample: sample)
+                }
             }
         }))
         present(alert, animated: true)
+    }
+    
+}
+
+extension ModeSelectionTableViewController: SoundAnalyzerDelegate {
+    
+    func soundAnalyzerSample(_ sample: SoundAnalyzerSample) {
+        if adjustCell != nil && sample.isValid {
+            DispatchQueue.main.async { [weak self] in
+                self?.lastUpdateSample = sample
+                self?.adjustCell?.update(sample: sample)
+            }
+        }
     }
     
 }

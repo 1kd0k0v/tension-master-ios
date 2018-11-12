@@ -31,7 +31,6 @@ class MeasureViewController: UIViewController {
         setupPlot()
         circleView.layer.cornerRadius = circleView.bounds.width / 2
         
-        SoundAnalyzer.shared.delegate = self
         SoundAnalyzer.shared.start { started in
             print("Stared - \(started)")
         }
@@ -50,12 +49,16 @@ class MeasureViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        SoundAnalyzer.shared.delegate = self
         plot?.resume()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+        if SoundAnalyzer.shared.delegate === self {
+            SoundAnalyzer.shared.delegate = nil
+        }
         plot?.pause()
     }
     
@@ -64,6 +67,7 @@ class MeasureViewController: UIViewController {
         let plot = AKNodeOutputPlot(SoundAnalyzer.shared.mic, frame: plotView.bounds)
         plot.autoresizingMask = .flexibleWidth
         plot.plotType = .buffer
+        plot.shouldFill = true
         plot.gain = 1.5 // This number is multiplied by amplitude.
         plot.color = UIColor.green
         plotView.addSubview(plot)
@@ -72,7 +76,10 @@ class MeasureViewController: UIViewController {
     private func update(sample: SoundAnalyzerSample) {
         lastUpdateSample = sample
         
-        tensionNumberLabel.text = String(format: "%0.2f", sample.tensionNumber)
+        var tensionValue = sample.tensionNumber
+        let settings = Settings.shared
+        tensionValue += (settings.measureMode == .personal ? settings.tensionAdjustment : 0)
+        tensionNumberLabel.text = String(format: "%0.2f", tensionValue)
     }
     
     private func updateAdditionalInfo() {

@@ -45,6 +45,7 @@ class AdjustTableViewCell: UITableViewCell {
         let plot = AKNodeOutputPlot(SoundAnalyzer.shared.mic, frame: plotView.bounds)
         plot.autoresizingMask = .flexibleWidth
         plot.plotType = .buffer
+        plot.shouldFill = true
         plot.gain = 1.4 // This number is multiplied by amplitude.
         plot.color = UIColor.green
         plotView.addSubview(plot)
@@ -66,6 +67,14 @@ class AdjustTableViewCell: UITableViewCell {
         } else {
             adjustmentLabel.text = "(\(String(format: "%0.2f", adjustment)) \(Settings.shared.tensionUnit.rawValue))"
         }
+    }
+    
+    func update(sample: SoundAnalyzerSample) {
+        // Fabric value.
+        fabricValueLabel.text = String(format: "%0.2f", sample.tensionNumber)
+        // Personal (adjusted) value.
+        let adjustedValue = sample.tensionNumber + Settings.shared.tensionAdjustment
+        personalValueLabel.text = String(format: "%0.2f", adjustedValue)
     }
     
     @IBAction func adjustPressed(button: UIButton) {
