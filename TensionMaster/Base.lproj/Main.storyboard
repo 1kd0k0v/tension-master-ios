@@ -127,7 +127,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="0.91000000000000003" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="180" id="4GA-n7-VTg"/>
                                     <constraint firstAttribute="trailing" secondItem="HPN-rn-QVL" secondAttribute="trailing" id="HSu-Oa-yuB"/>
