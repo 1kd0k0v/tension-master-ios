@@ -15,14 +15,28 @@ enum MeasureMode: String {
 
 enum StringType: String {
     case polyester = "Polyester"
-    case naturalGut = "Natural Gut"
     case syntheticGut = "Synthetic Gut"
-    case kevlar = "Kevlar"
+    case naturalGut = "Natural Gut"
+    case natGutAndPoly = "Hybrid - natural gut/polyester"
+    case synthGutAndPoly = "Hybrid - synthetic gut/polyester"
+    case natGutAndSynthGut = "Hybrid - natural/synthetic gut"
     static var allRepresentations: [String] {
         return [polyester.rawValue,
-                naturalGut.rawValue,
                 syntheticGut.rawValue,
-                kevlar.rawValue]
+                naturalGut.rawValue,
+                natGutAndPoly.rawValue,
+                synthGutAndPoly.rawValue,
+                natGutAndSynthGut.rawValue]
+    }
+    var coefficient: Double {
+        switch self {
+        case .polyester: return 1.35
+        case .syntheticGut: return 1.12
+        case .naturalGut: return 1.28
+        case .natGutAndPoly: return 1.3
+        case .synthGutAndPoly: return 1.24
+        case .natGutAndSynthGut: return 1.21
+        }
     }
 }
 
