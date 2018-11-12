@@ -89,8 +89,8 @@ class MeasureViewController: UIViewController {
 extension MeasureViewController: SoundAnalyzerDelegate {
     
     func soundAnalyzerSample(_ sample: SoundAnalyzerSample) {
-        DispatchQueue.main.async { [weak self] in
-            if sample.amplitude > 0.08 && sample.frequency > 400 && sample.frequency < 700 {
+        if sample.isValid {
+            DispatchQueue.main.async { [weak self] in
                 self?.update(sample: sample)
             }
         }

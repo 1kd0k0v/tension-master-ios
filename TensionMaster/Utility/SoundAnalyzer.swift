@@ -12,6 +12,9 @@ import AudioKit
 struct SoundAnalyzerSample {
     let amplitude: Double
     let frequency: Double
+    var isValid: Bool {
+        return amplitude > 0.08 && frequency > 400 && frequency < 700
+    }
     var tensionNumber: Double {
         let settings = Settings.shared
         let d = settings.stringDiameter
