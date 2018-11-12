@@ -21,6 +21,7 @@
 		8700221C218A596C009D7856 /* StringDiameterPickerMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8700221B218A596C009D7856 /* StringDiameterPickerMediator.swift */; };
 		8700221E218A5CD2009D7856 /* StringTypePickerMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8700221D218A5CD2009D7856 /* StringTypePickerMediator.swift */; };
 		87002220218A5DEB009D7856 /* TensionUnitPickerMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8700221F218A5DEB009D7856 /* TensionUnitPickerMediator.swift */; };
+		8724851D219A21A800566FE5 /* NSAttributedString+Tension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8724851C219A21A800566FE5 /* NSAttributedString+Tension.swift */; };
 		8772AD0F2190E86600863B27 /* ModeSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8772AD0E2190E86600863B27 /* ModeSelectionTableViewController.swift */; };
 		8772AD112190F17A00863B27 /* AdjustTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8772AD102190F17A00863B27 /* AdjustTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -43,6 +44,7 @@
 		8700221B218A596C009D7856 /* StringDiameterPickerMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringDiameterPickerMediator.swift; sourceTree = "<group>"; };
 		8700221D218A5CD2009D7856 /* StringTypePickerMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTypePickerMediator.swift; sourceTree = "<group>"; };
 		8700221F218A5DEB009D7856 /* TensionUnitPickerMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TensionUnitPickerMediator.swift; sourceTree = "<group>"; };
+		8724851C219A21A800566FE5 /* NSAttributedString+Tension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Tension.swift"; sourceTree = "<group>"; };
 		8772AD0E2190E86600863B27 /* ModeSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeSelectionTableViewController.swift; sourceTree = "<group>"; };
 		8772AD102190F17A00863B27 /* AdjustTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustTableViewCell.swift; sourceTree = "<group>"; };
 		F4ED84B3029FA54C463E5987 /* Pods-TensionMaster.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TensionMaster.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TensionMaster/Pods-TensionMaster.debug.xcconfig"; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 			children = (
 				870022092186071E009D7856 /* SoundAnalyzer.swift */,
 				870022192189966E009D7856 /* Settings.swift */,
+				8724851C219A21A800566FE5 /* NSAttributedString+Tension.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				87002212218665ED009D7856 /* HeadSizePickerMediator.swift in Sources */,
 				8772AD0F2190E86600863B27 /* ModeSelectionTableViewController.swift in Sources */,
 				870021F82185E2A8009D7856 /* AppDelegate.swift in Sources */,
+				8724851D219A21A800566FE5 /* NSAttributedString+Tension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

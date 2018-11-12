@@ -71,10 +71,11 @@ class AdjustTableViewCell: UITableViewCell {
     
     func update(sample: SoundAnalyzerSample) {
         // Fabric value.
-        fabricValueLabel.text = String(format: "%0.2f", sample.tensionNumber)
+        let fabricTensionString = String(format: "%0.2f", sample.tensionNumber)
+        fabricValueLabel.attributedText = NSAttributedString.tensionString(fabricTensionString, font: fabricValueLabel.font)
         // Personal (adjusted) value.
-        let adjustedValue = sample.tensionNumber + Settings.shared.tensionAdjustment
-        personalValueLabel.text = String(format: "%0.2f", adjustedValue)
+        let personalTensionString = String(format: "%0.2f", sample.tensionNumber + Settings.shared.tensionAdjustment)
+        personalValueLabel.attributedText = NSAttributedString.tensionString(personalTensionString, font: personalValueLabel.font)
     }
     
     @IBAction func adjustPressed(button: UIButton) {
