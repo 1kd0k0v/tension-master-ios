@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MessageUI
 
 class SettingsTableViewController: UITableViewController {
     
@@ -36,11 +37,25 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet var tensionUnitsPicker: UIPickerView!
     @IBOutlet var tensionUnitsPickerMediator: TensionUnitPickerMediator!
     
+    @IBOutlet var versionLabel: UILabel!
+    
     var expandedPickerCell: UITableViewCell?
+    
+    lazy var versionString: String = {
+        var fullVersion = ""
+        if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
+            fullVersion = "\(version)"
+        }
+        if let build = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as? String {
+            fullVersion += "(\(build))"
+        }
+        return fullVersion
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        versionLabel.text = versionString
         // Load settings data.
         reloadSettings()
     }
@@ -134,10 +149,109 @@ class SettingsTableViewController: UITableViewController {
             tableView.beginUpdates()
             tableView.endUpdates()
         }
+        switch indexPath {
+        case [2, 0]:    // Instructions.
+            instructionsPressed()
+        case [2, 1]:    // Video.
+            videoPressed()
+        case [3, 0]:    // Share.
+            sharePressed()
+        case [3, 1]:    // Feedback.
+            feedbackPressed()
+        case [3, 2]:    // Privacy Policy.
+            privacyPolicyPressed()
+        default:
+            break
+        }
     }
 
 }
 
+// MARK: - Handle Actions - Private
+private extension SettingsTableViewController {
+    
+    func presentInformativeAlert(text: String) {
+        let alert = UIAlertController(title: text, message: "Not implemented", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+    
+    func instructionsPressed() {
+        // Present alert with instructions.
+        let message = """
+
+                     ∙ Choose the mode, the head size, the string diameter and the string type.
+
+                     ∙ Tap the racquet string with another racquet, hand or something else close to the phone microphone.
+
+                     ∙ If the Personal mode is activated adjust the measurement if needed.
+
+                     ∙ Enjoy the work of the app and Master Your Tension.
+                    """
+        let alert = UIAlertController(title: "Instructions", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+    
+    func videoPressed() {
+        presentInformativeAlert(text: "Video")
+    }
+    
+    func sharePressed() {
+        presentInformativeAlert(text: "Share")
+        // Share functionality from "TradeBit Portfolio" app.
+//        guard let link = news?.website, let url = URL(string: link) else {
+//            showAlert(title: "Sorry", message: "No link provided :(")
+//            return
+//        }
+//        let text = "TradeBit: " + (news?.title ?? "Check out this exciting news")
+//        let shareVC = UIActivityViewController(activityItems: [text, url], applicationActivities: nil)
+//        present(shareVC, animated: true)
+    }
+    
+    func feedbackPressed() {
+        guard MFMailComposeViewController.canSendMail() else {
+            let alert = UIAlertController(title: "Cannot send mail",
+                                          message: "You are currently unable to send mails. Please check if your mail client is properly configured and try again.",
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            present(alert, animated: true)
+            return
+        }
+        
+        let composeVC = MFMailComposeViewController()
+        composeVC.mailComposeDelegate = self
+        
+        // Configure the fields of the interface.
+        composeVC.setToRecipients(["support@tradebit.me"])
+        composeVC.setSubject("Hello TradeBit!")
+        
+        // Present the view controller modally.
+        self.present(composeVC, animated: true, completion: nil)
+    }
+    
+    func privacyPolicyPressed() {
+        guard let url = URL(string: "https://robustasoft.com/tensionmaster-privacypolicy/") else { return }
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+}
+
+// MARK: - MFMailComposeViewControllerDelegate
+extension SettingsTableViewController: MFMailComposeViewControllerDelegate {
+    
+    func mailComposeController(_ controller: MFMailComposeViewController,
+                               didFinishWith result: MFMailComposeResult,
+                               error: Error?) {
+        // Dismiss the mail compose view controller.
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+}
+
+// MARK: - PickerMediatorDelegate
 extension SettingsTableViewController: PickerMediatorDelegate {
     
     func pickerMediator(_ pickerMediator: PickerMediator,
