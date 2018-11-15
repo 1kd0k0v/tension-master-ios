@@ -24,7 +24,7 @@ struct SoundAnalyzerSample {
             s = s / 6.4516
         }
         
-        let co = 3.41e-7 * sCo * d * d * s
+        let co = 3.5e-7 * sCo * d * d * s
         let tensionInKg = co * frequency * frequency
         if settings.tensionUnit == .kg {
             return tensionInKg
