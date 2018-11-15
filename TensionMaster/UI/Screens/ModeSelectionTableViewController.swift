@@ -26,17 +26,13 @@ class ModeSelectionTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        SoundAnalyzer.shared.delegate = self
-        adjustCell?.resumePlot()
+        startMeasuring()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        if SoundAnalyzer.shared.delegate === self {
-            SoundAnalyzer.shared.delegate = nil
-        }
-        adjustCell?.pausePlot()
+        stopMeasuring()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -126,6 +122,24 @@ class ModeSelectionTableViewController: UITableViewController {
 
 }
 
+// MARK: - Private Methods
+private extension ModeSelectionTableViewController {
+    
+    func startMeasuring() {
+        SoundAnalyzer.shared.delegate = self
+        adjustCell?.resumePlot()
+    }
+    
+    func stopMeasuring() {
+        if SoundAnalyzer.shared.delegate === self {
+            SoundAnalyzer.shared.delegate = nil
+        }
+        adjustCell?.pausePlot()
+    }
+    
+}
+
+// MARK: - AdjustTableViewCellDelegate
 extension ModeSelectionTableViewController: AdjustTableViewCellDelegate {
     
     func adjustCellSelectAdjust(_ cell: AdjustTableViewCell) {
@@ -134,22 +148,29 @@ extension ModeSelectionTableViewController: AdjustTableViewCellDelegate {
             textField.placeholder = "String tension"
             textField.keyboardType = .decimalPad
         }
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+            self.startMeasuring()   // Continue to measure after the dialog is closed.
+        }))
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            if let text = alert.textFields?.first?.text, let adjustment = Double(text) {
-                self.settings.tensionAdjustment = adjustment
+            if let text = alert.textFields?.first?.text, let tension = Double(text) {
+                let measuredTension = self.lastUpdateSample?.tensionNumber ?? 0.0
+                self.settings.tensionAdjustment = tension - measuredTension
                 self.tableView.reloadData()
                 // Update the adjust cell also after changing the tension adjustment.
                 if let sample = self.lastUpdateSample {
                     self.adjustCell?.update(sample: sample)
                 }
             }
+            self.startMeasuring()   // Continue to measure after the dialog is closed.
         }))
+        // While the alert is presented stop measuring the tension.
+        stopMeasuring()
         present(alert, animated: true)
     }
     
 }
 
+// MARK: - SoundAnalyzerDelegate
 extension ModeSelectionTableViewController: SoundAnalyzerDelegate {
     
     func soundAnalyzerSample(_ sample: SoundAnalyzerSample) {
