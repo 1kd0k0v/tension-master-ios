@@ -14,7 +14,7 @@ enum MeasureMode: String {
 }
 
 enum StringType: String {
-    case polyester = "Polyester"
+    case polyester = "Polyester, Co-polyester"
     case syntheticGut = "Synthetic Gut"
     case naturalGut = "Natural Gut"
     case natGutAndPoly = "Hybrid - natural gut/polyester"
