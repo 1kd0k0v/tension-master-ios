@@ -47,7 +47,7 @@ class ModeSelectionTableViewController: UITableViewController {
         if section == 0 {
             return nil
         } else {
-            return "How does it work? \n 1. String your racquet by trusted stringer. \n 2. Measure the tension. \n 3. Adjust if needed."
+            return "How does it work? \n 1. String your racquet by trusted stringer. \n 2. Measure the tension. \n 3. Calibrate if needed."
         }
     }
     

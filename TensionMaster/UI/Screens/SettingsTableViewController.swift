@@ -184,7 +184,7 @@ private extension SettingsTableViewController {
 
                      ∙ Tap the racquet string with another racquet, hand or something else close to the phone microphone.
 
-                     ∙ If the Personal mode is activated adjust the measurement if needed.
+                     ∙ If the Personal mode is activated calibrate the measurement if needed.
 
                      ∙ Enjoy the work of the app and Master Your Tension.
                     """
