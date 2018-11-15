@@ -28,15 +28,21 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Measure Mode" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fyV-7K-aLf">
-                                        <rect key="frame" x="52" y="44" width="136" height="24"/>
+                                        <rect key="frame" x="52" y="40" width="136" height="24"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                        <color key="textColor" red="0.11061056940349043" green="0.3565277195722848" blue="0.1520485858907582" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.10980392156862745" green="0.35686274509803922" blue="0.15294117647058825" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="kg" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbm-Gn-DlF">
-                                        <rect key="frame" x="109" y="144" width="22" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="kg" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbm-Gn-DlF">
+                                        <rect key="frame" x="111" y="144" width="18.5" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                         <color key="textColor" red="0.097160469230000004" green="0.3131744165" blue="0.13355967730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(+0.00kg)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fdE-Xo-lJh">
+                                        <rect key="frame" x="86.5" y="66" width="67.5" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                        <color key="textColor" red="0.10980392156862745" green="0.35686274509803922" blue="0.15294117647058825" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -46,9 +52,11 @@
                                     <constraint firstItem="bbm-Gn-DlF" firstAttribute="top" secondItem="6On-cg-3di" secondAttribute="bottom" id="BPh-93-pYu"/>
                                     <constraint firstAttribute="height" constant="240" id="DGt-1a-BqZ"/>
                                     <constraint firstItem="bbm-Gn-DlF" firstAttribute="centerX" secondItem="F2H-qq-hcx" secondAttribute="centerX" id="IXM-Ib-xqX"/>
+                                    <constraint firstItem="fdE-Xo-lJh" firstAttribute="top" secondItem="fyV-7K-aLf" secondAttribute="bottom" constant="2" id="PQj-aG-AD2"/>
                                     <constraint firstAttribute="width" constant="240" id="cbC-AF-bFs"/>
-                                    <constraint firstItem="fyV-7K-aLf" firstAttribute="top" secondItem="F2H-qq-hcx" secondAttribute="top" constant="44" id="hgu-aZ-G7m"/>
+                                    <constraint firstItem="fyV-7K-aLf" firstAttribute="top" secondItem="F2H-qq-hcx" secondAttribute="top" constant="40" id="hgu-aZ-G7m"/>
                                     <constraint firstItem="6On-cg-3di" firstAttribute="centerY" secondItem="F2H-qq-hcx" secondAttribute="centerY" id="l2Z-Y9-dQM"/>
+                                    <constraint firstItem="fdE-Xo-lJh" firstAttribute="centerX" secondItem="fyV-7K-aLf" secondAttribute="centerX" id="lhT-Zb-PRL"/>
                                     <constraint firstItem="fyV-7K-aLf" firstAttribute="centerX" secondItem="F2H-qq-hcx" secondAttribute="centerX" id="tb3-dg-wzm"/>
                                 </constraints>
                             </view>
@@ -171,6 +179,7 @@
                     <connections>
                         <outlet property="circleView" destination="F2H-qq-hcx" id="JZf-wm-qh4"/>
                         <outlet property="headSizeLabel" destination="P5y-ke-87C" id="8FJ-7h-itE"/>
+                        <outlet property="measureAdjustmentLabel" destination="fdE-Xo-lJh" id="7Ai-1f-pUV"/>
                         <outlet property="measureModeLabel" destination="fyV-7K-aLf" id="wfH-Zt-blm"/>
                         <outlet property="plotView" destination="e8B-o8-Vp0" id="Khh-SW-Jwe"/>
                         <outlet property="stringDiameterLabel" destination="mDK-fu-nDT" id="vlJ-NG-mxc"/>
@@ -766,8 +775,8 @@
                                                 <constraint firstAttribute="height" constant="20" id="biz-va-l2J"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(+0.00 kg)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nkB-dk-CgK">
-                                            <rect key="frame" x="230" y="18" width="80" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(+0.00kg)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nkB-dk-CgK">
+                                            <rect key="frame" x="232" y="18" width="76" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>

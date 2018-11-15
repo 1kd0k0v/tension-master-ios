@@ -63,9 +63,9 @@ class AdjustTableViewCell: UITableViewCell {
     
     func update(adjustment: Double) {
         if adjustment >= 0.0 {
-            adjustmentLabel.text = "(+\(String(format: "%0.2f", adjustment)) \(Settings.shared.tensionUnit.rawValue))"
+            adjustmentLabel.text = "(+\(String(format: "%0.1f", adjustment))\(Settings.shared.tensionUnit.rawValue))"
         } else {
-            adjustmentLabel.text = "(\(String(format: "%0.2f", adjustment)) \(Settings.shared.tensionUnit.rawValue))"
+            adjustmentLabel.text = "(\(String(format: "%0.1f", adjustment))\(Settings.shared.tensionUnit.rawValue))"
         }
     }
     

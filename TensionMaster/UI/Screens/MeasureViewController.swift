@@ -13,6 +13,7 @@ class MeasureViewController: UIViewController {
     
     @IBOutlet private var circleView: UIView!
     @IBOutlet private var measureModeLabel: UILabel!
+    @IBOutlet private var measureAdjustmentLabel: UILabel!
     @IBOutlet private var tensionNumberLabel: UILabel!
     @IBOutlet private var tensionUnitLabel: UILabel!
     
@@ -73,6 +74,7 @@ class MeasureViewController: UIViewController {
         plotView.addSubview(plot)
         self.plot = plot
     }
+    
     private func update(sample: SoundAnalyzerSample) {
         lastUpdateSample = sample
         
@@ -83,8 +85,22 @@ class MeasureViewController: UIViewController {
         tensionNumberLabel.attributedText = NSAttributedString.tensionString(tensionString, font: tensionNumberLabel.font)
     }
     
+    private func update(adjustment: Double) {
+        if adjustment >= 0.0 {
+            measureAdjustmentLabel.text = "(+\(String(format: "%0.1f", adjustment))\(Settings.shared.tensionUnit.rawValue))"
+        } else {
+            measureAdjustmentLabel.text = "(\(String(format: "%0.1f", adjustment))\(Settings.shared.tensionUnit.rawValue))"
+        }
+    }
+    
     private func updateAdditionalInfo() {
         let settings = Settings.shared
+        if settings.measureMode == .personal {
+            measureAdjustmentLabel.isHidden = false
+            update(adjustment: settings.tensionAdjustment)
+        } else {
+            measureAdjustmentLabel.isHidden = true
+        }
         measureModeLabel.text = "\(settings.measureMode.rawValue) Mode"
         tensionUnitLabel.text = settings.tensionUnit.rawValue
         headSizeLabel.text = "\(Int(settings.headSize)) \(settings.headSizeUnit.rawValue)"
