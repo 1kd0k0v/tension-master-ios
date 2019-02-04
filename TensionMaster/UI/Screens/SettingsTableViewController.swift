@@ -82,7 +82,7 @@ class SettingsTableViewController: UITableViewController {
         if let index = headSizePickerMediator.headSizes.firstIndex(of: headSize) {
             headSizePicker.selectRow(index, inComponent: 0, animated: false)
         }
-        headSizeValueLabel.text = "\(headSize) \(headSizeUnit)"
+        headSizeValueLabel.text = "\(Int(headSize)) \(headSizeUnit)"
         // String diameter
         let stringDiameter = settings.stringDiameter
         if let index = stringDiameterPickerMediator.stringDiameters.firstIndex(of: stringDiameter) {

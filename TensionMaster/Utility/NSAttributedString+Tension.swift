@@ -18,9 +18,6 @@ extension NSAttributedString {
         // Adjust the font.
         let newFont = font.withSize(font.pointSize / 2)
         attrString.addAttribute(.font, value: newFont, range: range)
-        // Adjust the color.
-        let color = UIColor.red
-        attrString.addAttribute(.foregroundColor, value: color, range: range)
         return NSAttributedString(attributedString: attrString) // Make it immutable.
     }
     

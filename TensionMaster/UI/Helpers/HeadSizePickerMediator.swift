@@ -36,7 +36,7 @@ class HeadSizePickerMediator: PickerMediator, UIPickerViewDataSource {
     
     override func value(row: Int, component: Int) -> String {
         if component == 0 {
-            return "\(headSizes[row])"
+            return "\(Int(headSizes[row]))"
         } else {
             return headSizeUnits[row]
         }

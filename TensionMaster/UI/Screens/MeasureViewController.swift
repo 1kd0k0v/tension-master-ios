@@ -52,6 +52,7 @@ class MeasureViewController: UIViewController {
         
         SoundAnalyzer.shared.delegate = self
         plot?.resume()
+        checkFirstRun()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -106,6 +107,36 @@ class MeasureViewController: UIViewController {
         headSizeLabel.text = "\(Int(settings.headSize)) \(settings.headSizeUnit.rawValue)"
         stringDiameterLabel.text = "\(String(format: "%0.2f", settings.stringDiameter)) mm"
         stringTypeLabel.text = settings.stringType.rawValue
+    }
+    
+    private func checkFirstRun() {
+        let defaults = UserDefaults.standard
+        if defaults.bool(forKey: "firstRun") == false {
+            // Show an information alert.
+            let message = """
+
+                     ∙ If you use a Vibration Dampener take it off the string while measuring.
+
+                     ∙ TensionMeter measures the average tension between main and cross strings of the racquet.
+
+                     ∙ Enter the head size, the string diameter and the string type.
+
+                     ∙ If you use main and cross strings with different diameter, enter the average diameter value.
+
+                     ∙ You can use either Fabric or Personal mode(if Personal mode is activated make a Calibration of the mode).
+
+                     ∙ Tap the racquet string with another racquet in front of the phone microphone to measure the average string tension
+
+                     ∙ CAUTION ∙
+                     ∙ The tension loss rate is very high immediately after the racquet is strung and during the first 30 minutes of play. The total tension loss after 1 hour of play could be up to 20% depending of the string model and the way of stringing.
+                    """
+            let alert = UIAlertController(title: "Instructions", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            present(alert, animated: true)
+            // Save the first run is passed.
+            defaults.set(true, forKey: "firstRun")
+            defaults.synchronize()
+        }
     }
 
 }
