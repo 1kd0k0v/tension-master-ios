@@ -68,7 +68,7 @@ class SettingsTableViewController: UITableViewController {
     }
     
     // MARK: - Private Methods
-    func reloadSettings() {
+    private func reloadSettings() {
         let settings = Settings.shared
         // Selected mode.
         modeLabel.text = "\(settings.measureMode.rawValue)"
@@ -162,6 +162,12 @@ class SettingsTableViewController: UITableViewController {
             privacyPolicyPressed()
         default:
             break
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let headerView = view as? UITableViewHeaderFooterView {
+            headerView.textLabel?.textColor = UIColor.accent
         }
     }
 

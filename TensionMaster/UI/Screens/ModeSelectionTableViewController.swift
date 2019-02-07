@@ -119,10 +119,16 @@ class ModeSelectionTableViewController: UITableViewController {
             tableView.endUpdates()
         }
     }
+    
+    override func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+        if let headerView = view as? UITableViewHeaderFooterView {
+            headerView.textLabel?.textColor = UIColor.accent
+        }
+    }
 
 }
 
-// MARK: - Private Methods
+// MARK: - Measuring Methods
 private extension ModeSelectionTableViewController {
     
     func startMeasuring() {

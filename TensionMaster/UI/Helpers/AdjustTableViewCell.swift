@@ -13,17 +13,18 @@ protocol AdjustTableViewCellDelegate: class {
     func adjustCellSelectAdjust(_ cell: AdjustTableViewCell)
 }
 
-class AdjustTableViewCell: UITableViewCell {
+class AdjustTableViewCell: DarkTableViewCell {
     
-    @IBOutlet private var fabricModeCurcle: UIView!
+    @IBOutlet private var fabricModeCircle: UIGradientView!
     @IBOutlet private var fabricValueLabel: UILabel!
     @IBOutlet private var fabricUnitLabel: UILabel!
     
-    @IBOutlet private var personalModeCurcle: UIView!
+    @IBOutlet private var personalModeCircle: UIGradientView!
     @IBOutlet private var personalValueLabel: UILabel!
     @IBOutlet private var personalUnitLabel: UILabel!
     
     @IBOutlet private var adjustmentLabel: UILabel!
+    @IBOutlet private var calibrateButton: UIButton!
     
     @IBOutlet private var plotView: EZAudioPlot!
     private var plot: AKNodeOutputPlot?
@@ -33,12 +34,25 @@ class AdjustTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        fabricModeCurcle.layer.cornerRadius = fabricModeCurcle.bounds.width / 2
-        personalModeCurcle.layer.cornerRadius = personalModeCurcle.bounds.width / 2
+        // Fabric mode circle.
+        if let gradientLayer = fabricModeCircle.layer as? CAGradientLayer {
+            gradientLayer.colors = [UIColor.circleStart.cgColor, UIColor.circleEnd.cgColor]
+            gradientLayer.startPoint = CGPoint(x: 0, y: 1)
+            gradientLayer.endPoint = CGPoint(x: 1, y: 0)
+            gradientLayer.cornerRadius = fabricModeCircle.bounds.width / 2
+        }
+        // Personal mode circle.
+        if let gradientLayer = personalModeCircle.layer as? CAGradientLayer {
+            gradientLayer.colors = [UIColor.circleStart.cgColor, UIColor.circleEnd.cgColor]
+            gradientLayer.startPoint = CGPoint(x: 0, y: 1)
+            gradientLayer.endPoint = CGPoint(x: 1, y: 0)
+            gradientLayer.cornerRadius = personalModeCircle.bounds.width / 2
+        }
         let tensionUnit = Settings.shared.tensionUnit
         fabricUnitLabel.text = tensionUnit.rawValue
         personalUnitLabel.text = tensionUnit.rawValue
         setupPlot()
+        brand()
     }
     
     private func setupPlot() {
@@ -47,9 +61,15 @@ class AdjustTableViewCell: UITableViewCell {
         plot.plotType = .buffer
         plot.shouldFill = true
         plot.gain = 1.4 // This number is multiplied by amplitude.
-        plot.color = UIColor.green
+        plot.color = UIColor.soundIndicator
+        plot.backgroundColor = UIColor.clear
         plotView.addSubview(plot)
         self.plot = plot
+    }
+    
+    private func brand() {
+        adjustmentLabel.textColor = UIColor.secondaryText
+        calibrateButton.tintColor = UIColor.accent
     }
     
     // MARK: - Public Methods

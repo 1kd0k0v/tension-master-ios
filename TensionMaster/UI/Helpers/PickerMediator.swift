@@ -32,8 +32,9 @@ class PickerMediator: NSObject, UIPickerViewDelegate {
         return value(row: pickerView.selectedRow(inComponent: component), component: component)
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return value(row: row, component: component)
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        return NSAttributedString(string: value(row: row, component: component),
+                                  attributes: [NSAttributedString.Key.foregroundColor: UIColor.mainText])
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

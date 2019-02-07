@@ -89,9 +89,9 @@ class MeasureViewController: UIViewController {
             gradientLayer.cornerRadius = circleView.bounds.width / 2
         }
         // Labels.
-        headSizeLabel.textColor = UIColor.mainText
-        stringDiameterLabel.textColor = UIColor.mainText
-        stringTypeLabel.textColor = UIColor.mainText
+        headSizeLabel.textColor = UIColor.accent
+        stringDiameterLabel.textColor = UIColor.accent
+        stringTypeLabel.textColor = UIColor.accent
         // Containers.
         if let gradientLayer = headSizeContainer.layer as? CAGradientLayer {
             gradientLayer.colors = [UIColor.backgroundLight.cgColor, UIColor.backgroundDark.cgColor]

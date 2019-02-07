@@ -16,12 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        UITabBar.appearance().barTintColor = UIColor.backgroundDark
-        UITabBar.appearance().tintColor = UIColor.mainText
-        UINavigationBar.appearance().barTintColor = UIColor.backgroundDark
-        UINavigationBar.appearance().tintColor = UIColor.mainText
-        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        UINavigationBar.appearance().titleTextAttributes = textAttributes
+        brand()
         
         return true
     }
@@ -46,6 +41,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    private func brand() {
+        UITabBar.appearance().barTintColor = UIColor.backgroundDark
+        UITabBar.appearance().tintColor = UIColor.accent
+        UINavigationBar.appearance().barTintColor = UIColor.backgroundDark
+        UINavigationBar.appearance().tintColor = UIColor.accent
+        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.mainText]
+        UINavigationBar.appearance().titleTextAttributes = textAttributes
+        // Settings.
+        DarkTableViewCell.appearance().backgroundColor = UIColor.backgroundLight
+        MainCellLabel.appearance().textColor = UIColor.mainText
+        SecondaryCellLabel.appearance().textColor = UIColor.secondaryText
+        // Table views.
+        UITableView.appearance().backgroundColor = UIColor.backgroundDark
+        UITableView.appearance().separatorColor = UIColor.secondaryText
     }
 
 

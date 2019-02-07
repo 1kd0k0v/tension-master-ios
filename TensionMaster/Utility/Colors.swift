@@ -59,12 +59,20 @@ extension UIColor {
         return UIColor(rgb: 0xF74A8E)
     }
     
-    class var mainText: UIColor {
+    class var accent: UIColor {
         return UIColor(rgb: 0xC17AD3)
     }
     
     class var soundIndicator: UIColor {
         return UIColor.circleStart
+    }
+    
+    class var mainText: UIColor {
+        return UIColor.white
+    }
+    
+    class var secondaryText: UIColor {
+        return UIColor(argb: 0xBBFFFFFF)
     }
 
 }
