@@ -186,13 +186,20 @@ private extension SettingsTableViewController {
         // Present alert with instructions.
         let message = """
 
-                     ∙ Choose the mode, the head size, the string diameter and the string type.
+                     ∙ If you use a Vibration Dampener take it off the string while measuring.
 
-                     ∙ Tap the racquet string with another racquet, hand or something else close to the phone microphone.
+                     ∙ TensionMeter measures the average tension between main and cross strings of the racquet.
 
-                     ∙ If the Personal mode is activated calibrate the measurement if needed.
+                     ∙ Enter the head size, the string diameter and the string type.
 
-                     ∙ Enjoy the work of the app and Master Your Tension.
+                     ∙ If you use main and cross strings with different diameter, enter the average diameter value.
+
+                     ∙ You can use either Fabric or Personal mode(if Personal mode is activated make a Calibration of the mode).
+
+                     ∙ Tap the racquet string with another racquet in front of the phone microphone to measure the average string tension
+
+                     ∙ CAUTION ∙
+                     ∙ The tension loss rate is very high immediately after the racquet is strung and during the first 30 minutes of play. The total tension loss after 1 hour of play could be up to 20% depending of the string model and the way of stringing.
                     """
         let alert = UIAlertController(title: "Instructions", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
