@@ -13,7 +13,7 @@ class StringDiameterPickerMediator: PickerMediator, UIPickerViewDataSource {
     lazy var stringDiameters = Array(Settings.shared.stringDiameterStride)
     
     override func value(row: Int, component: Int) -> String {
-        return String(format: "%0.2f", stringDiameters[row])
+        return String(format: "%0.3f", stringDiameters[row])
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

@@ -83,7 +83,7 @@ class Settings {
     
     let headSizeInchRange = 70...130    // inches
     let headSizeCmRange = 500...800     // cm
-    let stringDiameterStride = stride(from: 1.0, through: 1.5, by: 0.01)    // mm
+    let stringDiameterStride = stride(from: 1.0, through: 1.5, by: 0.005)    // mm
     
     var measureMode: MeasureMode {
         get {

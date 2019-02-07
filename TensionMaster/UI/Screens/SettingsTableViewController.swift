@@ -88,7 +88,7 @@ class SettingsTableViewController: UITableViewController {
         if let index = stringDiameterPickerMediator.stringDiameters.firstIndex(of: stringDiameter) {
             stringDiameterPicker.selectRow(index, inComponent: 0, animated: false)
         }
-        stringDiameterValueLabel.text = "\(String(format: "%0.2f", stringDiameter)) mm"
+        stringDiameterValueLabel.text = "\(String(format: "%0.3f", stringDiameter)) mm"
         // String type
         let stringType = settings.stringType.rawValue
         if let index = stringTypePickerMediator.stringTypes.firstIndex(of: stringType) {
