@@ -21,6 +21,9 @@
 		8700221C218A596C009D7856 /* StringDiameterPickerMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8700221B218A596C009D7856 /* StringDiameterPickerMediator.swift */; };
 		8700221E218A5CD2009D7856 /* StringTypePickerMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8700221D218A5CD2009D7856 /* StringTypePickerMediator.swift */; };
 		87002220218A5DEB009D7856 /* TensionUnitPickerMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8700221F218A5DEB009D7856 /* TensionUnitPickerMediator.swift */; };
+		87095006220B7BD0007E7A75 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87095005220B7BD0007E7A75 /* Colors.swift */; };
+		87095008220B8CA4007E7A75 /* UIGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87095007220B8CA4007E7A75 /* UIGradientView.swift */; };
+		8709500A220B9342007E7A75 /* WhiteStatusNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87095009220B9342007E7A75 /* WhiteStatusNavController.swift */; };
 		8724851D219A21A800566FE5 /* NSAttributedString+Tension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8724851C219A21A800566FE5 /* NSAttributedString+Tension.swift */; };
 		8772AD0F2190E86600863B27 /* ModeSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8772AD0E2190E86600863B27 /* ModeSelectionTableViewController.swift */; };
 		8772AD112190F17A00863B27 /* AdjustTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8772AD102190F17A00863B27 /* AdjustTableViewCell.swift */; };
@@ -44,6 +47,9 @@
 		8700221B218A596C009D7856 /* StringDiameterPickerMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringDiameterPickerMediator.swift; sourceTree = "<group>"; };
 		8700221D218A5CD2009D7856 /* StringTypePickerMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTypePickerMediator.swift; sourceTree = "<group>"; };
 		8700221F218A5DEB009D7856 /* TensionUnitPickerMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TensionUnitPickerMediator.swift; sourceTree = "<group>"; };
+		87095005220B7BD0007E7A75 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		87095007220B8CA4007E7A75 /* UIGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGradientView.swift; sourceTree = "<group>"; };
+		87095009220B9342007E7A75 /* WhiteStatusNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteStatusNavController.swift; sourceTree = "<group>"; };
 		8724851C219A21A800566FE5 /* NSAttributedString+Tension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Tension.swift"; sourceTree = "<group>"; };
 		8772AD0E2190E86600863B27 /* ModeSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeSelectionTableViewController.swift; sourceTree = "<group>"; };
 		8772AD102190F17A00863B27 /* AdjustTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustTableViewCell.swift; sourceTree = "<group>"; };
@@ -100,6 +106,7 @@
 				870022092186071E009D7856 /* SoundAnalyzer.swift */,
 				870022192189966E009D7856 /* Settings.swift */,
 				8724851C219A21A800566FE5 /* NSAttributedString+Tension.swift */,
+				87095005220B7BD0007E7A75 /* Colors.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -122,6 +129,8 @@
 				8700221D218A5CD2009D7856 /* StringTypePickerMediator.swift */,
 				8700221F218A5DEB009D7856 /* TensionUnitPickerMediator.swift */,
 				8772AD102190F17A00863B27 /* AdjustTableViewCell.swift */,
+				87095007220B8CA4007E7A75 /* UIGradientView.swift */,
+				87095009220B9342007E7A75 /* WhiteStatusNavController.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -249,15 +258,18 @@
 				870022142187BA02009D7856 /* MeasureViewController.swift in Sources */,
 				8700220E21865643009D7856 /* SettingsTableViewController.swift in Sources */,
 				8772AD112190F17A00863B27 /* AdjustTableViewCell.swift in Sources */,
+				87095006220B7BD0007E7A75 /* Colors.swift in Sources */,
 				8700221C218A596C009D7856 /* StringDiameterPickerMediator.swift in Sources */,
 				8700221021866292009D7856 /* PickerMediator.swift in Sources */,
 				8700220A2186071E009D7856 /* SoundAnalyzer.swift in Sources */,
+				8709500A220B9342007E7A75 /* WhiteStatusNavController.swift in Sources */,
 				8700221A2189966E009D7856 /* Settings.swift in Sources */,
 				8700221E218A5CD2009D7856 /* StringTypePickerMediator.swift in Sources */,
 				87002220218A5DEB009D7856 /* TensionUnitPickerMediator.swift in Sources */,
 				87002212218665ED009D7856 /* HeadSizePickerMediator.swift in Sources */,
 				8772AD0F2190E86600863B27 /* ModeSelectionTableViewController.swift in Sources */,
 				870021F82185E2A8009D7856 /* AppDelegate.swift in Sources */,
+				87095008220B8CA4007E7A75 /* UIGradientView.swift in Sources */,
 				8724851D219A21A800566FE5 /* NSAttributedString+Tension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

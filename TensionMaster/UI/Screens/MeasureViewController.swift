@@ -11,15 +11,21 @@ import AudioKitUI
 
 class MeasureViewController: UIViewController {
     
-    @IBOutlet private var circleView: UIView!
+    @IBOutlet private var circleView: UIGradientView!
     @IBOutlet private var measureModeLabel: UILabel!
     @IBOutlet private var measureAdjustmentLabel: UILabel!
     @IBOutlet private var tensionNumberLabel: UILabel!
     @IBOutlet private var tensionUnitLabel: UILabel!
     
+    @IBOutlet private var headSizeContainer: UIGradientView!
     @IBOutlet private var headSizeLabel: UILabel!
+    @IBOutlet private var headSizeValueLabel: UILabel!
+    @IBOutlet private var stringDiameterContainer: UIGradientView!
     @IBOutlet private var stringDiameterLabel: UILabel!
+    @IBOutlet private var stringDiameterValueLabel: UILabel!
+    @IBOutlet private var stringTypeContainer: UIGradientView!
     @IBOutlet private var stringTypeLabel: UILabel!
+    @IBOutlet private var stringTypeValueLabel: UILabel!
     
     @IBOutlet private var plotView: EZAudioPlot!
     private var plot: AKNodeOutputPlot?
@@ -30,7 +36,7 @@ class MeasureViewController: UIViewController {
         super.viewDidLoad()
 
         setupPlot()
-        circleView.layer.cornerRadius = circleView.bounds.width / 2
+        brand()
         
         SoundAnalyzer.shared.start { started in
             print("Stared - \(started)")
@@ -64,14 +70,66 @@ class MeasureViewController: UIViewController {
         plot?.pause()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     // MARK: - Private Methods
+    private func brand() {
+        if let gradientLayer = view.layer as? CAGradientLayer {
+            gradientLayer.colors = [UIColor.backgroundDark.cgColor, UIColor.backgroundLight.cgColor]
+            gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
+            gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
+        }
+        // Circle view.
+        if let gradientLayer = circleView.layer as? CAGradientLayer {
+            gradientLayer.colors = [UIColor.circleStart.cgColor, UIColor.circleEnd.cgColor]
+            gradientLayer.startPoint = CGPoint(x: 0, y: 1)
+            gradientLayer.endPoint = CGPoint(x: 1, y: 0)
+            gradientLayer.cornerRadius = circleView.bounds.width / 2
+        }
+        // Labels.
+        headSizeLabel.textColor = UIColor.mainText
+        stringDiameterLabel.textColor = UIColor.mainText
+        stringTypeLabel.textColor = UIColor.mainText
+        // Containers.
+        if let gradientLayer = headSizeContainer.layer as? CAGradientLayer {
+            gradientLayer.colors = [UIColor.backgroundLight.cgColor, UIColor.backgroundDark.cgColor]
+            gradientLayer.startPoint = CGPoint(x: 0, y: 1)
+            gradientLayer.endPoint = CGPoint(x: 1, y: 0)
+            gradientLayer.cornerRadius = 16
+            gradientLayer.shadowColor = UIColor.black.cgColor
+            gradientLayer.shadowOffset = CGSize(width: -3, height: 3)
+            gradientLayer.shadowOpacity = 0.3
+        }
+        if let gradientLayer = stringDiameterContainer.layer as? CAGradientLayer {
+            gradientLayer.colors = [UIColor.backgroundLight.cgColor, UIColor.backgroundDark.cgColor]
+            gradientLayer.startPoint = CGPoint(x: 0, y: 1)
+            gradientLayer.endPoint = CGPoint(x: 1, y: 0)
+            gradientLayer.cornerRadius = 16
+            gradientLayer.shadowColor = UIColor.black.cgColor
+            gradientLayer.shadowOffset = CGSize(width: -3, height: 3)
+            gradientLayer.shadowOpacity = 0.3
+        }
+        if let gradientLayer = stringTypeContainer.layer as? CAGradientLayer {
+            gradientLayer.colors = [UIColor.backgroundLight.cgColor, UIColor.backgroundDark.cgColor]
+            gradientLayer.startPoint = CGPoint(x: 0, y: 1)
+            gradientLayer.endPoint = CGPoint(x: 1, y: 0)
+            gradientLayer.cornerRadius = 16
+            gradientLayer.shadowColor = UIColor.black.cgColor
+            gradientLayer.shadowOffset = CGSize(width: -3, height: 3)
+            gradientLayer.shadowOpacity = 0.3
+        }
+    }
+    
     private func setupPlot() {
         let plot = AKNodeOutputPlot(SoundAnalyzer.shared.mic, frame: plotView.bounds)
         plot.autoresizingMask = .flexibleWidth
         plot.plotType = .buffer
         plot.shouldFill = true
         plot.gain = 1.5 // This number is multiplied by amplitude.
-        plot.color = UIColor.green
+        plot.color = UIColor.soundIndicator
+        plot.backgroundColor = UIColor.clear
         plotView.addSubview(plot)
         self.plot = plot
     }
@@ -104,9 +162,9 @@ class MeasureViewController: UIViewController {
         }
         measureModeLabel.text = "\(settings.measureMode.rawValue) Mode"
         tensionUnitLabel.text = settings.tensionUnit.rawValue
-        headSizeLabel.text = "\(Int(settings.headSize)) \(settings.headSizeUnit.rawValue)"
-        stringDiameterLabel.text = "\(String(format: "%0.2f", settings.stringDiameter)) mm"
-        stringTypeLabel.text = settings.stringType.rawValue
+        headSizeValueLabel.text = "\(Int(settings.headSize)) \(settings.headSizeUnit.rawValue)"
+        stringDiameterValueLabel.text = "\(String(format: "%0.2f", settings.stringDiameter)) mm"
+        stringTypeValueLabel.text = settings.stringType.rawValue
     }
     
     private func checkFirstRun() {
