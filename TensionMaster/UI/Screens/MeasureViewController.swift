@@ -145,10 +145,10 @@ class MeasureViewController: UIViewController {
     }
     
     private func update(adjustment: Double) {
-        if adjustment >= 0.0 {
-            measureAdjustmentLabel.text = "(+\(String(format: "%0.1f", adjustment))\(Settings.shared.tensionUnit.rawValue))"
+        if adjustment > 0.0 {
+            measureAdjustmentLabel.text = "(Calibration: +\(String(format: "%0.1f", adjustment))\(Settings.shared.tensionUnit.rawValue))"
         } else {
-            measureAdjustmentLabel.text = "(\(String(format: "%0.1f", adjustment))\(Settings.shared.tensionUnit.rawValue))"
+            measureAdjustmentLabel.text = "(Calibration: \(String(format: "%0.1f", adjustment))\(Settings.shared.tensionUnit.rawValue))"
         }
     }
     

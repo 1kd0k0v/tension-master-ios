@@ -47,7 +47,13 @@ class ModeSelectionTableViewController: UITableViewController {
         if section == 0 {
             return nil
         } else {
-            return "How does it work? \n 1. String your racquet by trusted stringer. \n 2. Measure the tension. \n 3. Calibrate if needed."
+            return """
+            Calibration:
+             1. Take a racquet with known string tension, e.g. new strung racquet by a trusted stringer a couple of hours after stringing.
+             2. Enter the head size, string diameter and the string type in the settings.
+             3. Tap the string of this racquet with another racquet in front of the phone microphone.
+             4. Enter the average string tension value you gave to your stringer.
+            """
         }
     }
     
@@ -149,7 +155,15 @@ private extension ModeSelectionTableViewController {
 extension ModeSelectionTableViewController: AdjustTableViewCellDelegate {
     
     func adjustCellSelectAdjust(_ cell: AdjustTableViewCell) {
-        let alert = UIAlertController(title: "Enter tension", message: "Please enter your just stringed racquet tension.", preferredStyle: .alert)
+        var tensionString: String
+        let measuredTension = lastUpdateSample?.tensionNumber ?? 0.0
+        if measuredTension > 0.0 {
+            tensionString = String(format: "%0.2f", measuredTension)
+        } else {
+            tensionString = "0.0"
+        }
+        let message = "The Fabric mode measurement is \(tensionString). Please enter the already known tension of this racquet."
+        let alert = UIAlertController(title: "Enter tension", message: message, preferredStyle: .alert)
         alert.addTextField { textField in
             textField.placeholder = "String tension"
             textField.keyboardType = .decimalPad
@@ -159,7 +173,6 @@ extension ModeSelectionTableViewController: AdjustTableViewCellDelegate {
         }))
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
             if let text = alert.textFields?.first?.text, let tension = Double(text) {
-                let measuredTension = self.lastUpdateSample?.tensionNumber ?? 0.0
                 self.settings.tensionAdjustment = tension - measuredTension
                 self.tableView.reloadData()
                 // Update the adjust cell also after changing the tension adjustment.
