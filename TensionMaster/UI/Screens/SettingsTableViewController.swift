@@ -177,7 +177,7 @@ class SettingsTableViewController: UITableViewController {
 private extension SettingsTableViewController {
     
     func presentInformativeAlert(text: String) {
-        let alert = UIAlertController(title: text, message: "Not implemented", preferredStyle: .alert)
+        let alert = UIAlertController(title: text, message: "Coming soon.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)
     }
@@ -214,7 +214,7 @@ private extension SettingsTableViewController {
 //        guard let url = URL(string: "https://play.google.com/store/apps/details?id=com.racquetbuddy") else {
 //            return
 //        }
-        let text = "Hey check out my app at: https://play.google.com/store/apps/details?id=com.racquetbuddy"
+        let text = "Hey check out my app at: http://itunes.apple.com/app/id1441997912"
         let shareVC = UIActivityViewController(activityItems: [text/*, url*/], applicationActivities: nil)
         present(shareVC, animated: true)
     }
@@ -241,7 +241,7 @@ private extension SettingsTableViewController {
     }
     
     func privacyPolicyPressed() {
-        guard let url = URL(string: "https://robustasoft.com/tensionmaster-privacypolicy/") else { return }
+        guard let url = URL(string: "https://craftsoftlabs.com/tensionmaster-privacypolicy/") else { return }
         if UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url)
         }
