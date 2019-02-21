@@ -172,7 +172,7 @@ extension ModeSelectionTableViewController: AdjustTableViewCellDelegate {
             self.startMeasuring()   // Continue to measure after the dialog is closed.
         }))
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            if let text = alert.textFields?.first?.text, let tension = Double(text) {
+            if let text = alert.textFields?.first?.text?.replacingOccurrences(of: ",", with: "."), let tension = Double(text) {
                 self.settings.tensionAdjustment = tension - measuredTension
                 self.tableView.reloadData()
                 // Update the adjust cell also after changing the tension adjustment.
