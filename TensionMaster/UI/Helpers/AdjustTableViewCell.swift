@@ -91,11 +91,9 @@ class AdjustTableViewCell: DarkTableViewCell {
     
     func update(sample: SoundAnalyzerSample) {
         // Fabric value.
-        let fabricTensionString = String(format: "%0.2f", sample.tensionNumber)
-        fabricValueLabel.attributedText = NSAttributedString.tensionString(fabricTensionString, font: fabricValueLabel.font)
+        fabricValueLabel.text = String(format: "%0.1f", sample.tensionNumber)
         // Personal (adjusted) value.
-        let personalTensionString = String(format: "%0.2f", sample.tensionNumber + Settings.shared.tensionAdjustment)
-        personalValueLabel.attributedText = NSAttributedString.tensionString(personalTensionString, font: personalValueLabel.font)
+        personalValueLabel.text = String(format: "%0.1f", sample.tensionNumber + Settings.shared.tensionAdjustment)
     }
     
     @IBAction func adjustPressed(button: UIButton) {

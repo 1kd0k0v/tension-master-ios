@@ -141,8 +141,7 @@ class MeasureViewController: UIViewController {
         var tensionValue = sample.tensionNumber
         let settings = Settings.shared
         tensionValue += (settings.measureMode == .personal ? settings.tensionAdjustment : 0)
-        let tensionString = String(format: "%0.2f", tensionValue)
-        tensionNumberLabel.attributedText = NSAttributedString.tensionString(tensionString, font: tensionNumberLabel.font)
+        tensionNumberLabel.text = String(format: "%0.1f", tensionValue)
     }
     
     private func update(adjustment: Double) {

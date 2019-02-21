@@ -158,7 +158,7 @@ extension ModeSelectionTableViewController: AdjustTableViewCellDelegate {
         var tensionString: String
         let measuredTension = lastUpdateSample?.tensionNumber ?? 0.0
         if measuredTension > 0.0 {
-            tensionString = String(format: "%0.2f", measuredTension)
+            tensionString = String(format: "%0.1f", measuredTension)
         } else {
             tensionString = "0.0"
         }
