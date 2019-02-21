@@ -41,7 +41,12 @@ protocol SoundAnalyzerDelegate: class {
 class SoundAnalyzer {
     
     static let shared = SoundAnalyzer()
-    var delegate: SoundAnalyzerDelegate?
+    var delegate: SoundAnalyzerDelegate? {
+        didSet {
+            // Update the idle timer in depends of whether there is someone interested of the envets.
+            UIApplication.shared.isIdleTimerDisabled = (delegate != nil)
+        }
+    }
     var isAnalyzing = false
     private var timerQueue = DispatchQueue(label: "Timer", qos: .background, attributes: .concurrent)
     private var updateTimer: Timer?
