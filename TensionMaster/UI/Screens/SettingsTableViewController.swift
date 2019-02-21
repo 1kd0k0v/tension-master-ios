@@ -186,20 +186,19 @@ private extension SettingsTableViewController {
         // Present alert with instructions.
         let message = """
 
-                     ∙ If you use a Vibration Dampener take it off the string while measuring.
+                     ∙ TennisTension measures the average tension between main and cross strings by analyzing the sound heard from the string.
 
-                     ∙ TensionMeter measures the average tension between main and cross strings of the racquet.
+                     ∙ Take off the Dampener.
 
-                     ∙ Enter the head size, the string diameter and the string type.
+                     ∙ Put the head size, the string diameter and it's type (if main and cross strings are with different diameter put the average value).
 
-                     ∙ If you use main and cross strings with different diameter, enter the average diameter value.
+                     ∙ Use Fabric or Personal mode.
 
-                     ∙ You can use either Fabric or Personal mode(if Personal mode is activated make a Calibration of the mode).
+                     ∙ By Calibration of the Personal mode you can cope with all particularities of the racquets, strings, stringers and stringing machines.
 
-                     ∙ Tap the racquet string with another racquet in front of the phone microphone to measure the average string tension
+                     ∙ Tap the racquet string anywhere with anything close to the phone microphone.
 
-                     ∙ CAUTION ∙
-                     ∙ The tension loss rate is very high immediately after the racquet is strung and during the first 30 minutes of play. The total tension loss after 1 hour of play could be up to 20% depending of the string model and the way of stringing.
+                     ∙ Consider the tension loss receiving the outcome of the measurement.
                     """
         let alert = UIAlertController(title: "Instructions", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))

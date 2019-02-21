@@ -49,10 +49,10 @@ class ModeSelectionTableViewController: UITableViewController {
         } else {
             return """
             Calibration:
-             1. Take a racquet with known string tension, e.g. new strung racquet by a trusted stringer a couple of hours after stringing.
-             2. Enter the head size, string diameter and the string type in the settings.
-             3. Tap the string of this racquet with another racquet in front of the phone microphone.
-             4. Enter the average string tension value you gave to your stringer.
+             1. Take a racquet with known string tension.
+             2. Enter this racquet and its string parameters in the settings.
+             3. Tap the string close to the microphone.
+             4. Push the Calibrate button and enter the preknown tension.
             """
         }
     }
