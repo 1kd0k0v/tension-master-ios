@@ -51,6 +51,8 @@ class SoundAnalyzer {
     private var timerQueue = DispatchQueue(label: "Timer", qos: .background, attributes: .concurrent)
     private var updateTimer: Timer?
     
+    private var frequencyTable = Set<Int>()
+    
     // AudioKit releated.
     lazy var mic = AKMicrophone()
     lazy var tracker = AKFrequencyTracker(mic)
@@ -77,8 +79,30 @@ class SoundAnalyzer {
             self.timerQueue.async {
                 let currentRunLoop = RunLoop.current
                 self.updateTimer = Timer(timeInterval: 0.005, repeats: true) { _ in
-                    self.delegate?.soundAnalyzerSample(SoundAnalyzerSample(amplitude: self.tracker.amplitude,
-                                                                           frequency: self.tracker.frequency))
+                    let sample = SoundAnalyzerSample(amplitude: self.tracker.amplitude,
+                                                     frequency: self.tracker.frequency)
+                    if sample.isValid {
+                        // Check against the frequency table. It contains values +- 2 around every found frequency.
+                        let simplifiedFrequency = Int(sample.frequency)
+//                        print("---> frequency - \(sample.frequency)")
+//                        print("---> simplified frequency - \(simplifiedFrequency)")
+                        if self.frequencyTable.contains(simplifiedFrequency) {
+//                            print("-------> match found!")
+                            self.frequencyTable.removeAll()
+                            self.delegate?.soundAnalyzerSample(sample)
+                        } else {
+//                            print("-------> values: ", separator: "")
+//                            for value in self.frequencyTable {
+//                                print("\(value)", separator: "")
+//                            }
+//                            print("")
+                            self.frequencyTable.insert(simplifiedFrequency - 2)
+                            self.frequencyTable.insert(simplifiedFrequency - 1)
+                            self.frequencyTable.insert(simplifiedFrequency)
+                            self.frequencyTable.insert(simplifiedFrequency + 1)
+                            self.frequencyTable.insert(simplifiedFrequency + 2)
+                        }
+                    }
                 }
                 currentRunLoop.add(self.updateTimer!, forMode: .common)
                 currentRunLoop.run()
