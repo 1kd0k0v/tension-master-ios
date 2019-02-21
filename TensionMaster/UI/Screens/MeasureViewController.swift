@@ -31,6 +31,7 @@ class MeasureViewController: UIViewController {
     private var plot: AKNodeOutputPlot?
     
     private var lastUpdateSample: SoundAnalyzerSample?
+    private var clearWorkItem: DispatchWorkItem?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -203,6 +204,13 @@ extension MeasureViewController: SoundAnalyzerDelegate {
     
     func soundAnalyzerSample(_ sample: SoundAnalyzerSample) {
         if sample.isValid {
+            clearWorkItem?.cancel()
+            clearWorkItem = DispatchWorkItem { [weak self] in
+                guard let strongSelf = self else { return }
+                strongSelf.lastUpdateSample = nil
+                strongSelf.tensionNumberLabel.text = "0"
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: clearWorkItem!)
             DispatchQueue.main.async { [weak self] in
                 self?.update(sample: sample)
             }
