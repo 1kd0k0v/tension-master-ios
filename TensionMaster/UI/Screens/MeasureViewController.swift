@@ -209,7 +209,7 @@ extension MeasureViewController: SoundAnalyzerDelegate {
                 strongSelf.lastUpdateSample = nil
                 strongSelf.tensionNumberLabel.text = "0"
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: clearWorkItem!)
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: clearWorkItem!)
             DispatchQueue.main.async { [weak self] in
                 self?.update(sample: sample)
             }
