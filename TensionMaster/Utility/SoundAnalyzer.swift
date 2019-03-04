@@ -51,7 +51,7 @@ class SoundAnalyzer {
     private var timerQueue = DispatchQueue(label: "Timer", qos: .background, attributes: .concurrent)
     private var updateTimer: Timer?
     
-    private var frequencyTable = Set<Int>()
+    private var frequencyTable = Array<Double>()
     
     // AudioKit releated.
     lazy var mic = AKMicrophone()
@@ -75,18 +75,23 @@ class SoundAnalyzer {
                 return
             }
             // Trigger update functionality in dedicated timer queue.
-            // Interval = 0.005 ==> 200 ticks (updates) per second.
+            // Interval = 0.1 ==> 10 ticks (updates) per second.
             self.timerQueue.async {
                 let currentRunLoop = RunLoop.current
-                self.updateTimer = Timer(timeInterval: 0.005, repeats: true) { _ in
+                self.updateTimer = Timer(timeInterval: 0.1, repeats: true) { _ in
                     let sample = SoundAnalyzerSample(amplitude: self.tracker.amplitude,
                                                      frequency: self.tracker.frequency)
                     if sample.isValid {
                         // Check against the frequency table. It contains values +- 2 around every found frequency.
-                        let simplifiedFrequency = Int(sample.frequency)
+                        let frequencyRange = sample.frequency-2...sample.frequency+2
 //                        print("---> frequency - \(sample.frequency)")
-//                        print("---> simplified frequency - \(simplifiedFrequency)")
-                        if self.frequencyTable.contains(simplifiedFrequency) {
+                        let match = self.frequencyTable.contains { previous -> Bool in
+                            if frequencyRange.contains(previous) {
+                                return true
+                            }
+                            return false
+                        }
+                        if match {
 //                            print("-------> match found!")
                             self.frequencyTable.removeAll()
                             self.delegate?.soundAnalyzerSample(sample)
@@ -96,11 +101,11 @@ class SoundAnalyzer {
 //                                print("\(value)", separator: "")
 //                            }
 //                            print("")
-                            self.frequencyTable.insert(simplifiedFrequency - 2)
-                            self.frequencyTable.insert(simplifiedFrequency - 1)
-                            self.frequencyTable.insert(simplifiedFrequency)
-                            self.frequencyTable.insert(simplifiedFrequency + 1)
-                            self.frequencyTable.insert(simplifiedFrequency + 2)
+                            self.frequencyTable.append(sample.frequency)
+                            // Keep the table with no more than 3 records.
+                            if self.frequencyTable.count > 3 {
+                                self.frequencyTable.removeFirst()
+                            }
                         }
                     }
                 }
