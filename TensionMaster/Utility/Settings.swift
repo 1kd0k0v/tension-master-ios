@@ -9,7 +9,7 @@
 import Foundation
 
 enum MeasureMode: String {
-    case fabric = "Fabric"
+    case fabric = "Factory"
     case personal = "Personal"
 }
 

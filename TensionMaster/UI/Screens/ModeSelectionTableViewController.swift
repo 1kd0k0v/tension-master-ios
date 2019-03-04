@@ -94,8 +94,8 @@ class ModeSelectionTableViewController: UITableViewController {
     func update(cell: UITableViewCell?, forIndexPath indexPath: IndexPath) {
         
         switch indexPath {
-        case [0, 0]:    // Fabric mode.
-            cell?.textLabel?.text = "Fabric"
+        case [0, 0]:    // Factory mode.
+            cell?.textLabel?.text = "Factory"
             cell?.accessoryType = settings.measureMode == .fabric ? .checkmark : .none
         case [0, 1]:    // Personal mode.
             cell?.textLabel?.text = "Personal"
