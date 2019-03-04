@@ -34,6 +34,7 @@ class AdjustTableViewCell: DarkTableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        calibrateButton.isEnabled = false
         // Fabric mode circle.
         if let gradientLayer = fabricModeCircle.layer as? CAGradientLayer {
             gradientLayer.colors = [UIColor.circleStart.cgColor, UIColor.circleEnd.cgColor]
@@ -90,6 +91,7 @@ class AdjustTableViewCell: DarkTableViewCell {
     }
     
     func update(sample: SoundAnalyzerSample) {
+        calibrateButton.isEnabled = true
         // Fabric value.
         fabricValueLabel.text = String(format: "%0.1f", sample.tensionNumber)
         // Personal (adjusted) value.

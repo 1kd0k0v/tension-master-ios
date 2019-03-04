@@ -43,6 +43,30 @@ class ModeSelectionTableViewController: UITableViewController {
         }
     }
     
+//    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        if section == 0 {
+//            return 0
+//        } else {
+//            return 120
+//        }
+//    }
+//
+//    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        if section == 0 {
+//            return nil
+//        } else {
+//            let label = UILabel(frame: CGRect.zero)
+//            label.numberOfLines = 0
+//            label.text = """
+//            Calibration:
+//            1. Take a racquet with known string tension.
+//            2. Enter this racquet and its string parameters in the settings.
+//            3. Tap the string close to the microphone.
+//            4. After the Factory measurement is done push the Calibrate button and enter the known tension.
+//            """
+//            return label
+//        }
+//    }
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         if section == 0 {
             return nil
@@ -52,7 +76,7 @@ class ModeSelectionTableViewController: UITableViewController {
              1. Take a racquet with known string tension.
              2. Enter this racquet and its string parameters in the settings.
              3. Tap the string close to the microphone.
-             4. Push the Calibrate button and enter the preknown tension.
+             4. After the Factory measurement is done push the Calibrate button and enter the known tension.
             """
         }
     }
@@ -162,10 +186,10 @@ extension ModeSelectionTableViewController: AdjustTableViewCellDelegate {
         } else {
             tensionString = "0.0"
         }
-        let message = "The Fabric mode measurement is \(tensionString). Please enter the already known tension of this racquet."
-        let alert = UIAlertController(title: "Enter tension", message: message, preferredStyle: .alert)
+        let message = "\nFactory measurement is \(tensionString)."
+        let alert = UIAlertController(title: "Calibration", message: message, preferredStyle: .alert)
         alert.addTextField { textField in
-            textField.placeholder = "String tension"
+            textField.placeholder = "Enter Personal measurement"
             textField.keyboardType = .decimalPad
         }
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
