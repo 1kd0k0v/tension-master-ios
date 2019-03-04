@@ -163,7 +163,7 @@ class MeasureViewController: UIViewController {
         measureModeLabel.text = "\(settings.measureMode.rawValue) Mode"
         tensionUnitLabel.text = settings.tensionUnit.rawValue
         headSizeValueLabel.text = "\(Int(settings.headSize)) \(settings.headSizeUnit.rawValue)"
-        stringDiameterValueLabel.text = "\(String(format: "%0.3f", settings.stringDiameter)) mm"
+        stringDiameterValueLabel.text = "\(settings.formattedStringDiameter) mm"
         stringTypeValueLabel.text = settings.stringType.rawValue
     }
     

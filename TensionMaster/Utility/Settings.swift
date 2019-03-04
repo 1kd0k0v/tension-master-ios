@@ -84,6 +84,11 @@ class Settings {
     let headSizeInchRange = 70...130    // inches
     let headSizeCmRange = 500...800     // cm
     let stringDiameterStride = stride(from: 1.0, through: 1.5, by: 0.005)    // mm
+    let stringDiameterFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.maximumFractionDigits = 3
+        return formatter
+    }()
     
     var measureMode: MeasureMode {
         get {
@@ -119,6 +124,11 @@ class Settings {
         set {
             settingsHolder.stringDiameter = newValue
             UserDefaults.standard.set(newValue, forKey: Keys.stringDiameter)
+        }
+    }
+    var formattedStringDiameter: String {
+        get {
+            return stringDiameterFormatter.string(from: stringDiameter as NSNumber) ?? String(format: "%0.3f", stringDiameter)
         }
     }
     var stringType: StringType {
