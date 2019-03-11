@@ -87,6 +87,7 @@ class Settings {
     let stringDiameterFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.maximumFractionDigits = 3
+        formatter.decimalSeparator = "."
         return formatter
     }()
     
