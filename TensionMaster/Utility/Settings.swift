@@ -60,8 +60,11 @@ private struct SettingsHolder {
     var measureMode: MeasureMode = .fabric
     var headSizeUnit: SizeUnit = .inch
     var headSize: Double = 98   // inches   (70..130) inches - (500..800) cm
+    var hybridStringing = false
     var stringDiameter: Double = 1.27   // mm   (1.00..1.50) mm
     var stringType: StringType = .polyester
+    var crossStringDiameter: Double = 1.27   // mm   (1.00..1.50) mm
+    var crossStringType: StringType = .polyester
     var tensionUnit: TensionUnit = .kg
     var tensionAdjustment: Double = 0.0
 }
@@ -70,8 +73,11 @@ private struct Keys {
     static let measureMode = "measureModeKey"
     static let headSizeUnit = "headSizeUnitKey"
     static let headSize = "headSizeKey"
+    static let hybridStringing = "hybridStringingKey"
     static let stringDiameter = "stringDiameterKey"
     static let stringType = "stringTypeKey"
+    static let crossStringDiameter = "crossStringDiameterKey"
+    static let crossStringType = "crossStringTypeKey"
     static let tensionUnit = "tensionUnitKey"
     static let tensionAdjustment = "tensionAdjustmentKey"
 }
@@ -83,10 +89,11 @@ class Settings {
     
     let headSizeInchRange = 70...130    // inches
     let headSizeCmRange = 500...800     // cm
-    let stringDiameterStride = stride(from: 1.0, through: 1.5, by: 0.005)    // mm
+    let stringDiameterStride = stride(from: 1.0, through: 1.5, by: 0.01)    // mm
     let stringDiameterFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
-        formatter.maximumFractionDigits = 3
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
         formatter.decimalSeparator = "."
         return formatter
     }()
@@ -118,6 +125,16 @@ class Settings {
             UserDefaults.standard.set(newValue, forKey: Keys.headSize)
         }
     }
+    var hybridStringing: Bool {
+        get {
+            return settingsHolder.hybridStringing
+        }
+        set {
+            settingsHolder.hybridStringing = newValue
+            UserDefaults.standard.set(newValue, forKey: Keys.hybridStringing)
+        }
+    }
+    // 1st string.
     var stringDiameter: Double {
         get {
             return settingsHolder.stringDiameter
@@ -141,6 +158,31 @@ class Settings {
             UserDefaults.standard.set(newValue.rawValue, forKey: Keys.stringType)
         }
     }
+    // Hybrid stringing (cross).
+    var crossStringDiameter: Double {
+        get {
+            return settingsHolder.crossStringDiameter
+        }
+        set {
+            settingsHolder.crossStringDiameter = newValue
+            UserDefaults.standard.set(newValue, forKey: Keys.crossStringDiameter)
+        }
+    }
+    var formattedCrossStringDiameter: String {
+        get {
+            return stringDiameterFormatter.string(from: crossStringDiameter as NSNumber) ?? String(format: "%0.3f", crossStringDiameter)
+        }
+    }
+    var crossStringType: StringType {
+        get {
+            return settingsHolder.crossStringType
+        }
+        set {
+            settingsHolder.crossStringType = newValue
+            UserDefaults.standard.set(newValue.rawValue, forKey: Keys.crossStringType)
+        }
+    }
+    // Tension.
     var tensionUnit: TensionUnit {
         get {
             return settingsHolder.tensionUnit
@@ -178,6 +220,10 @@ class Settings {
         if let value = defaults.object(forKey: Keys.headSize) as? Double {
             settingsHolder.headSize = value
         }
+        // Hybrid stringing.
+        if let value = defaults.object(forKey: Keys.hybridStringing) as? Bool {
+            settingsHolder.hybridStringing = value
+        }
         // String diameter.
         if let value = defaults.object(forKey: Keys.stringDiameter) as? Double {
             settingsHolder.stringDiameter = value
@@ -185,6 +231,14 @@ class Settings {
         // String type.
         if let value = defaults.string(forKey: Keys.stringType), let stringType = StringType(rawValue: value) {
             settingsHolder.stringType = stringType
+        }
+        // Cross String diameter.
+        if let value = defaults.object(forKey: Keys.crossStringDiameter) as? Double {
+            settingsHolder.crossStringDiameter = value
+        }
+        // Cross String type.
+        if let value = defaults.string(forKey: Keys.crossStringType), let stringType = StringType(rawValue: value) {
+            settingsHolder.crossStringType = stringType
         }
         // Tension units.
         if let value = defaults.string(forKey: Keys.tensionUnit), let tensionUnit = TensionUnit(rawValue: value) {

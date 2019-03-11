@@ -365,114 +365,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="UMf-9s-cTC" customClass="DarkTableViewCell" customModule="TensionMaster" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="359.5" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UMf-9s-cTC" id="gEI-mP-0je">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="String Diameter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UBy-gJ-riI" customClass="MainCellLabel" customModule="TensionMaster" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="11.5" width="120" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="diameter" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Xx-Vs-Nji" customClass="SecondaryCellLabel" customModule="TensionMaster" customModuleProvider="target">
-                                                    <rect key="frame" x="291" y="11.5" width="68" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="UBy-gJ-riI" firstAttribute="centerY" secondItem="gEI-mP-0je" secondAttribute="centerY" id="BoN-dv-kyz"/>
-                                                <constraint firstItem="0Xx-Vs-Nji" firstAttribute="centerY" secondItem="gEI-mP-0je" secondAttribute="centerY" id="E5K-5h-2xS"/>
-                                                <constraint firstItem="0Xx-Vs-Nji" firstAttribute="trailing" secondItem="gEI-mP-0je" secondAttribute="trailingMargin" id="Yns-jQ-3In"/>
-                                                <constraint firstItem="UBy-gJ-riI" firstAttribute="leading" secondItem="gEI-mP-0je" secondAttribute="leadingMargin" id="mEA-pf-Kg2"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="160" id="AAe-vd-M8y" customClass="DarkTableViewCell" customModule="TensionMaster" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="403.5" width="375" height="160"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AAe-vd-M8y" id="xAN-KB-oac">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oz3-qv-P86">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="159.5" id="q1l-22-Zb5"/>
-                                                    </constraints>
-                                                    <connections>
-                                                        <outlet property="dataSource" destination="y5i-tV-ZK5" id="8h4-AX-lQE"/>
-                                                        <outlet property="delegate" destination="y5i-tV-ZK5" id="n6M-eU-U2X"/>
-                                                    </connections>
-                                                </pickerView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="Oz3-qv-P86" firstAttribute="leading" secondItem="xAN-KB-oac" secondAttribute="leading" id="GlX-ro-7E9"/>
-                                                <constraint firstItem="Oz3-qv-P86" firstAttribute="top" secondItem="xAN-KB-oac" secondAttribute="top" id="iy3-Z0-NoP"/>
-                                                <constraint firstAttribute="trailing" secondItem="Oz3-qv-P86" secondAttribute="trailing" id="rYR-9V-te5"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="oDq-Bg-qTV" customClass="DarkTableViewCell" customModule="TensionMaster" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="563.5" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oDq-Bg-qTV" id="DfF-GS-I5H">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="String Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CJr-7p-25p" customClass="MainCellLabel" customModule="TensionMaster" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="11.5" width="87.5" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="type" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JBr-FJ-F7J" customClass="SecondaryCellLabel" customModule="TensionMaster" customModuleProvider="target">
-                                                    <rect key="frame" x="325" y="11.5" width="34" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="CJr-7p-25p" firstAttribute="leading" secondItem="DfF-GS-I5H" secondAttribute="leadingMargin" id="3RJ-yq-Mds"/>
-                                                <constraint firstItem="JBr-FJ-F7J" firstAttribute="trailing" secondItem="DfF-GS-I5H" secondAttribute="trailingMargin" id="Yww-jH-dXd"/>
-                                                <constraint firstItem="CJr-7p-25p" firstAttribute="centerY" secondItem="DfF-GS-I5H" secondAttribute="centerY" id="jBG-ZC-ft3"/>
-                                                <constraint firstItem="JBr-FJ-F7J" firstAttribute="centerY" secondItem="DfF-GS-I5H" secondAttribute="centerY" id="n6M-tn-S6f"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="160" id="VoQ-bt-Y8O" customClass="DarkTableViewCell" customModule="TensionMaster" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="607.5" width="375" height="160"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VoQ-bt-Y8O" id="jZH-Ra-zeq">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5mp-yl-QEp">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="159.5" id="sfQ-cR-lpj"/>
-                                                    </constraints>
-                                                    <connections>
-                                                        <outlet property="dataSource" destination="XVn-sD-VAo" id="FgG-Ql-28r"/>
-                                                        <outlet property="delegate" destination="XVn-sD-VAo" id="heD-nD-m0t"/>
-                                                    </connections>
-                                                </pickerView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="5mp-yl-QEp" secondAttribute="trailing" id="Cyj-g8-0mp"/>
-                                                <constraint firstItem="5mp-yl-QEp" firstAttribute="top" secondItem="jZH-Ra-zeq" secondAttribute="top" id="DYi-zx-jaO"/>
-                                                <constraint firstItem="5mp-yl-QEp" firstAttribute="leading" secondItem="jZH-Ra-zeq" secondAttribute="leading" id="q62-dh-Mi7"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="3f8-yv-OWi" customClass="DarkTableViewCell" customModule="TensionMaster" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="767.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="359.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3f8-yv-OWi" id="Hdi-5C-LHo">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -500,7 +394,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="160" id="xpp-kR-bxw" customClass="DarkTableViewCell" customModule="TensionMaster" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="811.5" width="375" height="160"/>
+                                        <rect key="frame" x="0.0" y="403.5" width="375" height="160"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xpp-kR-bxw" id="8jR-sm-HHT">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
@@ -526,10 +420,254 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="String" id="eQx-tK-vAm">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="XBM-Uy-Sdo" customClass="DarkTableViewCell" customModule="TensionMaster" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="619.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XBM-Uy-Sdo" id="m17-4H-PgQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hybrid Stringing" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byO-5c-ldK" customClass="MainCellLabel" customModule="TensionMaster" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="11.5" width="124.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8xI-SI-Sbq">
+                                                    <rect key="frame" x="310" y="6.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="hybridStringingValueChangedWithControl:" destination="vBa-ie-k9J" eventType="valueChanged" id="acZ-OZ-pxv"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="byO-5c-ldK" firstAttribute="centerY" secondItem="m17-4H-PgQ" secondAttribute="centerY" id="5H5-MN-72i"/>
+                                                <constraint firstItem="8xI-SI-Sbq" firstAttribute="centerY" secondItem="m17-4H-PgQ" secondAttribute="centerY" id="egm-dq-jzP"/>
+                                                <constraint firstItem="byO-5c-ldK" firstAttribute="leading" secondItem="m17-4H-PgQ" secondAttribute="leadingMargin" id="f6G-PM-hGw"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="8xI-SI-Sbq" secondAttribute="trailing" id="sdy-4V-3Tj"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="5L8-h5-v7F" customClass="DarkTableViewCell" customModule="TensionMaster" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="663.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5L8-h5-v7F" id="86N-6W-Upg">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thickness" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPU-rf-IVG" customClass="MainCellLabel" customModule="TensionMaster" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="11.5" width="78" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="diameter" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YIl-z1-Whc" customClass="SecondaryCellLabel" customModule="TensionMaster" customModuleProvider="target">
+                                                    <rect key="frame" x="291" y="11.5" width="68" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="YIl-z1-Whc" firstAttribute="trailing" secondItem="86N-6W-Upg" secondAttribute="trailingMargin" id="35Z-Y2-yvK"/>
+                                                <constraint firstItem="YIl-z1-Whc" firstAttribute="centerY" secondItem="86N-6W-Upg" secondAttribute="centerY" id="6kT-5a-M48"/>
+                                                <constraint firstItem="dPU-rf-IVG" firstAttribute="centerY" secondItem="86N-6W-Upg" secondAttribute="centerY" id="FpJ-0h-fQg"/>
+                                                <constraint firstItem="dPU-rf-IVG" firstAttribute="leading" secondItem="86N-6W-Upg" secondAttribute="leadingMargin" id="aZ7-Cr-Aea"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="160" id="Oio-a9-yeG" customClass="DarkTableViewCell" customModule="TensionMaster" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="707.5" width="375" height="160"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Oio-a9-yeG" id="eaY-Lk-3Qq">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vdh-MB-SaN">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="159.5" id="JhO-eb-Aes"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="y5i-tV-ZK5" id="wVB-65-uXC"/>
+                                                        <outlet property="delegate" destination="y5i-tV-ZK5" id="7u7-4u-WNp"/>
+                                                    </connections>
+                                                </pickerView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Vdh-MB-SaN" firstAttribute="leading" secondItem="eaY-Lk-3Qq" secondAttribute="leading" id="3qj-C5-1td"/>
+                                                <constraint firstItem="Vdh-MB-SaN" firstAttribute="top" secondItem="eaY-Lk-3Qq" secondAttribute="top" id="FFs-6l-xIa"/>
+                                                <constraint firstAttribute="trailing" secondItem="Vdh-MB-SaN" secondAttribute="trailing" id="asR-uf-CwY"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="8Ol-mk-Joj" customClass="DarkTableViewCell" customModule="TensionMaster" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="867.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8Ol-mk-Joj" id="qux-8A-aIX">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WbE-Sn-JuL" customClass="MainCellLabel" customModule="TensionMaster" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="11.5" width="37.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="type" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l6U-x3-nNh" customClass="SecondaryCellLabel" customModule="TensionMaster" customModuleProvider="target">
+                                                    <rect key="frame" x="325" y="11.5" width="34" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="WbE-Sn-JuL" firstAttribute="centerY" secondItem="qux-8A-aIX" secondAttribute="centerY" id="8Vd-Wi-aRJ"/>
+                                                <constraint firstItem="l6U-x3-nNh" firstAttribute="centerY" secondItem="qux-8A-aIX" secondAttribute="centerY" id="KQL-Sp-9d3"/>
+                                                <constraint firstItem="l6U-x3-nNh" firstAttribute="trailing" secondItem="qux-8A-aIX" secondAttribute="trailingMargin" id="nxt-9X-KQY"/>
+                                                <constraint firstItem="WbE-Sn-JuL" firstAttribute="leading" secondItem="qux-8A-aIX" secondAttribute="leadingMargin" id="tMV-gt-evS"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="160" id="AGG-QB-Q0X" customClass="DarkTableViewCell" customModule="TensionMaster" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="911.5" width="375" height="160"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AGG-QB-Q0X" id="Uxy-yd-q4Y">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QAQ-0Q-87Q">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="159.5" id="lnv-Gn-I45"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="XVn-sD-VAo" id="aPg-0Y-2eo"/>
+                                                        <outlet property="delegate" destination="XVn-sD-VAo" id="JAl-LE-cQy"/>
+                                                    </connections>
+                                                </pickerView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="QAQ-0Q-87Q" firstAttribute="leading" secondItem="Uxy-yd-q4Y" secondAttribute="leading" id="7JN-WF-RWX"/>
+                                                <constraint firstItem="QAQ-0Q-87Q" firstAttribute="top" secondItem="Uxy-yd-q4Y" secondAttribute="top" id="HPD-mW-U8W"/>
+                                                <constraint firstAttribute="trailing" secondItem="QAQ-0Q-87Q" secondAttribute="trailing" id="o98-p4-HnR"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="qmr-tW-Xhk" customClass="DarkTableViewCell" customModule="TensionMaster" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="1071.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qmr-tW-Xhk" id="jhf-Cf-EUX">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cross Thickness" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HT4-O9-8GG" customClass="MainCellLabel" customModule="TensionMaster" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="11.5" width="126.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="diameter" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2x-aF-u3t" customClass="SecondaryCellLabel" customModule="TensionMaster" customModuleProvider="target">
+                                                    <rect key="frame" x="291" y="11.5" width="68" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="HT4-O9-8GG" firstAttribute="leading" secondItem="jhf-Cf-EUX" secondAttribute="leadingMargin" id="VXS-1x-6ba"/>
+                                                <constraint firstItem="HT4-O9-8GG" firstAttribute="centerY" secondItem="jhf-Cf-EUX" secondAttribute="centerY" id="WgV-0d-Ehm"/>
+                                                <constraint firstItem="v2x-aF-u3t" firstAttribute="trailing" secondItem="jhf-Cf-EUX" secondAttribute="trailingMargin" id="YXu-ev-bhI"/>
+                                                <constraint firstItem="v2x-aF-u3t" firstAttribute="centerY" secondItem="jhf-Cf-EUX" secondAttribute="centerY" id="gML-AA-IfZ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="160" id="OHg-mw-X2Z" customClass="DarkTableViewCell" customModule="TensionMaster" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="1115.5" width="375" height="160"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OHg-mw-X2Z" id="CKz-cI-rLA">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="daI-fu-e5q">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="159.5" id="7lv-yA-QMM"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="DoY-9m-0fx" id="MDg-6c-uza"/>
+                                                        <outlet property="delegate" destination="DoY-9m-0fx" id="a6H-JK-lzT"/>
+                                                    </connections>
+                                                </pickerView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="daI-fu-e5q" firstAttribute="leading" secondItem="CKz-cI-rLA" secondAttribute="leading" id="C2x-n6-sO0"/>
+                                                <constraint firstAttribute="trailing" secondItem="daI-fu-e5q" secondAttribute="trailing" id="KuG-v9-EnK"/>
+                                                <constraint firstItem="daI-fu-e5q" firstAttribute="top" secondItem="CKz-cI-rLA" secondAttribute="top" id="OBw-i8-eg5"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="FIl-Ky-2sf" customClass="DarkTableViewCell" customModule="TensionMaster" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="1275.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FIl-Ky-2sf" id="Ar8-d0-qcF">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cross Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SrE-2F-l4S" customClass="MainCellLabel" customModule="TensionMaster" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="11.5" width="86" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="type" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kbv-pv-y3n" customClass="SecondaryCellLabel" customModule="TensionMaster" customModuleProvider="target">
+                                                    <rect key="frame" x="325" y="11.5" width="34" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Kbv-pv-y3n" firstAttribute="centerY" secondItem="Ar8-d0-qcF" secondAttribute="centerY" id="fFi-80-nx0"/>
+                                                <constraint firstItem="SrE-2F-l4S" firstAttribute="centerY" secondItem="Ar8-d0-qcF" secondAttribute="centerY" id="gxT-Gb-uEr"/>
+                                                <constraint firstItem="Kbv-pv-y3n" firstAttribute="trailing" secondItem="Ar8-d0-qcF" secondAttribute="trailingMargin" id="o3Y-d3-uje"/>
+                                                <constraint firstItem="SrE-2F-l4S" firstAttribute="leading" secondItem="Ar8-d0-qcF" secondAttribute="leadingMargin" id="tXT-zv-Ou3"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="160" id="4zD-Dz-pNU" customClass="DarkTableViewCell" customModule="TensionMaster" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="1319.5" width="375" height="160"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4zD-Dz-pNU" id="K5M-ju-Z16">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kSW-pD-Fnd">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="159.5" id="BKE-LP-qSW"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="9vt-Db-Yf6" id="Oyh-O6-LfJ"/>
+                                                        <outlet property="delegate" destination="9vt-Db-Yf6" id="38d-M6-vV9"/>
+                                                    </connections>
+                                                </pickerView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="kSW-pD-Fnd" firstAttribute="leading" secondItem="K5M-ju-Z16" secondAttribute="leading" id="Peg-uT-s3A"/>
+                                                <constraint firstItem="kSW-pD-Fnd" firstAttribute="top" secondItem="K5M-ju-Z16" secondAttribute="top" id="thP-O9-zgQ"/>
+                                                <constraint firstAttribute="trailing" secondItem="kSW-pD-Fnd" secondAttribute="trailing" id="zSq-9F-pXX"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection headerTitle="Help" id="JBu-DH-Kuv">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="7yg-gA-ufv" style="IBUITableViewCellStyleDefault" id="KXw-nq-IAN" customClass="DarkTableViewCell" customModule="TensionMaster" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1027.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="1535.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KXw-nq-IAN" id="LSv-hu-0A6">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -546,7 +684,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="beL-Dr-tSE" style="IBUITableViewCellStyleDefault" id="vJv-cg-9gd" customClass="DarkTableViewCell" customModule="TensionMaster" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1071.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="1579.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vJv-cg-9gd" id="bMA-lI-78o">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -567,14 +705,14 @@
                             <tableViewSection headerTitle="About" id="Ww9-il-rGH">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="dZp-dg-zbQ" style="IBUITableViewCellStyleDefault" id="zOc-Zk-Gcg" customClass="DarkTableViewCell" customModule="TensionMaster" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1171.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="1679.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zOc-Zk-Gcg" id="f3c-bE-ZQO">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="349" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Share" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dZp-dg-zbQ" customClass="MainCellLabel" customModule="TensionMaster" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -584,14 +722,14 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="XnQ-GD-plO" style="IBUITableViewCellStyleDefault" id="SK0-dQ-g8r" customClass="DarkTableViewCell" customModule="TensionMaster" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1215.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="1723.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SK0-dQ-g8r" id="FI9-Tn-92Q">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="349" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Feedback" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XnQ-GD-plO" customClass="MainCellLabel" customModule="TensionMaster" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -601,14 +739,14 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="mEV-ai-47j" style="IBUITableViewCellStyleDefault" id="eGE-AB-ePv" customClass="DarkTableViewCell" customModule="TensionMaster" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1259.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="1767.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eGE-AB-ePv" id="hgS-hv-97i">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="349" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Privacy Policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mEV-ai-47j" customClass="MainCellLabel" customModule="TensionMaster" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -618,7 +756,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="zdn-na-bnR" customClass="DarkTableViewCell" customModule="TensionMaster" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1303.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="1811.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zdn-na-bnR" id="8e7-l3-po1">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -656,22 +794,34 @@
                     <navigationItem key="navigationItem" title="Settings" id="YBm-um-LOT"/>
                     <size key="freeformSize" width="375" height="1500"/>
                     <connections>
+                        <outlet property="crossStringDiameterCell" destination="qmr-tW-Xhk" id="juh-NS-pZD"/>
+                        <outlet property="crossStringDiameterPicker" destination="daI-fu-e5q" id="b18-l3-ij7"/>
+                        <outlet property="crossStringDiameterPickerCell" destination="OHg-mw-X2Z" id="ckl-Fc-qeQ"/>
+                        <outlet property="crossStringDiameterPickerMediator" destination="DoY-9m-0fx" id="cee-zp-pat"/>
+                        <outlet property="crossStringDiameterValueLabel" destination="v2x-aF-u3t" id="DVD-aF-l3t"/>
+                        <outlet property="crossStringTypeCell" destination="FIl-Ky-2sf" id="oj4-DF-24m"/>
+                        <outlet property="crossStringTypePicker" destination="kSW-pD-Fnd" id="siV-8a-3lc"/>
+                        <outlet property="crossStringTypePickerCell" destination="4zD-Dz-pNU" id="HRa-af-bA6"/>
+                        <outlet property="crossStringTypePickerMediator" destination="9vt-Db-Yf6" id="WKr-i4-YLD"/>
+                        <outlet property="crossStringTypeValueLabel" destination="Kbv-pv-y3n" id="Ua9-EM-xJN"/>
                         <outlet property="headSizeCell" destination="5dL-3q-s4c" id="rNe-W1-W8k"/>
                         <outlet property="headSizePicker" destination="9OZ-MU-006" id="HTB-uX-AsF"/>
                         <outlet property="headSizePickerCell" destination="3QV-ef-adG" id="wE1-g2-YuZ"/>
                         <outlet property="headSizePickerMediator" destination="P2w-lz-Vi6" id="uec-Vm-J7J"/>
                         <outlet property="headSizeValueLabel" destination="VKJ-8V-Ymd" id="qJK-Rb-veh"/>
+                        <outlet property="hybridStringingCell" destination="XBM-Uy-Sdo" id="9Ps-4b-fV6"/>
+                        <outlet property="hybridStringingSwitch" destination="8xI-SI-Sbq" id="EK8-zE-zxL"/>
                         <outlet property="modeLabel" destination="dpm-m4-YM5" id="ia6-MG-2GT"/>
-                        <outlet property="stringDiameterCell" destination="UMf-9s-cTC" id="NRe-Hz-LA6"/>
-                        <outlet property="stringDiameterPicker" destination="Oz3-qv-P86" id="Boo-Cf-3rW"/>
-                        <outlet property="stringDiameterPickerCell" destination="AAe-vd-M8y" id="Ike-SM-qi9"/>
+                        <outlet property="stringDiameterCell" destination="5L8-h5-v7F" id="Zbi-u9-uXc"/>
+                        <outlet property="stringDiameterPicker" destination="Vdh-MB-SaN" id="4LE-b7-aeX"/>
+                        <outlet property="stringDiameterPickerCell" destination="Oio-a9-yeG" id="OnU-9v-KzV"/>
                         <outlet property="stringDiameterPickerMediator" destination="y5i-tV-ZK5" id="4f3-nI-2pJ"/>
-                        <outlet property="stringDiameterValueLabel" destination="0Xx-Vs-Nji" id="VDf-4V-MAI"/>
-                        <outlet property="stringTypeCell" destination="oDq-Bg-qTV" id="cFY-aW-Mc1"/>
-                        <outlet property="stringTypePicker" destination="5mp-yl-QEp" id="ojY-Yu-Uc4"/>
-                        <outlet property="stringTypePickerCell" destination="VoQ-bt-Y8O" id="Y2L-y0-gNu"/>
+                        <outlet property="stringDiameterValueLabel" destination="YIl-z1-Whc" id="KRM-0z-38T"/>
+                        <outlet property="stringTypeCell" destination="8Ol-mk-Joj" id="AMg-kp-SOz"/>
+                        <outlet property="stringTypePicker" destination="QAQ-0Q-87Q" id="Ljq-8x-lIT"/>
+                        <outlet property="stringTypePickerCell" destination="AGG-QB-Q0X" id="Sd9-nI-ove"/>
                         <outlet property="stringTypePickerMediator" destination="XVn-sD-VAo" id="h7R-Rp-xFy"/>
-                        <outlet property="stringTypeValueLabel" destination="JBr-FJ-F7J" id="2Af-By-9Cp"/>
+                        <outlet property="stringTypeValueLabel" destination="l6U-x3-nNh" id="AHQ-TS-IVp"/>
                         <outlet property="tensionUnitsCell" destination="3f8-yv-OWi" id="7EO-Dk-Vvb"/>
                         <outlet property="tensionUnitsPicker" destination="gln-7y-Enn" id="AHD-ak-WY4"/>
                         <outlet property="tensionUnitsPickerCell" destination="xpp-kR-bxw" id="Q1b-CT-GHf"/>
@@ -687,22 +837,34 @@
                         <outlet property="pickerView" destination="9OZ-MU-006" id="2Cq-JU-azf"/>
                     </connections>
                 </customObject>
+                <customObject id="wan-Hb-Hyf" customClass="TensionUnitPickerMediator" customModule="TensionMaster" customModuleProvider="target">
+                    <connections>
+                        <outlet property="delegate" destination="vBa-ie-k9J" id="J3g-VJ-7xj"/>
+                        <outlet property="pickerView" destination="gln-7y-Enn" id="uGB-wV-MKm"/>
+                    </connections>
+                </customObject>
                 <customObject id="y5i-tV-ZK5" customClass="StringDiameterPickerMediator" customModule="TensionMaster" customModuleProvider="target">
                     <connections>
                         <outlet property="delegate" destination="vBa-ie-k9J" id="972-1F-bu3"/>
-                        <outlet property="pickerView" destination="Oz3-qv-P86" id="Yip-VN-8rb"/>
+                        <outlet property="pickerView" destination="Vdh-MB-SaN" id="UZr-3M-gdq"/>
                     </connections>
                 </customObject>
                 <customObject id="XVn-sD-VAo" customClass="StringTypePickerMediator" customModule="TensionMaster" customModuleProvider="target">
                     <connections>
                         <outlet property="delegate" destination="vBa-ie-k9J" id="ijH-Bg-16B"/>
-                        <outlet property="pickerView" destination="5mp-yl-QEp" id="TW3-LG-3qK"/>
+                        <outlet property="pickerView" destination="QAQ-0Q-87Q" id="pvV-VQ-UoE"/>
                     </connections>
                 </customObject>
-                <customObject id="wan-Hb-Hyf" customClass="TensionUnitPickerMediator" customModule="TensionMaster" customModuleProvider="target">
+                <customObject id="DoY-9m-0fx" customClass="StringDiameterPickerMediator" customModule="TensionMaster" customModuleProvider="target">
                     <connections>
-                        <outlet property="delegate" destination="vBa-ie-k9J" id="J3g-VJ-7xj"/>
-                        <outlet property="pickerView" destination="gln-7y-Enn" id="uGB-wV-MKm"/>
+                        <outlet property="delegate" destination="vBa-ie-k9J" id="k9r-WO-96U"/>
+                        <outlet property="pickerView" destination="daI-fu-e5q" id="KG3-GW-iix"/>
+                    </connections>
+                </customObject>
+                <customObject id="9vt-Db-Yf6" customClass="StringTypePickerMediator" customModule="TensionMaster" customModuleProvider="target">
+                    <connections>
+                        <outlet property="delegate" destination="vBa-ie-k9J" id="8Kz-ea-arJ"/>
+                        <outlet property="pickerView" destination="kSW-pD-Fnd" id="0PH-t1-SCk"/>
                     </connections>
                 </customObject>
             </objects>

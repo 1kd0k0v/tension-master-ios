@@ -13,12 +13,22 @@ class SettingsTableViewController: UITableViewController {
     
     @IBOutlet var modeLabel: UILabel!
 
+    // Racquet section.
     @IBOutlet var headSizeCell: UITableViewCell!
     @IBOutlet var headSizeValueLabel: UILabel!
     @IBOutlet var headSizePickerCell: UITableViewCell!
     @IBOutlet var headSizePicker: UIPickerView!
     @IBOutlet var headSizePickerMediator: HeadSizePickerMediator!
     
+    @IBOutlet var tensionUnitsCell: UITableViewCell!
+    @IBOutlet var tensionUnitsValueLabel: UILabel!
+    @IBOutlet var tensionUnitsPickerCell: UITableViewCell!
+    @IBOutlet var tensionUnitsPicker: UIPickerView!
+    @IBOutlet var tensionUnitsPickerMediator: TensionUnitPickerMediator!
+    
+    @IBOutlet var hybridStringingCell: UITableViewCell!
+    @IBOutlet var hybridStringingSwitch: UISwitch!
+    // String section.
     @IBOutlet var stringDiameterCell: UITableViewCell!
     @IBOutlet var stringDiameterValueLabel: UILabel!
     @IBOutlet var stringDiameterPickerCell: UITableViewCell!
@@ -31,12 +41,19 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet var stringTypePicker: UIPickerView!
     @IBOutlet var stringTypePickerMediator: StringTypePickerMediator!
     
-    @IBOutlet var tensionUnitsCell: UITableViewCell!
-    @IBOutlet var tensionUnitsValueLabel: UILabel!
-    @IBOutlet var tensionUnitsPickerCell: UITableViewCell!
-    @IBOutlet var tensionUnitsPicker: UIPickerView!
-    @IBOutlet var tensionUnitsPickerMediator: TensionUnitPickerMediator!
+    @IBOutlet var crossStringDiameterCell: UITableViewCell!
+    @IBOutlet var crossStringDiameterValueLabel: UILabel!
+    @IBOutlet var crossStringDiameterPickerCell: UITableViewCell!
+    @IBOutlet var crossStringDiameterPicker: UIPickerView!
+    @IBOutlet var crossStringDiameterPickerMediator: StringDiameterPickerMediator!
     
+    @IBOutlet var crossStringTypeCell: UITableViewCell!
+    @IBOutlet var crossStringTypeValueLabel: UILabel!
+    @IBOutlet var crossStringTypePickerCell: UITableViewCell!
+    @IBOutlet var crossStringTypePicker: UIPickerView!
+    @IBOutlet var crossStringTypePickerMediator: StringTypePickerMediator!
+    
+    // About section.
     @IBOutlet var versionLabel: UILabel!
     
     var expandedPickerCell: UITableViewCell?
@@ -83,6 +100,22 @@ class SettingsTableViewController: UITableViewController {
             headSizePicker.selectRow(index, inComponent: 0, animated: false)
         }
         headSizeValueLabel.text = "\(Int(headSize)) \(headSizeUnit)"
+        // Is the stringing hybrid?
+        hybridStringingSwitch.isOn = settings.hybridStringing
+        if settings.hybridStringing {
+            // Cross string diameter
+            let stringDiameter = settings.crossStringDiameter
+            if let index = crossStringDiameterPickerMediator.stringDiameters.firstIndex(of: stringDiameter) {
+                crossStringDiameterPicker.selectRow(index, inComponent: 0, animated: false)
+            }
+            crossStringDiameterValueLabel.text = "\(settings.formattedCrossStringDiameter) mm"
+            // Cross string type
+            let stringType = settings.crossStringType.rawValue
+            if let index = crossStringTypePickerMediator.stringTypes.firstIndex(of: stringType) {
+                crossStringTypePicker.selectRow(index, inComponent: 0, animated: false)
+            }
+            crossStringTypeValueLabel.text = stringType
+        }
         // String diameter
         let stringDiameter = settings.stringDiameter
         if let index = stringDiameterPickerMediator.stringDiameters.firstIndex(of: stringDiameter) {
@@ -105,17 +138,29 @@ class SettingsTableViewController: UITableViewController {
 
     // MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if Settings.shared.hybridStringing == false {
+            switch indexPath {
+            case [2, 5], [2, 6], [2, 7], [2, 8]:
+                return 0
+            default:
+                break
+            }
+        }
         let expandedHeight = CGFloat(160)
         let normalHeight = CGFloat(44)
         switch indexPath {
         case [1, 1]:
             return expandedPickerCell == headSizePickerCell ? expandedHeight : 0
         case [1, 3]:
-            return expandedPickerCell == stringDiameterPickerCell ? expandedHeight : 0
-        case [1, 5]:
-            return expandedPickerCell == stringTypePickerCell ? expandedHeight : 0
-        case [1, 7]:
             return expandedPickerCell == tensionUnitsPickerCell ? expandedHeight : 0
+        case [2, 2]:
+            return expandedPickerCell == stringDiameterPickerCell ? expandedHeight : 0
+        case [2, 4]:
+            return expandedPickerCell == stringTypePickerCell ? expandedHeight : 0
+        case [2, 6]:
+            return expandedPickerCell == crossStringDiameterPickerCell ? expandedHeight : 0
+        case [2, 8]:
+            return expandedPickerCell == crossStringTypePickerCell ? expandedHeight : 0
         default:
             return normalHeight
         }
@@ -124,8 +169,8 @@ class SettingsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let selectedCell = tableView.cellForRow(at: indexPath) else { return }
         tableView.deselectRow(at: indexPath, animated: true)
-        // Racquet section.
-        if indexPath.section == 1 {
+        // Racquet or String section.
+        if indexPath.section == 1 || indexPath.section == 2 {
             var correspondingPickerCell: UITableViewCell?
             switch selectedCell {
             case headSizeCell:
@@ -134,6 +179,10 @@ class SettingsTableViewController: UITableViewController {
                 correspondingPickerCell = stringDiameterPickerCell
             case stringTypeCell:
                 correspondingPickerCell = stringTypePickerCell
+            case crossStringDiameterCell:
+                correspondingPickerCell = crossStringDiameterPickerCell
+            case crossStringTypeCell:
+                correspondingPickerCell = crossStringTypePickerCell
             case tensionUnitsCell:
                 correspondingPickerCell = tensionUnitsPickerCell
             default:
@@ -148,20 +197,22 @@ class SettingsTableViewController: UITableViewController {
             }
             tableView.beginUpdates()
             tableView.endUpdates()
-        }
-        switch indexPath {
-        case [2, 0]:    // Instructions.
-            instructionsPressed()
-        case [2, 1]:    // Video.
-            videoPressed()
-        case [3, 0]:    // Share.
-            sharePressed()
-        case [3, 1]:    // Feedback.
-            feedbackPressed()
-        case [3, 2]:    // Privacy Policy.
-            privacyPolicyPressed()
-        default:
-            break
+        } else {
+            // The rest of the cells.
+            switch indexPath {
+            case [3, 0]:    // Instructions.
+                instructionsPressed()
+            case [3, 1]:    // Video.
+                videoPressed()
+            case [4, 0]:    // Share.
+                sharePressed()
+            case [4, 1]:    // Feedback.
+                feedbackPressed()
+            case [4, 2]:    // Privacy Policy.
+                privacyPolicyPressed()
+            default:
+                break
+            }
         }
     }
     
@@ -180,6 +231,18 @@ private extension SettingsTableViewController {
         let alert = UIAlertController(title: text, message: "Coming soon.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)
+    }
+    
+    @IBAction func hybridStringingValueChanged(control: UISwitch) {
+        Settings.shared.hybridStringing = control.isOn
+        if control.isOn == false {
+            if expandedPickerCell == crossStringDiameterPickerCell ||
+                expandedPickerCell == crossStringTypePickerCell {
+                expandedPickerCell = nil
+            }
+        }
+        tableView.beginUpdates()
+        tableView.endUpdates()
     }
     
     func instructionsPressed() {
@@ -302,6 +365,24 @@ extension SettingsTableViewController: PickerMediatorDelegate {
             }
             // Display it.
             stringTypeValueLabel.text = selectedValue
+        } else if picker == crossStringDiameterPicker {
+            // Cross string diameter picker.
+            if let stringDiameter = Double(selectedValue) {
+                Settings.shared.crossStringDiameter = stringDiameter
+            } else {
+                assertionFailure("Cannot convert string to Double: \(selectedValue)")
+            }
+            // Display it.
+            crossStringDiameterValueLabel.text = "\(selectedValue) mm"
+        } else if picker == crossStringTypePicker {
+            // Cross string type picker.
+            if let stringType = StringType(rawValue: selectedValue) {
+                Settings.shared.crossStringType = stringType
+            } else {
+                assertionFailure("Cannot convert string to StringType: \(selectedValue)")
+            }
+            // Display it.
+            crossStringTypeValueLabel.text = selectedValue
         } else if picker == tensionUnitsPicker {
             // Tension units picker.
             if let tensionUnit = TensionUnit(rawValue: selectedValue) {
