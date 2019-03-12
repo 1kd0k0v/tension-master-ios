@@ -26,6 +26,15 @@ class MeasureViewController: UIViewController {
     @IBOutlet private var stringTypeContainer: UIGradientView!
     @IBOutlet private var stringTypeLabel: UILabel!
     @IBOutlet private var stringTypeValueLabel: UILabel!
+    @IBOutlet private var crossStringDiameterContainer: UIGradientView!
+    @IBOutlet private var crossStringDiameterLabel: UILabel!
+    @IBOutlet private var crossStringDiameterValueLabel: UILabel!
+    @IBOutlet private var crossStringTypeContainer: UIGradientView!
+    @IBOutlet private var crossStringTypeLabel: UILabel!
+    @IBOutlet private var crossStringTypeValueLabel: UILabel!
+    
+    @IBOutlet private var extendedInfoContainerHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private var crossContainerHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet private var plotView: EZAudioPlot!
     private var plot: AKNodeOutputPlot?
@@ -93,8 +102,11 @@ class MeasureViewController: UIViewController {
         headSizeLabel.textColor = UIColor.accent
         stringDiameterLabel.textColor = UIColor.accent
         stringTypeLabel.textColor = UIColor.accent
+        crossStringDiameterLabel.textColor = UIColor.accent
+        crossStringTypeLabel.textColor = UIColor.accent
         // Containers.
-        if let gradientLayer = headSizeContainer.layer as? CAGradientLayer {
+        let modifyContainerLayer: (CALayer) -> Void = { layer in
+            guard let gradientLayer = layer as? CAGradientLayer else { return }
             gradientLayer.colors = [UIColor.backgroundLight.cgColor, UIColor.backgroundDark.cgColor]
             gradientLayer.startPoint = CGPoint(x: 0, y: 1)
             gradientLayer.endPoint = CGPoint(x: 1, y: 0)
@@ -103,28 +115,16 @@ class MeasureViewController: UIViewController {
             gradientLayer.shadowOffset = CGSize(width: -3, height: 3)
             gradientLayer.shadowOpacity = 0.3
         }
-        if let gradientLayer = stringDiameterContainer.layer as? CAGradientLayer {
-            gradientLayer.colors = [UIColor.backgroundLight.cgColor, UIColor.backgroundDark.cgColor]
-            gradientLayer.startPoint = CGPoint(x: 0, y: 1)
-            gradientLayer.endPoint = CGPoint(x: 1, y: 0)
-            gradientLayer.cornerRadius = 16
-            gradientLayer.shadowColor = UIColor.black.cgColor
-            gradientLayer.shadowOffset = CGSize(width: -3, height: 3)
-            gradientLayer.shadowOpacity = 0.3
-        }
-        if let gradientLayer = stringTypeContainer.layer as? CAGradientLayer {
-            gradientLayer.colors = [UIColor.backgroundLight.cgColor, UIColor.backgroundDark.cgColor]
-            gradientLayer.startPoint = CGPoint(x: 0, y: 1)
-            gradientLayer.endPoint = CGPoint(x: 1, y: 0)
-            gradientLayer.cornerRadius = 16
-            gradientLayer.shadowColor = UIColor.black.cgColor
-            gradientLayer.shadowOffset = CGSize(width: -3, height: 3)
-            gradientLayer.shadowOpacity = 0.3
-        }
+        modifyContainerLayer(headSizeContainer.layer)
+        modifyContainerLayer(stringDiameterContainer.layer)
+        modifyContainerLayer(stringTypeContainer.layer)
+        modifyContainerLayer(crossStringDiameterContainer.layer)
+        modifyContainerLayer(crossStringTypeContainer.layer)
     }
     
     private func setupPlot() {
-        let plot = AKNodeOutputPlot(SoundAnalyzer.shared.mic, frame: plotView.bounds)
+        let frame = CGRect(x: 0, y: -20, width: plotView.bounds.width, height: 60)
+        let plot = AKNodeOutputPlot(SoundAnalyzer.shared.mic, frame: frame)
         plot.autoresizingMask = .flexibleWidth
         plot.plotType = .buffer
         plot.shouldFill = true
@@ -165,6 +165,23 @@ class MeasureViewController: UIViewController {
         headSizeValueLabel.text = "\(Int(settings.headSize)) \(settings.headSizeUnit.rawValue)"
         stringDiameterValueLabel.text = "\(settings.formattedStringDiameter) mm"
         stringTypeValueLabel.text = settings.stringType.rawValue
+        if settings.hybridStringing {
+            extendedInfoContainerHeightConstraint.isActive = true
+            crossContainerHeightConstraint.isActive = true
+            crossStringDiameterContainer.isHidden = false
+            crossStringTypeContainer.isHidden = false
+            stringDiameterLabel.text = "Main Thickness"
+            stringTypeLabel.text = "Main Type"
+            crossStringDiameterLabel.text = "Cross Thickness"
+            crossStringTypeLabel.text = "Cross Type"
+        } else {
+            extendedInfoContainerHeightConstraint.isActive = false
+            crossContainerHeightConstraint.isActive = false
+            crossStringDiameterContainer.isHidden = true
+            crossStringTypeContainer.isHidden = true
+            stringDiameterLabel.text = "Thickness"
+            stringTypeLabel.text = "Type"
+        }
     }
     
     private func checkFirstRun() {
