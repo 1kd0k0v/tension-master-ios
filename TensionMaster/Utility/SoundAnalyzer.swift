@@ -17,15 +17,20 @@ struct SoundAnalyzerSample {
     }
     var tensionNumber: Double {
         let settings = Settings.shared
-        let d = settings.stringDiameter
-        let sCo = settings.stringType.coefficient
+        let d1 = settings.stringDiameter
+        let c1 = settings.stringType.coefficient
+        var p = d1 * d1 * c1
+        if settings.hybridStringing {
+            let d2 = settings.crossStringDiameter
+            let c2 = settings.crossStringType.coefficient
+            p = (p + d2 * d2 * c2) / 2
+        }
         var s = settings.headSize   // It should be in inches!
         if settings.headSizeUnit == .cm {
             s = s / 6.4516
         }
         
-        let co = 3.5e-7 * sCo * d * d * s
-        let tensionInKg = co * frequency * frequency
+        let tensionInKg = 3.5e-7 * p * s * frequency * frequency
         if settings.tensionUnit == .kg {
             return tensionInKg
         } else {
