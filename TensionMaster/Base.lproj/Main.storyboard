@@ -955,11 +955,13 @@
                         <outlet property="hybridStringingSwitch" destination="8xI-SI-Sbq" id="EK8-zE-zxL"/>
                         <outlet property="modeLabel" destination="dpm-m4-YM5" id="ia6-MG-2GT"/>
                         <outlet property="stringDiameterCell" destination="5L8-h5-v7F" id="Zbi-u9-uXc"/>
+                        <outlet property="stringDiameterLabel" destination="dPU-rf-IVG" id="J8k-5U-EVO"/>
                         <outlet property="stringDiameterPicker" destination="Vdh-MB-SaN" id="4LE-b7-aeX"/>
                         <outlet property="stringDiameterPickerCell" destination="Oio-a9-yeG" id="OnU-9v-KzV"/>
                         <outlet property="stringDiameterPickerMediator" destination="y5i-tV-ZK5" id="4f3-nI-2pJ"/>
                         <outlet property="stringDiameterValueLabel" destination="YIl-z1-Whc" id="KRM-0z-38T"/>
                         <outlet property="stringTypeCell" destination="8Ol-mk-Joj" id="AMg-kp-SOz"/>
+                        <outlet property="stringTypeLabel" destination="WbE-Sn-JuL" id="S0M-Ha-IBu"/>
                         <outlet property="stringTypePicker" destination="QAQ-0Q-87Q" id="Ljq-8x-lIT"/>
                         <outlet property="stringTypePickerCell" destination="AGG-QB-Q0X" id="Sd9-nI-ove"/>
                         <outlet property="stringTypePickerMediator" destination="XVn-sD-VAo" id="h7R-Rp-xFy"/>

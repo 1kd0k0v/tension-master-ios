@@ -30,12 +30,14 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet var hybridStringingSwitch: UISwitch!
     // String section.
     @IBOutlet var stringDiameterCell: UITableViewCell!
+    @IBOutlet var stringDiameterLabel: UILabel!
     @IBOutlet var stringDiameterValueLabel: UILabel!
     @IBOutlet var stringDiameterPickerCell: UITableViewCell!
     @IBOutlet var stringDiameterPicker: UIPickerView!
     @IBOutlet var stringDiameterPickerMediator: StringDiameterPickerMediator!
     
     @IBOutlet var stringTypeCell: UITableViewCell!
+    @IBOutlet var stringTypeLabel: UILabel!
     @IBOutlet var stringTypeValueLabel: UILabel!
     @IBOutlet var stringTypePickerCell: UITableViewCell!
     @IBOutlet var stringTypePicker: UIPickerView!
@@ -103,6 +105,8 @@ class SettingsTableViewController: UITableViewController {
         // Is the stringing hybrid?
         hybridStringingSwitch.isOn = settings.hybridStringing
         if settings.hybridStringing {
+            stringDiameterLabel.text = "Main Thickness"
+            stringTypeLabel.text = "Main Type"
             // Cross string diameter
             let stringDiameter = settings.crossStringDiameter
             if let index = crossStringDiameterPickerMediator.stringDiameters.firstIndex(of: stringDiameter) {
@@ -115,6 +119,9 @@ class SettingsTableViewController: UITableViewController {
                 crossStringTypePicker.selectRow(index, inComponent: 0, animated: false)
             }
             crossStringTypeValueLabel.text = stringType
+        } else {
+            stringDiameterLabel.text = "Thickness"
+            stringTypeLabel.text = "Type"
         }
         // String diameter
         let stringDiameter = settings.stringDiameter
@@ -235,7 +242,12 @@ private extension SettingsTableViewController {
     
     @IBAction func hybridStringingValueChanged(control: UISwitch) {
         Settings.shared.hybridStringing = control.isOn
-        if control.isOn == false {
+        if control.isOn {
+            stringDiameterLabel.text = "Main Thickness"
+            stringTypeLabel.text = "Main Type"
+        } else {
+            stringDiameterLabel.text = "Thickness"
+            stringTypeLabel.text = "Type"
             if expandedPickerCell == crossStringDiameterPickerCell ||
                 expandedPickerCell == crossStringTypePickerCell {
                 expandedPickerCell = nil
