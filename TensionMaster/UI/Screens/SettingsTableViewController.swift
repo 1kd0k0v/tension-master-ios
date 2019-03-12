@@ -102,23 +102,11 @@ class SettingsTableViewController: UITableViewController {
             headSizePicker.selectRow(index, inComponent: 0, animated: false)
         }
         headSizeValueLabel.text = "\(Int(headSize)) \(headSizeUnit)"
-        // Is the stringing hybrid?
+        // Hybrid stringng.
         hybridStringingSwitch.isOn = settings.hybridStringing
         if settings.hybridStringing {
             stringDiameterLabel.text = "Main Thickness"
             stringTypeLabel.text = "Main Type"
-            // Cross string diameter
-            let stringDiameter = settings.crossStringDiameter
-            if let index = crossStringDiameterPickerMediator.stringDiameters.firstIndex(of: stringDiameter) {
-                crossStringDiameterPicker.selectRow(index, inComponent: 0, animated: false)
-            }
-            crossStringDiameterValueLabel.text = "\(settings.formattedCrossStringDiameter) mm"
-            // Cross string type
-            let stringType = settings.crossStringType.rawValue
-            if let index = crossStringTypePickerMediator.stringTypes.firstIndex(of: stringType) {
-                crossStringTypePicker.selectRow(index, inComponent: 0, animated: false)
-            }
-            crossStringTypeValueLabel.text = stringType
         } else {
             stringDiameterLabel.text = "Thickness"
             stringTypeLabel.text = "Type"
@@ -135,6 +123,18 @@ class SettingsTableViewController: UITableViewController {
             stringTypePicker.selectRow(index, inComponent: 0, animated: false)
         }
         stringTypeValueLabel.text = stringType
+        // Cross string diameter
+        let crossStringDiameter = settings.crossStringDiameter
+        if let index = crossStringDiameterPickerMediator.stringDiameters.firstIndex(of: crossStringDiameter) {
+            crossStringDiameterPicker.selectRow(index, inComponent: 0, animated: false)
+        }
+        crossStringDiameterValueLabel.text = "\(settings.formattedCrossStringDiameter) mm"
+        // Cross string type
+        let crossStringType = settings.crossStringType.rawValue
+        if let index = crossStringTypePickerMediator.stringTypes.firstIndex(of: crossStringType) {
+            crossStringTypePicker.selectRow(index, inComponent: 0, animated: false)
+        }
+        crossStringTypeValueLabel.text = crossStringType
         // Tension unit
         let tensionUnit = settings.tensionUnit.rawValue
         if let index = tensionUnitsPickerMediator.tensionUnits.firstIndex(of: tensionUnit) {

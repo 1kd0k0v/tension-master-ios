@@ -174,6 +174,8 @@ class MeasureViewController: UIViewController {
             stringTypeLabel.text = "Main Type"
             crossStringDiameterLabel.text = "Cross Thickness"
             crossStringTypeLabel.text = "Cross Type"
+            crossStringDiameterValueLabel.text = "\(settings.formattedCrossStringDiameter) mm"
+            crossStringTypeValueLabel.text = settings.crossStringType.rawValue
         } else {
             extendedInfoContainerHeightConstraint.isActive = false
             crossContainerHeightConstraint.isActive = false
