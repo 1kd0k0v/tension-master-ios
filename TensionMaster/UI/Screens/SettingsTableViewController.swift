@@ -234,12 +234,6 @@ class SettingsTableViewController: UITableViewController {
 // MARK: - Handle Actions - Private
 private extension SettingsTableViewController {
     
-    func presentInformativeAlert(text: String) {
-        let alert = UIAlertController(title: text, message: "Coming soon.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
-    }
-    
     @IBAction func hybridStringingValueChanged(control: UISwitch) {
         Settings.shared.hybridStringing = control.isOn
         if control.isOn {
@@ -281,7 +275,10 @@ private extension SettingsTableViewController {
     }
     
     func videoPressed() {
-        presentInformativeAlert(text: "Video")
+        guard let url = URL(string: "https://www.youtube.com/watch?v=QZGqs-9C-6I&feature=youtu.be&fbclid=IwAR1OjmFa7cPIOLepVzMz2R_MDQQTC9oYoFHqizzC20SR_lZlBbem_BzrhUc") else { return }
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+        }
     }
     
     func sharePressed() {
