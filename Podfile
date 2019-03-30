@@ -6,6 +6,6 @@ target 'TensionMaster' do
   use_frameworks!
 
   # Pods for TensionMaster
-  pod 'AudioKit', '~> 4.6.1'
+  pod 'AudioKit'
 
 end
