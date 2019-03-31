@@ -28,8 +28,17 @@
 		8709500E220CEACE007E7A75 /* MainCellLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8709500D220CEACE007E7A75 /* MainCellLabel.swift */; };
 		87095010220CEADF007E7A75 /* SecondaryCellLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8709500F220CEADF007E7A75 /* SecondaryCellLabel.swift */; };
 		8724851D219A21A800566FE5 /* NSAttributedString+Tension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8724851C219A21A800566FE5 /* NSAttributedString+Tension.swift */; };
+		873648072250FE9B009CACB7 /* RacquetString+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873648022250FE9B009CACB7 /* RacquetString+CoreDataProperties.swift */; };
+		873648082250FE9B009CACB7 /* CalibrationInfo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873648032250FE9B009CACB7 /* CalibrationInfo+CoreDataProperties.swift */; };
+		873648092250FE9B009CACB7 /* RacquetString+ConvenienceCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873648042250FE9B009CACB7 /* RacquetString+ConvenienceCreation.swift */; };
+		8736480A2250FE9B009CACB7 /* RacquetString+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873648052250FE9B009CACB7 /* RacquetString+CoreDataClass.swift */; };
+		8736480B2250FE9B009CACB7 /* CalibrationInfo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873648062250FE9B009CACB7 /* CalibrationInfo+CoreDataClass.swift */; };
 		8772AD0F2190E86600863B27 /* ModeSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8772AD0E2190E86600863B27 /* ModeSelectionTableViewController.swift */; };
 		8772AD112190F17A00863B27 /* AdjustTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8772AD102190F17A00863B27 /* AdjustTableViewCell.swift */; };
+		87BA6C8C22510266002E788D /* AudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87BA6C8B22510266002E788D /* AudioKit.framework */; };
+		87BA6C8E22510266002E788D /* AudioKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87BA6C8D22510266002E788D /* AudioKitUI.framework */; };
+		87ED914F224FBC350019F75E /* TennisTension.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 87ED914D224FBC350019F75E /* TennisTension.xcdatamodeld */; };
+		87ED9151224FBDC40019F75E /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED9150224FBDC30019F75E /* StorageManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,8 +66,17 @@
 		8709500D220CEACE007E7A75 /* MainCellLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCellLabel.swift; sourceTree = "<group>"; };
 		8709500F220CEADF007E7A75 /* SecondaryCellLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryCellLabel.swift; sourceTree = "<group>"; };
 		8724851C219A21A800566FE5 /* NSAttributedString+Tension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Tension.swift"; sourceTree = "<group>"; };
+		873648022250FE9B009CACB7 /* RacquetString+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RacquetString+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		873648032250FE9B009CACB7 /* CalibrationInfo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CalibrationInfo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		873648042250FE9B009CACB7 /* RacquetString+ConvenienceCreation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RacquetString+ConvenienceCreation.swift"; sourceTree = "<group>"; };
+		873648052250FE9B009CACB7 /* RacquetString+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RacquetString+CoreDataClass.swift"; sourceTree = "<group>"; };
+		873648062250FE9B009CACB7 /* CalibrationInfo+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CalibrationInfo+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8772AD0E2190E86600863B27 /* ModeSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeSelectionTableViewController.swift; sourceTree = "<group>"; };
 		8772AD102190F17A00863B27 /* AdjustTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustTableViewCell.swift; sourceTree = "<group>"; };
+		87BA6C8B22510266002E788D /* AudioKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AudioKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		87BA6C8D22510266002E788D /* AudioKitUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AudioKitUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		87ED914E224FBC350019F75E /* TennisTension.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TennisTension.xcdatamodel; sourceTree = "<group>"; };
+		87ED9150224FBDC30019F75E /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		F4ED84B3029FA54C463E5987 /* Pods-TensionMaster.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TensionMaster.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TensionMaster/Pods-TensionMaster.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,6 +85,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87BA6C8C22510266002E788D /* AudioKit.framework in Frameworks */,
+				87BA6C8E22510266002E788D /* AudioKitUI.framework in Frameworks */,
 				7CC769D4136A11103C78AF0B /* Pods_TensionMaster.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -95,6 +115,7 @@
 		870021F62185E2A8009D7856 /* TensionMaster */ = {
 			isa = PBXGroup;
 			children = (
+				87ED914B224FBC090019F75E /* Data */,
 				870022152187BA23009D7856 /* Utility */,
 				870022162187BA47009D7856 /* UI */,
 				870021F72185E2A8009D7856 /* AppDelegate.swift */,
@@ -154,10 +175,42 @@
 			path = Screens;
 			sourceTree = "<group>";
 		};
+		87ED914B224FBC090019F75E /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				87ED914C224FBC180019F75E /* CoreData */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		87ED914C224FBC180019F75E /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				87ED9152224FC2D10019F75E /* Model */,
+				87ED9150224FBDC30019F75E /* StorageManager.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		87ED9152224FC2D10019F75E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				87ED914D224FBC350019F75E /* TennisTension.xcdatamodeld */,
+				873648062250FE9B009CACB7 /* CalibrationInfo+CoreDataClass.swift */,
+				873648032250FE9B009CACB7 /* CalibrationInfo+CoreDataProperties.swift */,
+				873648042250FE9B009CACB7 /* RacquetString+ConvenienceCreation.swift */,
+				873648052250FE9B009CACB7 /* RacquetString+CoreDataClass.swift */,
+				873648022250FE9B009CACB7 /* RacquetString+CoreDataProperties.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		BB1890D8C489B4478AA86D6D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				6C28538FF8E972B781DA2AAA /* Pods_TensionMaster.framework */,
+				87BA6C8B22510266002E788D /* AudioKit.framework */,
+				87BA6C8D22510266002E788D /* AudioKitUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -267,11 +320,14 @@
 				870022142187BA02009D7856 /* MeasureViewController.swift in Sources */,
 				8700220E21865643009D7856 /* SettingsTableViewController.swift in Sources */,
 				8772AD112190F17A00863B27 /* AdjustTableViewCell.swift in Sources */,
+				87ED9151224FBDC40019F75E /* StorageManager.swift in Sources */,
 				87095010220CEADF007E7A75 /* SecondaryCellLabel.swift in Sources */,
 				8709500C220CE9F9007E7A75 /* DarkTableViewCell.swift in Sources */,
+				873648082250FE9B009CACB7 /* CalibrationInfo+CoreDataProperties.swift in Sources */,
 				87095006220B7BD0007E7A75 /* Colors.swift in Sources */,
 				8700221C218A596C009D7856 /* StringDiameterPickerMediator.swift in Sources */,
 				8700221021866292009D7856 /* PickerMediator.swift in Sources */,
+				8736480B2250FE9B009CACB7 /* CalibrationInfo+CoreDataClass.swift in Sources */,
 				8709500E220CEACE007E7A75 /* MainCellLabel.swift in Sources */,
 				8700220A2186071E009D7856 /* SoundAnalyzer.swift in Sources */,
 				8709500A220B9342007E7A75 /* WhiteStatusNavController.swift in Sources */,
@@ -279,10 +335,14 @@
 				8700221E218A5CD2009D7856 /* StringTypePickerMediator.swift in Sources */,
 				87002220218A5DEB009D7856 /* TensionUnitPickerMediator.swift in Sources */,
 				87002212218665ED009D7856 /* HeadSizePickerMediator.swift in Sources */,
+				8736480A2250FE9B009CACB7 /* RacquetString+CoreDataClass.swift in Sources */,
 				8772AD0F2190E86600863B27 /* ModeSelectionTableViewController.swift in Sources */,
 				870021F82185E2A8009D7856 /* AppDelegate.swift in Sources */,
+				873648092250FE9B009CACB7 /* RacquetString+ConvenienceCreation.swift in Sources */,
 				87095008220B8CA4007E7A75 /* UIGradientView.swift in Sources */,
 				8724851D219A21A800566FE5 /* NSAttributedString+Tension.swift in Sources */,
+				873648072250FE9B009CACB7 /* RacquetString+CoreDataProperties.swift in Sources */,
+				87ED914F224FBC350019F75E /* TennisTension.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +497,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-lc++";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ikdokov.TensionMaster;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -457,6 +518,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-lc++";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ikdokov.TensionMaster;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -486,6 +548,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		87ED914D224FBC350019F75E /* TennisTension.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				87ED914E224FBC350019F75E /* TennisTension.xcdatamodel */,
+			);
+			currentVersion = 87ED914E224FBC350019F75E /* TennisTension.xcdatamodel */;
+			path = TennisTension.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 870021EC2185E2A8009D7856 /* Project object */;
 }
