@@ -147,7 +147,7 @@ class SettingsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if Settings.shared.hybridStringing == false {
             switch indexPath {
-            case [2, 5], [2, 6], [2, 7], [2, 8]:
+            case [1, 5], [1, 6], [1, 7], [1, 8]:
                 return 0
             default:
                 break
@@ -156,17 +156,17 @@ class SettingsTableViewController: UITableViewController {
         let expandedHeight = CGFloat(160)
         let normalHeight = CGFloat(44)
         switch indexPath {
-        case [1, 1]:
+        case [0, 1]:
             return expandedPickerCell == headSizePickerCell ? expandedHeight : 0
-        case [1, 3]:
+        case [0, 3]:
             return expandedPickerCell == tensionUnitsPickerCell ? expandedHeight : 0
-        case [2, 2]:
+        case [1, 2]:
             return expandedPickerCell == stringDiameterPickerCell ? expandedHeight : 0
-        case [2, 4]:
+        case [1, 4]:
             return expandedPickerCell == stringTypePickerCell ? expandedHeight : 0
-        case [2, 6]:
+        case [1, 6]:
             return expandedPickerCell == crossStringDiameterPickerCell ? expandedHeight : 0
-        case [2, 8]:
+        case [1, 8]:
             return expandedPickerCell == crossStringTypePickerCell ? expandedHeight : 0
         default:
             return normalHeight
@@ -177,7 +177,7 @@ class SettingsTableViewController: UITableViewController {
         guard let selectedCell = tableView.cellForRow(at: indexPath) else { return }
         tableView.deselectRow(at: indexPath, animated: true)
         // Racquet or String section.
-        if indexPath.section == 1 || indexPath.section == 2 {
+        if indexPath.section == 0 || indexPath.section == 1 {
             var correspondingPickerCell: UITableViewCell?
             switch selectedCell {
             case headSizeCell:
