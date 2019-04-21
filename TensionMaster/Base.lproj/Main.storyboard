@@ -615,9 +615,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="qZv-LS-0ge" kind="show" id="rtp-IB-eS8"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="mvz-vY-hwv" detailTextLabel="bvI-xJ-Ow6" rowHeight="64" style="IBUITableViewCellStyleSubtitle" id="65w-KL-Ask" customClass="DarkTableViewCell" customModule="TensionMaster" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="727.5" width="375" height="64"/>
@@ -642,9 +639,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="qZv-LS-0ge" kind="show" id="ewQ-Pz-q17"/>
-                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -1004,75 +998,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yjs-hm-w0K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2310" y="-264"/>
-        </scene>
-        <!--Model Selection Table View Controller-->
-        <scene sceneID="ld6-kw-BvF">
-            <objects>
-                <tableViewController id="qZv-LS-0ge" customClass="ModelSelectionTableViewController" customModule="TensionMaster" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="ZOH-sY-3gw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ThicknessCell" textLabel="Pze-fE-7XA" detailTextLabel="T3A-fG-5hs" style="IBUITableViewCellStyleValue1" id="cTo-0r-yiq" customClass="DarkTableViewCell" customModule="TensionMaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cTo-0r-yiq" id="xu4-X1-QCy">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Pze-fE-7XA" customClass="MainCellLabel" customModule="TensionMaster" customModuleProvider="target">
-                                            <rect key="frame" x="16" y="12" width="33.5" height="20.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="T3A-fG-5hs" customClass="SecondaryCellLabel" customModule="TensionMaster" customModuleProvider="target">
-                                            <rect key="frame" x="315" y="12" width="44" height="20.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ThicknessPickerCell" rowHeight="160" id="VTr-gr-pZJ" customClass="PickerTableViewCell" customModule="TensionMaster" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="99.5" width="375" height="160"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VTr-gr-pZJ" id="CF2-nM-pqR">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XpE-Jv-gHg">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="159.5" id="QsU-Di-YdA"/>
-                                            </constraints>
-                                        </pickerView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="XpE-Jv-gHg" firstAttribute="top" secondItem="CF2-nM-pqR" secondAttribute="top" id="1mt-72-EBo"/>
-                                        <constraint firstAttribute="trailing" secondItem="XpE-Jv-gHg" secondAttribute="trailing" id="HRw-nA-yy7"/>
-                                        <constraint firstItem="XpE-Jv-gHg" firstAttribute="leading" secondItem="CF2-nM-pqR" secondAttribute="leading" id="gNm-yj-vAG"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="picker" destination="XpE-Jv-gHg" id="QM8-si-vmr"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="qZv-LS-0ge" id="VY1-Jh-tIt"/>
-                            <outlet property="delegate" destination="qZv-LS-0ge" id="oV3-Hd-9VR"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1SN-XL-5vj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2310" y="478"/>
+            <point key="canvasLocation" x="2136.8000000000002" y="220.83958020989508"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Jgq-v7-AGl">
@@ -1099,7 +1025,4 @@
         <image name="wave-28" width="28" height="28"/>
         <image name="wave-filled-28" width="28" height="28"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="rtp-IB-eS8"/>
-    </inferredMetricsTieBreakers>
 </document>
