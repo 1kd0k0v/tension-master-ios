@@ -37,6 +37,8 @@
 		8772AD112190F17A00863B27 /* AdjustTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8772AD102190F17A00863B27 /* AdjustTableViewCell.swift */; };
 		87BA6C8C22510266002E788D /* AudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87BA6C8B22510266002E788D /* AudioKit.framework */; };
 		87BA6C8E22510266002E788D /* AudioKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87BA6C8D22510266002E788D /* AudioKitUI.framework */; };
+		87BA6C90225116CD002E788D /* ModelSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BA6C8F225116CD002E788D /* ModelSelectionTableViewController.swift */; };
+		87BA6C932251197F002E788D /* PickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BA6C922251197F002E788D /* PickerTableViewCell.swift */; };
 		87ED914F224FBC350019F75E /* TennisTension.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 87ED914D224FBC350019F75E /* TennisTension.xcdatamodeld */; };
 		87ED9151224FBDC40019F75E /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED9150224FBDC30019F75E /* StorageManager.swift */; };
 /* End PBXBuildFile section */
@@ -75,6 +77,8 @@
 		8772AD102190F17A00863B27 /* AdjustTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustTableViewCell.swift; sourceTree = "<group>"; };
 		87BA6C8B22510266002E788D /* AudioKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AudioKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		87BA6C8D22510266002E788D /* AudioKitUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AudioKitUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		87BA6C8F225116CD002E788D /* ModelSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSelectionTableViewController.swift; sourceTree = "<group>"; };
+		87BA6C922251197F002E788D /* PickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTableViewCell.swift; sourceTree = "<group>"; };
 		87ED914E224FBC350019F75E /* TennisTension.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TennisTension.xcdatamodel; sourceTree = "<group>"; };
 		87ED9150224FBDC30019F75E /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		F4ED84B3029FA54C463E5987 /* Pods-TensionMaster.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TensionMaster.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TensionMaster/Pods-TensionMaster.debug.xcconfig"; sourceTree = "<group>"; };
@@ -171,8 +175,18 @@
 				870022132187BA02009D7856 /* MeasureViewController.swift */,
 				8700220D21865643009D7856 /* SettingsTableViewController.swift */,
 				8772AD0E2190E86600863B27 /* ModeSelectionTableViewController.swift */,
+				87BA6C91225118AD002E788D /* ModelSelection */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		87BA6C91225118AD002E788D /* ModelSelection */ = {
+			isa = PBXGroup;
+			children = (
+				87BA6C8F225116CD002E788D /* ModelSelectionTableViewController.swift */,
+				87BA6C922251197F002E788D /* PickerTableViewCell.swift */,
+			);
+			path = ModelSelection;
 			sourceTree = "<group>";
 		};
 		87ED914B224FBC090019F75E /* Data */ = {
@@ -338,6 +352,8 @@
 				8736480A2250FE9B009CACB7 /* RacquetString+CoreDataClass.swift in Sources */,
 				8772AD0F2190E86600863B27 /* ModeSelectionTableViewController.swift in Sources */,
 				870021F82185E2A8009D7856 /* AppDelegate.swift in Sources */,
+				87BA6C932251197F002E788D /* PickerTableViewCell.swift in Sources */,
+				87BA6C90225116CD002E788D /* ModelSelectionTableViewController.swift in Sources */,
 				873648092250FE9B009CACB7 /* RacquetString+ConvenienceCreation.swift in Sources */,
 				87095008220B8CA4007E7A75 /* UIGradientView.swift in Sources */,
 				8724851D219A21A800566FE5 /* NSAttributedString+Tension.swift in Sources */,
