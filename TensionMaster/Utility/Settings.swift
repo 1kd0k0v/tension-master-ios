@@ -61,19 +61,19 @@ enum TensionUnit: String {
 }
 
 enum FrameAndGrommets: String {
-    case increasingTension = "increasing the tension"
+    case increasingTension = "increased"
     case none = "not influenced"
-    case decreasingTension = "decreasing the tension"
+    case decreasingTension = "decreased"
     static var allRepresentations: [String] {
-        return [increasingTension.rawValue,
+        return [decreasingTension.rawValue,
                 none.rawValue,
-                decreasingTension.rawValue]
+                increasingTension.rawValue]
     }
     var coefficient: Double {
         switch self {
-        case .increasingTension: return 0.98
+        case .increasingTension: return 1.02
         case .none: return 1
-        case .decreasingTension: return 1.02
+        case .decreasingTension: return 0.98
         }
     }
 }
