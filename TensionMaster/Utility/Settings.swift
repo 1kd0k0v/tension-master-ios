@@ -8,9 +8,10 @@
 
 import Foundation
 
+// Calibratio feature /Experimental/.
 enum MeasureMode: String {
-    case fabric = "Factory"
-    case personal = "Personal"
+    case fabric = "Off"
+    case calibrated = "On"
 }
 
 enum StringType: String {

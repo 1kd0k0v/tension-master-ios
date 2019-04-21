@@ -140,27 +140,29 @@ class MeasureViewController: UIViewController {
         
         var tensionValue = sample.tensionNumber
         let settings = Settings.shared
-        tensionValue += (settings.measureMode == .personal ? settings.tensionAdjustment : 0)
+        tensionValue += (settings.measureMode == .calibrated ? settings.tensionAdjustment : 0)
         tensionNumberLabel.text = String(format: "%0.1f", tensionValue)
     }
     
     private func update(adjustment: Double) {
         if adjustment > 0.0 {
-            measureAdjustmentLabel.text = "(Calibration: +\(String(format: "%0.1f", adjustment))\(Settings.shared.tensionUnit.rawValue))"
+            measureAdjustmentLabel.text = "(+\(String(format: "%0.1f", adjustment))\(Settings.shared.tensionUnit.rawValue))"
         } else {
-            measureAdjustmentLabel.text = "(Calibration: \(String(format: "%0.1f", adjustment))\(Settings.shared.tensionUnit.rawValue))"
+            measureAdjustmentLabel.text = "(\(String(format: "%0.1f", adjustment))\(Settings.shared.tensionUnit.rawValue))"
         }
     }
     
     private func updateAdditionalInfo() {
         let settings = Settings.shared
-        if settings.measureMode == .personal {
+        if settings.measureMode == .calibrated && settings.tensionAdjustment != 0.0 {
+            measureModeLabel.isHidden = false
+            measureModeLabel.text = "Calibrated"
             measureAdjustmentLabel.isHidden = false
             update(adjustment: settings.tensionAdjustment)
         } else {
+            measureModeLabel.isHidden = true
             measureAdjustmentLabel.isHidden = true
         }
-        measureModeLabel.text = "\(settings.measureMode.rawValue) Mode"
         tensionUnitLabel.text = settings.tensionUnit.rawValue
         headSizeValueLabel.text = "\(Int(settings.headSize)) \(settings.headSizeUnit.rawValue)"
         stringDiameterValueLabel.text = "\(settings.formattedStringDiameter) mm"

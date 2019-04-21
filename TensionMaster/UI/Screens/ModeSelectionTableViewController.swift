@@ -119,11 +119,11 @@ class ModeSelectionTableViewController: UITableViewController {
         
         switch indexPath {
         case [0, 0]:    // Factory mode.
-            cell?.textLabel?.text = "Factory"
+            cell?.textLabel?.text = "Off"
             cell?.accessoryType = settings.measureMode == .fabric ? .checkmark : .none
         case [0, 1]:    // Personal mode.
-            cell?.textLabel?.text = "Personal"
-            cell?.accessoryType = settings.measureMode == .personal ? .checkmark : .none
+            cell?.textLabel?.text = "On"
+            cell?.accessoryType = settings.measureMode == .calibrated ? .checkmark : .none
         default:
             if let adjustCell = cell as? AdjustTableViewCell {
                 adjustCell.update(adjustment: settings.tensionAdjustment)
@@ -135,13 +135,13 @@ class ModeSelectionTableViewController: UITableViewController {
         if indexPath.section == 0 {
             tableView.deselectRow(at: indexPath, animated: true)
             tableView.beginUpdates()
-            if indexPath.row == 0, settings.measureMode == .personal {
+            if indexPath.row == 0, settings.measureMode == .calibrated {
                 settings.measureMode = .fabric
                 update(cell: fabricModeCell, forIndexPath: [0, 0])
                 update(cell: personalModeCell, forIndexPath: [0, 1])
                 tableView.deleteSections(IndexSet(integer: 1), with: .fade)
             } else if indexPath.row == 1, settings.measureMode == .fabric {
-                settings.measureMode = .personal
+                settings.measureMode = .calibrated
                 update(cell: fabricModeCell, forIndexPath: [0, 0])
                 update(cell: personalModeCell, forIndexPath: [0, 1])
                 tableView.insertSections(IndexSet(integer: 1), with: .fade)
