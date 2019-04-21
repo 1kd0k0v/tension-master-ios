@@ -27,6 +27,9 @@
 		8709500C220CE9F9007E7A75 /* DarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8709500B220CE9F9007E7A75 /* DarkTableViewCell.swift */; };
 		8709500E220CEACE007E7A75 /* MainCellLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8709500D220CEACE007E7A75 /* MainCellLabel.swift */; };
 		87095010220CEADF007E7A75 /* SecondaryCellLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8709500F220CEADF007E7A75 /* SecondaryCellLabel.swift */; };
+		8717C174226CDF8B0012E1C9 /* FrameAndGrommetsPickerMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8717C173226CDF8B0012E1C9 /* FrameAndGrommetsPickerMediator.swift */; };
+		8717C176226CDF9E0012E1C9 /* StringPatternPickerMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8717C175226CDF9E0012E1C9 /* StringPatternPickerMediator.swift */; };
+		8717C178226CE1B50012E1C9 /* StringerStylePickerMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8717C177226CE1B50012E1C9 /* StringerStylePickerMediator.swift */; };
 		8724851D219A21A800566FE5 /* NSAttributedString+Tension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8724851C219A21A800566FE5 /* NSAttributedString+Tension.swift */; };
 		8772AD0F2190E86600863B27 /* ModeSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8772AD0E2190E86600863B27 /* ModeSelectionTableViewController.swift */; };
 		8772AD112190F17A00863B27 /* AdjustTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8772AD102190F17A00863B27 /* AdjustTableViewCell.swift */; };
@@ -56,6 +59,9 @@
 		8709500B220CE9F9007E7A75 /* DarkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkTableViewCell.swift; sourceTree = "<group>"; };
 		8709500D220CEACE007E7A75 /* MainCellLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCellLabel.swift; sourceTree = "<group>"; };
 		8709500F220CEADF007E7A75 /* SecondaryCellLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryCellLabel.swift; sourceTree = "<group>"; };
+		8717C173226CDF8B0012E1C9 /* FrameAndGrommetsPickerMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameAndGrommetsPickerMediator.swift; sourceTree = "<group>"; };
+		8717C175226CDF9E0012E1C9 /* StringPatternPickerMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringPatternPickerMediator.swift; sourceTree = "<group>"; };
+		8717C177226CE1B50012E1C9 /* StringerStylePickerMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringerStylePickerMediator.swift; sourceTree = "<group>"; };
 		8724851C219A21A800566FE5 /* NSAttributedString+Tension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Tension.swift"; sourceTree = "<group>"; };
 		8772AD0E2190E86600863B27 /* ModeSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeSelectionTableViewController.swift; sourceTree = "<group>"; };
 		8772AD102190F17A00863B27 /* AdjustTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustTableViewCell.swift; sourceTree = "<group>"; };
@@ -137,9 +143,12 @@
 				8700221B218A596C009D7856 /* StringDiameterPickerMediator.swift */,
 				8700221D218A5CD2009D7856 /* StringTypePickerMediator.swift */,
 				8700221F218A5DEB009D7856 /* TensionUnitPickerMediator.swift */,
+				8717C173226CDF8B0012E1C9 /* FrameAndGrommetsPickerMediator.swift */,
+				8717C175226CDF9E0012E1C9 /* StringPatternPickerMediator.swift */,
 				8772AD102190F17A00863B27 /* AdjustTableViewCell.swift */,
 				87095007220B8CA4007E7A75 /* UIGradientView.swift */,
 				87095009220B9342007E7A75 /* WhiteStatusNavController.swift */,
+				8717C177226CE1B50012E1C9 /* StringerStylePickerMediator.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -266,7 +275,9 @@
 			files = (
 				870022142187BA02009D7856 /* MeasureViewController.swift in Sources */,
 				8700220E21865643009D7856 /* SettingsTableViewController.swift in Sources */,
+				8717C178226CE1B50012E1C9 /* StringerStylePickerMediator.swift in Sources */,
 				8772AD112190F17A00863B27 /* AdjustTableViewCell.swift in Sources */,
+				8717C176226CDF9E0012E1C9 /* StringPatternPickerMediator.swift in Sources */,
 				87095010220CEADF007E7A75 /* SecondaryCellLabel.swift in Sources */,
 				8709500C220CE9F9007E7A75 /* DarkTableViewCell.swift in Sources */,
 				87095006220B7BD0007E7A75 /* Colors.swift in Sources */,
@@ -274,6 +285,7 @@
 				8700221021866292009D7856 /* PickerMediator.swift in Sources */,
 				8709500E220CEACE007E7A75 /* MainCellLabel.swift in Sources */,
 				8700220A2186071E009D7856 /* SoundAnalyzer.swift in Sources */,
+				8717C174226CDF8B0012E1C9 /* FrameAndGrommetsPickerMediator.swift in Sources */,
 				8709500A220B9342007E7A75 /* WhiteStatusNavController.swift in Sources */,
 				8700221A2189966E009D7856 /* Settings.swift in Sources */,
 				8700221E218A5CD2009D7856 /* StringTypePickerMediator.swift in Sources */,

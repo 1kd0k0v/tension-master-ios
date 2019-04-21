@@ -50,6 +50,84 @@ enum TensionUnit: String {
     }
 }
 
+enum FrameAndGrommets: String {
+    case increasingTension = "increasing the tension"
+    case none = "not influenced"
+    case decreasingTension = "decreasing the tension"
+    static var allRepresentations: [String] {
+        return [increasingTension.rawValue,
+                none.rawValue,
+                decreasingTension.rawValue]
+    }
+    var coefficient: Double {
+        switch self {
+        case .increasingTension: return 0.98
+        case .none: return 1
+        case .decreasingTension: return 1.02
+        }
+    }
+}
+
+enum StringPattern: String {
+    case x14x16 = "14x16"
+    case x16x16 = "16x16"
+    case x16x17 = "16x17"
+    case x16x18 = "16x18"
+    case x16x19 = "16x19"
+    case x18x17 = "18x17"
+    case x18x18 = "18x18"
+    case x18x19 = "18x19"
+    case x18x20 = "18x20"
+    static var allRepresentations: [String] {
+        return [x14x16.rawValue,
+                x16x16.rawValue,
+                x16x17.rawValue,
+                x16x18.rawValue,
+                x16x19.rawValue,
+                x18x17.rawValue,
+                x18x18.rawValue,
+                x18x19.rawValue,
+                x18x20.rawValue]
+    }
+    var coefficient: Double {
+        switch self {
+        case .x14x16: return 1.012
+        case .x16x16: return 1.009
+        case .x16x17: return 1.006
+        case .x16x18: return 1.003
+        case .x16x19: return 1
+        case .x18x17: return 1.003
+        case .x18x18: return 0.999
+        case .x18x19: return 0.995
+        case .x18x20: return 0.990
+        }
+    }
+}
+
+enum StringerStyle: String {
+    case veryTight = "very tight"
+    case tighter = "tighter"
+    case normal = "normal"
+    case looser = "looser"
+    case veryLoose = "very loose"
+    static var allRepresentations: [String] {
+        return [veryTight.rawValue,
+                tighter.rawValue,
+                normal.rawValue,
+                looser.rawValue,
+                veryLoose.rawValue]
+    }
+    var coefficient: Double {
+        switch self {
+        case .veryTight: return 0.94
+        case .tighter: return 0.97
+        case .normal: return 1
+        case .looser: return 1.03
+        case .veryLoose: return 1.06
+        }
+    }
+}
+
 private struct SettingsHolder {
     var measureMode: MeasureMode = .fabric
     var headSizeUnit: SizeUnit = .inch
@@ -61,6 +139,9 @@ private struct SettingsHolder {
     var crossStringType: StringType = .polyester
     var tensionUnit: TensionUnit = .kg
     var tensionAdjustment: Double = 0.0
+    var frameAndGrommets: FrameAndGrommets = .none
+    var stringPattern: StringPattern = .x16x19
+    var stringerStyle: StringerStyle = .normal
 }
 
 private struct Keys {
@@ -70,6 +151,9 @@ private struct Keys {
     static let hybridStringing = "hybridStringingKey"
     static let stringDiameter = "stringDiameterKey"
     static let stringType = "stringTypeKey"
+    static let frameAndGrommets = "frameAndGrommetsKey"
+    static let stringPattern = "stringPatternKey"
+    static let stringerStyle = "stringerStyleKey"
     static let crossStringDiameter = "crossStringDiameterKey"
     static let crossStringType = "crossStringTypeKey"
     static let tensionUnit = "tensionUnitKey"
@@ -152,6 +236,33 @@ class Settings {
             UserDefaults.standard.set(newValue.rawValue, forKey: Keys.stringType)
         }
     }
+    var frameAndGrommets: FrameAndGrommets {
+        get {
+            return settingsHolder.frameAndGrommets
+        }
+        set {
+            settingsHolder.frameAndGrommets = newValue
+            UserDefaults.standard.set(newValue.rawValue, forKey: Keys.frameAndGrommets)
+        }
+    }
+    var stringPattern: StringPattern {
+        get {
+            return settingsHolder.stringPattern
+        }
+        set {
+            settingsHolder.stringPattern = newValue
+            UserDefaults.standard.set(newValue.rawValue, forKey: Keys.stringPattern)
+        }
+    }
+    var stringerStyle: StringerStyle {
+        get {
+            return settingsHolder.stringerStyle
+        }
+        set {
+            settingsHolder.stringerStyle = newValue
+            UserDefaults.standard.set(newValue.rawValue, forKey: Keys.stringerStyle)
+        }
+    }
     // Hybrid stringing (cross).
     var crossStringDiameter: Double {
         get {
@@ -225,6 +336,18 @@ class Settings {
         // String type.
         if let value = defaults.string(forKey: Keys.stringType), let stringType = StringType(rawValue: value) {
             settingsHolder.stringType = stringType
+        }
+        // Frame and Grommets.
+        if let value = defaults.string(forKey: Keys.frameAndGrommets), let frameAndGrommets = FrameAndGrommets(rawValue: value) {
+            settingsHolder.frameAndGrommets = frameAndGrommets
+        }
+        // String pattern.
+        if let value = defaults.string(forKey: Keys.stringPattern), let stringPattern = StringPattern(rawValue: value) {
+            settingsHolder.stringPattern = stringPattern
+        }
+        // Stringer's style.
+        if let value = defaults.string(forKey: Keys.stringerStyle), let stringerStyle = StringerStyle(rawValue: value) {
+            settingsHolder.stringerStyle = stringerStyle
         }
         // Cross String diameter.
         if let value = defaults.object(forKey: Keys.crossStringDiameter) as? Double {
