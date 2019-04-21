@@ -14,21 +14,30 @@ enum MeasureMode: String {
 }
 
 enum StringType: String {
-    case polyester = "Polyester"
-    case copolyester = "Co-polyester"
-    case syntheticGut = "Synthetic Gut"
+    case heavyPolyester = "Heavy polyester"
+    case polyester = "Avarage polyester"
+    case lightPolyester = "Light polyester"
+    case heavySynthetic = "Heavy synthetic"
+    case synthetic = "Avarage synthetic"
+    case lightSynthetic = "Light synthetic"
     case naturalGut = "Natural Gut"
     static var allRepresentations: [String] {
-        return [polyester.rawValue,
-                copolyester.rawValue,
-                syntheticGut.rawValue,
+        return [heavyPolyester.rawValue,
+                polyester.rawValue,
+                lightPolyester.rawValue,
+                heavySynthetic.rawValue,
+                synthetic.rawValue,
+                lightSynthetic.rawValue,
                 naturalGut.rawValue]
     }
     var coefficient: Double {
         switch self {
+        case .heavyPolyester: return 1.38
         case .polyester: return 1.35
-        case .copolyester: return 1.35
-        case .syntheticGut: return 1.12
+        case .lightPolyester: return 1.32
+        case .heavySynthetic: return 1.16
+        case .synthetic: return 1.12
+        case .lightSynthetic: return 1.08
         case .naturalGut: return 1.28
         }
     }
@@ -131,11 +140,11 @@ enum StringerStyle: String {
 private struct SettingsHolder {
     var measureMode: MeasureMode = .fabric
     var headSizeUnit: SizeUnit = .inch
-    var headSize: Double = 98   // inches   (70..130) inches - (500..800) cm
+    var headSize: Double = 100   // inches   (70..130) inches - (500..800) cm
     var hybridStringing = false
-    var stringDiameter: Double = 1.27   // mm   (1.00..1.50) mm
+    var stringDiameter: Double = 1.25   // mm   (1.00..1.50) mm
     var stringType: StringType = .polyester
-    var crossStringDiameter: Double = 1.27   // mm   (1.00..1.50) mm
+    var crossStringDiameter: Double = 1.25   // mm   (1.00..1.50) mm
     var crossStringType: StringType = .polyester
     var tensionUnit: TensionUnit = .kg
     var tensionAdjustment: Double = 0.0
