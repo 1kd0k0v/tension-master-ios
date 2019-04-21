@@ -26,12 +26,34 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet var tensionUnitsPicker: UIPickerView!
     @IBOutlet var tensionUnitsPickerMediator: TensionUnitPickerMediator!
     
-    // String section.
     @IBOutlet var hybridStringingCell: UITableViewCell!
     @IBOutlet var hybridStringingSwitch: UISwitch!
+    // String section.
+    @IBOutlet var stringDiameterCell: UITableViewCell!
+    @IBOutlet var stringDiameterLabel: UILabel!
+    @IBOutlet var stringDiameterValueLabel: UILabel!
+    @IBOutlet var stringDiameterPickerCell: UITableViewCell!
+    @IBOutlet var stringDiameterPicker: UIPickerView!
+    @IBOutlet var stringDiameterPickerMediator: StringDiameterPickerMediator!
     
-    @IBOutlet var stringModelCell: UITableViewCell!
-    @IBOutlet var crossStringModelCell: UITableViewCell!
+    @IBOutlet var stringTypeCell: UITableViewCell!
+    @IBOutlet var stringTypeLabel: UILabel!
+    @IBOutlet var stringTypeValueLabel: UILabel!
+    @IBOutlet var stringTypePickerCell: UITableViewCell!
+    @IBOutlet var stringTypePicker: UIPickerView!
+    @IBOutlet var stringTypePickerMediator: StringTypePickerMediator!
+    
+    @IBOutlet var crossStringDiameterCell: UITableViewCell!
+    @IBOutlet var crossStringDiameterValueLabel: UILabel!
+    @IBOutlet var crossStringDiameterPickerCell: UITableViewCell!
+    @IBOutlet var crossStringDiameterPicker: UIPickerView!
+    @IBOutlet var crossStringDiameterPickerMediator: StringDiameterPickerMediator!
+    
+    @IBOutlet var crossStringTypeCell: UITableViewCell!
+    @IBOutlet var crossStringTypeValueLabel: UILabel!
+    @IBOutlet var crossStringTypePickerCell: UITableViewCell!
+    @IBOutlet var crossStringTypePicker: UIPickerView!
+    @IBOutlet var crossStringTypePickerMediator: StringTypePickerMediator!
     
     // About section.
     @IBOutlet var versionLabel: UILabel!
@@ -83,14 +105,36 @@ class SettingsTableViewController: UITableViewController {
         // Hybrid stringng.
         hybridStringingSwitch.isOn = settings.hybridStringing
         if settings.hybridStringing {
-            stringModelCell.textLabel?.text = "Main Model"
+            stringDiameterLabel.text = "Main Thickness"
+            stringTypeLabel.text = "Main Type"
         } else {
-            stringModelCell.textLabel?.text = "Model"
+            stringDiameterLabel.text = "Thickness"
+            stringTypeLabel.text = "Type"
         }
-        // String model - type + diameter.
-        stringModelCell.detailTextLabel?.text = "\(settings.stringType.rawValue) - \(settings.formattedStringDiameter) mm"
-        // Cross model - type + diameter.
-        crossStringModelCell.detailTextLabel?.text = "\(settings.crossStringType.rawValue) - \(settings.formattedCrossStringDiameter) mm"
+        // String diameter
+        let stringDiameter = settings.stringDiameter
+        if let index = stringDiameterPickerMediator.stringDiameters.firstIndex(of: stringDiameter) {
+            stringDiameterPicker.selectRow(index, inComponent: 0, animated: false)
+        }
+        stringDiameterValueLabel.text = "\(settings.formattedStringDiameter) mm"
+        // String type
+        let stringType = settings.stringType.rawValue
+        if let index = stringTypePickerMediator.stringTypes.firstIndex(of: stringType) {
+            stringTypePicker.selectRow(index, inComponent: 0, animated: false)
+        }
+        stringTypeValueLabel.text = stringType
+        // Cross string diameter
+        let crossStringDiameter = settings.crossStringDiameter
+        if let index = crossStringDiameterPickerMediator.stringDiameters.firstIndex(of: crossStringDiameter) {
+            crossStringDiameterPicker.selectRow(index, inComponent: 0, animated: false)
+        }
+        crossStringDiameterValueLabel.text = "\(settings.formattedCrossStringDiameter) mm"
+        // Cross string type
+        let crossStringType = settings.crossStringType.rawValue
+        if let index = crossStringTypePickerMediator.stringTypes.firstIndex(of: crossStringType) {
+            crossStringTypePicker.selectRow(index, inComponent: 0, animated: false)
+        }
+        crossStringTypeValueLabel.text = crossStringType
         // Tension unit
         let tensionUnit = settings.tensionUnit.rawValue
         if let index = tensionUnitsPickerMediator.tensionUnits.firstIndex(of: tensionUnit) {
@@ -101,18 +145,29 @@ class SettingsTableViewController: UITableViewController {
 
     // MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if Settings.shared.hybridStringing == false {
+            switch indexPath {
+            case [2, 5], [2, 6], [2, 7], [2, 8]:
+                return 0
+            default:
+                break
+            }
+        }
         let expandedHeight = CGFloat(160)
         let normalHeight = CGFloat(44)
-        let stringModelHeight = CGFloat(64)
         switch indexPath {
         case [1, 1]:
             return expandedPickerCell == headSizePickerCell ? expandedHeight : 0
         case [1, 3]:
             return expandedPickerCell == tensionUnitsPickerCell ? expandedHeight : 0
-        case [2, 1]:
-            return stringModelHeight
         case [2, 2]:
-            return Settings.shared.hybridStringing ? stringModelHeight : 0
+            return expandedPickerCell == stringDiameterPickerCell ? expandedHeight : 0
+        case [2, 4]:
+            return expandedPickerCell == stringTypePickerCell ? expandedHeight : 0
+        case [2, 6]:
+            return expandedPickerCell == crossStringDiameterPickerCell ? expandedHeight : 0
+        case [2, 8]:
+            return expandedPickerCell == crossStringTypePickerCell ? expandedHeight : 0
         default:
             return normalHeight
         }
@@ -127,6 +182,14 @@ class SettingsTableViewController: UITableViewController {
             switch selectedCell {
             case headSizeCell:
                 correspondingPickerCell = headSizePickerCell
+            case stringDiameterCell:
+                correspondingPickerCell = stringDiameterPickerCell
+            case stringTypeCell:
+                correspondingPickerCell = stringTypePickerCell
+            case crossStringDiameterCell:
+                correspondingPickerCell = crossStringDiameterPickerCell
+            case crossStringTypeCell:
+                correspondingPickerCell = crossStringTypePickerCell
             case tensionUnitsCell:
                 correspondingPickerCell = tensionUnitsPickerCell
             default:
@@ -174,9 +237,15 @@ private extension SettingsTableViewController {
     @IBAction func hybridStringingValueChanged(control: UISwitch) {
         Settings.shared.hybridStringing = control.isOn
         if control.isOn {
-            stringModelCell.textLabel?.text = "Main Model"
+            stringDiameterLabel.text = "Main Thickness"
+            stringTypeLabel.text = "Main Type"
         } else {
-            stringModelCell.textLabel?.text = "Model"
+            stringDiameterLabel.text = "Thickness"
+            stringTypeLabel.text = "Type"
+            if expandedPickerCell == crossStringDiameterPickerCell ||
+                expandedPickerCell == crossStringTypePickerCell {
+                expandedPickerCell = nil
+            }
         }
         tableView.beginUpdates()
         tableView.endUpdates()
@@ -287,6 +356,42 @@ extension SettingsTableViewController: PickerMediatorDelegate {
             }
             // Display it.
             headSizeValueLabel.text = "\(selectedValue) \(selectedUnit)"
+        } else if picker == stringDiameterPicker {
+            // String diameter picker.
+            if let stringDiameter = Double(selectedValue) {
+                Settings.shared.stringDiameter = stringDiameter
+            } else {
+                assertionFailure("Cannot convert string to Double: \(selectedValue)")
+            }
+            // Display it.
+            stringDiameterValueLabel.text = "\(selectedValue) mm"
+        } else if picker == stringTypePicker {
+            // String type picker.
+            if let stringType = StringType(rawValue: selectedValue) {
+                Settings.shared.stringType = stringType
+            } else {
+                assertionFailure("Cannot convert string to StringType: \(selectedValue)")
+            }
+            // Display it.
+            stringTypeValueLabel.text = selectedValue
+        } else if picker == crossStringDiameterPicker {
+            // Cross string diameter picker.
+            if let stringDiameter = Double(selectedValue) {
+                Settings.shared.crossStringDiameter = stringDiameter
+            } else {
+                assertionFailure("Cannot convert string to Double: \(selectedValue)")
+            }
+            // Display it.
+            crossStringDiameterValueLabel.text = "\(selectedValue) mm"
+        } else if picker == crossStringTypePicker {
+            // Cross string type picker.
+            if let stringType = StringType(rawValue: selectedValue) {
+                Settings.shared.crossStringType = stringType
+            } else {
+                assertionFailure("Cannot convert string to StringType: \(selectedValue)")
+            }
+            // Display it.
+            crossStringTypeValueLabel.text = selectedValue
         } else if picker == tensionUnitsPicker {
             // Tension units picker.
             if let tensionUnit = TensionUnit(rawValue: selectedValue) {
