@@ -304,19 +304,11 @@ private extension SettingsTableViewController {
         // Present alert with instructions.
         let message = """
 
-                     ∙ TennisTension measures the average tension between main and cross strings by analyzing the sound heard from the string.
+                     ∙ Remove the dampener!
 
-                     ∙ Take off the Dampener.
+                     ∙ Tap gently the string once or more times with a stiff object - fingernails, another racquet, finger knuckles etc, while keeping the resonating string as near as possible and in front of the microphone (mounted usually at the bottom of the phone)!
 
-                     ∙ Put the head size, the string diameter and it's type (if main and cross strings are with different diameter put the average value).
-
-                     ∙ Use Fabric or Personal mode.
-
-                     ∙ By Calibration of the Personal mode you can cope with all particularities of the racquets, strings, stringers and stringing machines.
-
-                     ∙ Tap the racquet string anywhere with anything close to the phone microphone.
-
-                     ∙ Consider the tension loss receiving the outcome of the measurement.
+                     ∙ The measurement shows the average string tension between the main and cross strings of the racquet.
                     """
         let alert = UIAlertController(title: "Instructions", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
@@ -324,7 +316,7 @@ private extension SettingsTableViewController {
     }
     
     func videoPressed() {
-        guard let url = URL(string: "https://www.youtube.com/watch?v=QZGqs-9C-6I&feature=youtu.be&fbclid=IwAR1OjmFa7cPIOLepVzMz2R_MDQQTC9oYoFHqizzC20SR_lZlBbem_BzrhUc") else { return }
+        guard let url = URL(string: "https://www.youtube.com/watch?v=LFTkCCRR7ss&fbclid=IwAR1TVgW87ZbFw0hva-ekLWtdhGU4Zd2RgT1SLLSqpb1Pla8NcljwVGKihQo") else { return }
         if UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url)
         }
