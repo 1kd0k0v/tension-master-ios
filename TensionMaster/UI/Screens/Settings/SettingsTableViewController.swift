@@ -28,9 +28,6 @@ class SettingsTableViewController: UITableViewController {
     
     @IBOutlet var frameAndGrommetsCell: UITableViewCell!
     @IBOutlet var frameAndGrommetsValueLabel: UILabel!
-    @IBOutlet var frameAndGrommetsPickerCell: UITableViewCell!
-    @IBOutlet var frameAndGrommetsPicker: UIPickerView!
-    @IBOutlet var frameAndGrommetsPickerMediator: FrameAndGrommetsPickerMediator!
     
     @IBOutlet var stringPatternCell: UITableViewCell!
     @IBOutlet var stringPatternValueLabel: UILabel!
@@ -58,9 +55,6 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet var stringTypeCell: UITableViewCell!
     @IBOutlet var stringTypeLabel: UILabel!
     @IBOutlet var stringTypeValueLabel: UILabel!
-    @IBOutlet var stringTypePickerCell: UITableViewCell!
-    @IBOutlet var stringTypePicker: UIPickerView!
-    @IBOutlet var stringTypePickerMediator: StringTypePickerMediator!
     
     @IBOutlet var crossStringDiameterCell: UITableViewCell!
     @IBOutlet var crossStringDiameterValueLabel: UILabel!
@@ -70,9 +64,6 @@ class SettingsTableViewController: UITableViewController {
     
     @IBOutlet var crossStringTypeCell: UITableViewCell!
     @IBOutlet var crossStringTypeValueLabel: UILabel!
-    @IBOutlet var crossStringTypePickerCell: UITableViewCell!
-    @IBOutlet var crossStringTypePicker: UIPickerView!
-    @IBOutlet var crossStringTypePickerMediator: StringTypePickerMediator!
     
     // About section.
     @IBOutlet var versionLabel: UILabel!
@@ -122,11 +113,11 @@ class SettingsTableViewController: UITableViewController {
         }
         headSizeValueLabel.text = "\(Int(headSize)) \(headSizeUnit)"
         // Frame and Grommets.
-        let frameAndGrommets = settings.frameAndGrommets.rawValue
-        if let index = frameAndGrommetsPickerMediator.values.firstIndex(of: frameAndGrommets) {
-            frameAndGrommetsPicker.selectRow(index, inComponent: 0, animated: false)
-        }
-        frameAndGrommetsValueLabel.text = frameAndGrommets
+//        let frameAndGrommets = settings.frameAndGrommets.rawValue
+//        if let index = frameAndGrommetsPickerMediator.values.firstIndex(of: frameAndGrommets) {
+//            frameAndGrommetsPicker.selectRow(index, inComponent: 0, animated: false)
+//        }
+        frameAndGrommetsValueLabel.text = settings.frameAndGrommets.rawValue
         // String pattern.
         let stringPattern = settings.stringPattern.rawValue
         if let index = stringPatternPickerMediator.values.firstIndex(of: stringPattern) {
@@ -155,11 +146,11 @@ class SettingsTableViewController: UITableViewController {
         }
         stringDiameterValueLabel.text = "\(settings.formattedStringDiameter) mm"
         // String type
-        let stringType = settings.stringType.rawValue
-        if let index = stringTypePickerMediator.stringTypes.firstIndex(of: stringType) {
-            stringTypePicker.selectRow(index, inComponent: 0, animated: false)
-        }
-        stringTypeValueLabel.text = stringType
+//        let stringType = settings.stringType.rawValue
+//        if let index = stringTypePickerMediator.stringTypes.firstIndex(of: stringType) {
+//            stringTypePicker.selectRow(index, inComponent: 0, animated: false)
+//        }
+        stringTypeValueLabel.text = settings.stringType.rawValue
         // Cross string diameter
         let crossStringDiameter = settings.crossStringDiameter
         if let index = crossStringDiameterPickerMediator.stringDiameters.firstIndex(of: crossStringDiameter) {
@@ -167,11 +158,11 @@ class SettingsTableViewController: UITableViewController {
         }
         crossStringDiameterValueLabel.text = "\(settings.formattedCrossStringDiameter) mm"
         // Cross string type
-        let crossStringType = settings.crossStringType.rawValue
-        if let index = crossStringTypePickerMediator.stringTypes.firstIndex(of: crossStringType) {
-            crossStringTypePicker.selectRow(index, inComponent: 0, animated: false)
-        }
-        crossStringTypeValueLabel.text = crossStringType
+//        let crossStringType = settings.crossStringType.rawValue
+//        if let index = crossStringTypePickerMediator.stringTypes.firstIndex(of: crossStringType) {
+//            crossStringTypePicker.selectRow(index, inComponent: 0, animated: false)
+//        }
+        crossStringTypeValueLabel.text = settings.crossStringType.rawValue
         // Tension unit
         let tensionUnit = settings.tensionUnit.rawValue
         if let index = tensionUnitsPickerMediator.tensionUnits.firstIndex(of: tensionUnit) {
@@ -184,7 +175,7 @@ class SettingsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if Settings.shared.hybridStringing == false {
             switch indexPath {
-            case [1, 7], [1, 8], [1, 9], [1, 10]:
+            case [1, 6], [1, 7], [1, 8]:
                 return 0
             default:
                 break
@@ -197,20 +188,14 @@ class SettingsTableViewController: UITableViewController {
             return expandedPickerCell == headSizePickerCell ? expandedHeight : 0
         case [0, 3]:
             return expandedPickerCell == tensionUnitsPickerCell ? expandedHeight : 0
-        case [0, 5]:
-            return expandedPickerCell == frameAndGrommetsPickerCell ? expandedHeight : 0
-        case [0, 7]:
+        case [0, 6]:
             return expandedPickerCell == stringPatternPickerCell ? expandedHeight : 0
         case [1, 1]:
             return expandedPickerCell == stringerStylePickerCell ? expandedHeight : 0
         case [1, 4]:
             return expandedPickerCell == stringDiameterPickerCell ? expandedHeight : 0
-        case [1, 6]:
-            return expandedPickerCell == stringTypePickerCell ? expandedHeight : 0
-        case [1, 8]:
+        case [1, 7]:
             return expandedPickerCell == crossStringDiameterPickerCell ? expandedHeight : 0
-        case [1, 10]:
-            return expandedPickerCell == crossStringTypePickerCell ? expandedHeight : 0
         default:
             return normalHeight
         }
@@ -227,16 +212,10 @@ class SettingsTableViewController: UITableViewController {
                 correspondingPickerCell = headSizePickerCell
             case stringDiameterCell:
                 correspondingPickerCell = stringDiameterPickerCell
-            case stringTypeCell:
-                correspondingPickerCell = stringTypePickerCell
             case crossStringDiameterCell:
                 correspondingPickerCell = crossStringDiameterPickerCell
-            case crossStringTypeCell:
-                correspondingPickerCell = crossStringTypePickerCell
             case tensionUnitsCell:
                 correspondingPickerCell = tensionUnitsPickerCell
-            case frameAndGrommetsCell:
-                correspondingPickerCell = frameAndGrommetsPickerCell
             case stringPatternCell:
                 correspondingPickerCell = stringPatternPickerCell
             case stringerStyleCell:
@@ -291,8 +270,7 @@ private extension SettingsTableViewController {
         } else {
             stringDiameterLabel.text = "Thickness"
             stringTypeLabel.text = "Type"
-            if expandedPickerCell == crossStringDiameterPickerCell ||
-                expandedPickerCell == crossStringTypePickerCell {
+            if expandedPickerCell == crossStringDiameterPickerCell {
                 expandedPickerCell = nil
             }
         }
@@ -406,15 +384,15 @@ extension SettingsTableViewController: PickerMediatorDelegate {
             }
             // Display it.
             stringDiameterValueLabel.text = "\(selectedValue) mm"
-        } else if picker == stringTypePicker {
-            // String type picker.
-            if let stringType = StringType(rawValue: selectedValue) {
-                Settings.shared.stringType = stringType
-            } else {
-                assertionFailure("Cannot convert string to StringType: \(selectedValue)")
-            }
-            // Display it.
-            stringTypeValueLabel.text = selectedValue
+//        } else if picker == stringTypePicker {
+//            // String type picker.
+//            if let stringType = StringType(rawValue: selectedValue) {
+//                Settings.shared.stringType = stringType
+//            } else {
+//                assertionFailure("Cannot convert string to StringType: \(selectedValue)")
+//            }
+//            // Display it.
+//            stringTypeValueLabel.text = selectedValue
         } else if picker == crossStringDiameterPicker {
             // Cross string diameter picker.
             if let stringDiameter = Double(selectedValue) {
@@ -424,15 +402,15 @@ extension SettingsTableViewController: PickerMediatorDelegate {
             }
             // Display it.
             crossStringDiameterValueLabel.text = "\(selectedValue) mm"
-        } else if picker == crossStringTypePicker {
-            // Cross string type picker.
-            if let stringType = StringType(rawValue: selectedValue) {
-                Settings.shared.crossStringType = stringType
-            } else {
-                assertionFailure("Cannot convert string to StringType: \(selectedValue)")
-            }
-            // Display it.
-            crossStringTypeValueLabel.text = selectedValue
+//        } else if picker == crossStringTypePicker {
+//            // Cross string type picker.
+//            if let stringType = StringType(rawValue: selectedValue) {
+//                Settings.shared.crossStringType = stringType
+//            } else {
+//                assertionFailure("Cannot convert string to StringType: \(selectedValue)")
+//            }
+//            // Display it.
+//            crossStringTypeValueLabel.text = selectedValue
         } else if picker == tensionUnitsPicker {
             // Tension units picker.
             if let tensionUnit = TensionUnit(rawValue: selectedValue) {
@@ -442,15 +420,15 @@ extension SettingsTableViewController: PickerMediatorDelegate {
             }
             // Display it.
             tensionUnitsValueLabel.text = selectedValue
-        } else if picker == frameAndGrommetsPicker {
-            // Frame and Grommets picker.
-            if let frameAndGrommets = FrameAndGrommets(rawValue: selectedValue) {
-                Settings.shared.frameAndGrommets = frameAndGrommets
-            } else {
-                assertionFailure("Cannot convert string to FrameAndGrommets: \(selectedValue)")
-            }
-            // Display it.
-            frameAndGrommetsValueLabel.text = selectedValue
+//        } else if picker == frameAndGrommetsPicker {
+//            // Frame and Grommets picker.
+//            if let frameAndGrommets = FrameAndGrommets(rawValue: selectedValue) {
+//                Settings.shared.frameAndGrommets = frameAndGrommets
+//            } else {
+//                assertionFailure("Cannot convert string to FrameAndGrommets: \(selectedValue)")
+//            }
+//            // Display it.
+//            frameAndGrommetsValueLabel.text = selectedValue
         } else if picker == stringPatternPicker {
             // String pattern picker.
             if let stringPattern = StringPattern(rawValue: selectedValue) {
