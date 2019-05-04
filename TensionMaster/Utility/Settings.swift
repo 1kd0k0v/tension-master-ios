@@ -22,14 +22,16 @@ enum StringType: String {
     case synthetic = "Avarage synthetic"
     case lightSynthetic = "Light synthetic"
     case naturalGut = "Natural Gut"
-    static var allRepresentations: [String] {
-        return [heavyPolyester.rawValue,
-                polyester.rawValue,
-                lightPolyester.rawValue,
-                heavySynthetic.rawValue,
-                synthetic.rawValue,
-                lightSynthetic.rawValue,
-                naturalGut.rawValue]
+    var details: String? {
+        switch self {
+        case .heavyPolyester: return "less stretchable, higher density"
+        case .polyester: return nil
+        case .lightPolyester: return "more stretchable, lower density"
+        case .heavySynthetic: return "less stretchable, higher density"
+        case .synthetic: return nil
+        case .lightSynthetic: return "more stretchable, lower density"
+        case .naturalGut: return nil
+        }
     }
     var coefficient: Double {
         switch self {
@@ -41,6 +43,29 @@ enum StringType: String {
         case .lightSynthetic: return 1.08
         case .naturalGut: return 1.28
         }
+    }
+    static func allOptions(selected: StringType) -> [OptionsRow] {
+        return [OptionsRow(text: heavyPolyester.rawValue,
+                           additionalText: heavyPolyester.details,
+                           selected: selected == heavyPolyester ? true : false),
+                OptionsRow(text: polyester.rawValue,
+                           additionalText: polyester.details,
+                           selected: selected == polyester ? true : false),
+                OptionsRow(text: lightPolyester.rawValue,
+                           additionalText: lightPolyester.details,
+                           selected: selected == lightPolyester ? true : false),
+                OptionsRow(text: heavySynthetic.rawValue,
+                           additionalText: heavySynthetic.details,
+                           selected: selected == heavySynthetic ? true : false),
+                OptionsRow(text: synthetic.rawValue,
+                           additionalText: synthetic.details,
+                           selected: selected == synthetic ? true : false),
+                OptionsRow(text: lightSynthetic.rawValue,
+                           additionalText: lightSynthetic.details,
+                           selected: selected == lightSynthetic ? true : false),
+                OptionsRow(text: naturalGut.rawValue,
+                           additionalText: naturalGut.details,
+                           selected: selected == naturalGut ? true : false)]
     }
 }
 
@@ -60,57 +85,81 @@ enum TensionUnit: String {
     }
 }
 
-enum FrameAndGrommets: String {
-    case increasingTension = "increased"
-    case none = "not influenced"
-    case decreasingTension = "decreased"
-    static var allRepresentations: [String] {
-        return [decreasingTension.rawValue,
-                none.rawValue,
-                increasingTension.rawValue]
+enum OpeningSize: String {
+    case XS = "XS"
+    case S = "S"
+    case M = "M"
+    case L = "L"
+    case XL = "XL"
+    var details: String {
+        switch self {
+        case .XS: return "88 mm2 or less"
+        case .S: return "89-104 mm2"
+        case .M: return "105-120 mm2"
+        case .L: return "121-136 mm2"
+        case .XL: return "137 mm2 or more"
+        }
     }
     var coefficient: Double {
         switch self {
-        case .increasingTension: return 1.02
-        case .none: return 1
-        case .decreasingTension: return 0.98
+        case .XS: return 1.03
+        case .S: return 1.015
+        case .M: return 1
+        case .L: return 0.985
+        case .XL: return 0.97
         }
+    }
+    static func allOptions(selected: OpeningSize) -> [OptionsRow] {
+        return [OptionsRow(text: XS.rawValue, additionalText: XS.details, selected: selected == XS ? true : false),
+                OptionsRow(text: S.rawValue, additionalText: S.details, selected: selected == S ? true : false),
+                OptionsRow(text: M.rawValue, additionalText: M.details, selected: selected == M ? true : false),
+                OptionsRow(text: L.rawValue, additionalText: L.details, selected: selected == L ? true : false),
+                OptionsRow(text: XL.rawValue, additionalText: XL.details, selected: selected == XL ? true : false)]
     }
 }
 
 enum StringPattern: String {
+    case extremelyOpen = "very open"
     case x14x16 = "14x16"
     case x16x16 = "16x16"
     case x16x17 = "16x17"
     case x16x18 = "16x18"
     case x16x19 = "16x19"
+    case x16x20 = "16x20"
     case x18x17 = "18x17"
     case x18x18 = "18x18"
     case x18x19 = "18x19"
     case x18x20 = "18x20"
+    case x18x21 = "18x21"
+    var coefficient: Double {
+        switch self {
+        case .extremelyOpen: return 0.985
+        case .x14x16: return 0.990
+        case .x16x16: return 0.995
+        case .x16x17: return 0.997
+        case .x16x18: return 0.998
+        case .x16x19: return 1
+        case .x16x20: return 1.005
+        case .x18x17: return 1.005
+        case .x18x18: return 1.008
+        case .x18x19: return 1.010
+        case .x18x20: return 1.013
+        case .x18x21: return 1.015
+        }
+    }
     static var allRepresentations: [String] {
-        return [x14x16.rawValue,
+        return [extremelyOpen.rawValue,
+                x14x16.rawValue,
                 x16x16.rawValue,
                 x16x17.rawValue,
                 x16x18.rawValue,
                 x16x19.rawValue,
+                x16x20.rawValue,
                 x18x17.rawValue,
                 x18x18.rawValue,
                 x18x19.rawValue,
-                x18x20.rawValue]
-    }
-    var coefficient: Double {
-        switch self {
-        case .x14x16: return 1.012
-        case .x16x16: return 1.009
-        case .x16x17: return 1.006
-        case .x16x18: return 1.003
-        case .x16x19: return 1
-        case .x18x17: return 1.003
-        case .x18x18: return 0.999
-        case .x18x19: return 0.995
-        case .x18x20: return 0.990
-        }
+                x18x20.rawValue,
+                x18x21.rawValue]
     }
 }
 
@@ -149,7 +198,7 @@ private struct SettingsHolder {
     var crossStringType: StringType = .polyester
     var tensionUnit: TensionUnit = .kg
     var tensionAdjustment: Double = 0.0
-    var frameAndGrommets: FrameAndGrommets = .none
+    var openingSize: OpeningSize = .M
     var stringPattern: StringPattern = .x16x19
     var stringerStyle: StringerStyle = .normal
 }
@@ -161,7 +210,7 @@ private struct Keys {
     static let hybridStringing = "hybridStringingKey"
     static let stringDiameter = "stringDiameterKey"
     static let stringType = "stringTypeKey"
-    static let frameAndGrommets = "frameAndGrommetsKey"
+    static let openingSize = "openingSizeKey"
     static let stringPattern = "stringPatternKey"
     static let stringerStyle = "stringerStyleKey"
     static let crossStringDiameter = "crossStringDiameterKey"
@@ -246,13 +295,13 @@ class Settings {
             UserDefaults.standard.set(newValue.rawValue, forKey: Keys.stringType)
         }
     }
-    var frameAndGrommets: FrameAndGrommets {
+    var openingSize: OpeningSize {
         get {
-            return settingsHolder.frameAndGrommets
+            return settingsHolder.openingSize
         }
         set {
-            settingsHolder.frameAndGrommets = newValue
-            UserDefaults.standard.set(newValue.rawValue, forKey: Keys.frameAndGrommets)
+            settingsHolder.openingSize = newValue
+            UserDefaults.standard.set(newValue.rawValue, forKey: Keys.openingSize)
         }
     }
     var stringPattern: StringPattern {
@@ -347,9 +396,9 @@ class Settings {
         if let value = defaults.string(forKey: Keys.stringType), let stringType = StringType(rawValue: value) {
             settingsHolder.stringType = stringType
         }
-        // Frame and Grommets.
-        if let value = defaults.string(forKey: Keys.frameAndGrommets), let frameAndGrommets = FrameAndGrommets(rawValue: value) {
-            settingsHolder.frameAndGrommets = frameAndGrommets
+        // String opoening size.
+        if let value = defaults.string(forKey: Keys.openingSize), let openingSize = OpeningSize(rawValue: value) {
+            settingsHolder.openingSize = openingSize
         }
         // String pattern.
         if let value = defaults.string(forKey: Keys.stringPattern), let stringPattern = StringPattern(rawValue: value) {

@@ -218,16 +218,16 @@
                                         <rect key="frame" x="150" y="84" width="225" height="84"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yeO-BT-PgC" customClass="UIGradientView" customModule="TensionMaster" customModuleProvider="target">
-                                                <rect key="frame" x="45.5" y="5" width="134" height="74.5"/>
+                                                <rect key="frame" x="55" y="5" width="115.5" height="74.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="none" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAZ-16-8VA">
-                                                        <rect key="frame" x="16" y="12" width="102" height="26.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="M" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAZ-16-8VA">
+                                                        <rect key="frame" x="16" y="12" width="83.5" height="26.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Frame Influence" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zqZ-d6-kGH">
-                                                        <rect key="frame" x="16" y="46.5" width="102" height="16"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Opening Size" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zqZ-d6-kGH">
+                                                        <rect key="frame" x="16" y="46.5" width="83.5" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                                         <color key="textColor" red="0.23627670140000001" green="0.76158358100000001" blue="0.32479299690000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -505,14 +505,14 @@
                         <outlet property="crossStringTypeLabel" destination="EF6-ZD-pol" id="9WT-ac-M1G"/>
                         <outlet property="crossStringTypeValueLabel" destination="ZUb-N5-TpY" id="4Nl-La-AK8"/>
                         <outlet property="extendedInfoContainerHeightConstraint" destination="4GA-n7-VTg" id="YPm-FC-ceh"/>
-                        <outlet property="frameAndGrommetsContainer" destination="yeO-BT-PgC" id="eYR-1j-i9F"/>
-                        <outlet property="frameAndGrommetsLabel" destination="zqZ-d6-kGH" id="eD9-qs-CWe"/>
-                        <outlet property="frameAndGrommetsValueLabel" destination="oAZ-16-8VA" id="uTB-rP-L2B"/>
                         <outlet property="headSizeContainer" destination="BjA-yC-UK1" id="Emd-CW-Eap"/>
                         <outlet property="headSizeLabel" destination="BHx-x7-J1C" id="RSy-CB-6ap"/>
                         <outlet property="headSizeValueLabel" destination="Gfo-2k-5Az" id="Pgq-v6-nw5"/>
                         <outlet property="measureAdjustmentLabel" destination="fdE-Xo-lJh" id="7Ai-1f-pUV"/>
                         <outlet property="measureModeLabel" destination="fyV-7K-aLf" id="wfH-Zt-blm"/>
+                        <outlet property="openingSizeContainer" destination="yeO-BT-PgC" id="eYR-1j-i9F"/>
+                        <outlet property="openingSizeLabel" destination="zqZ-d6-kGH" id="eD9-qs-CWe"/>
+                        <outlet property="openingSizeValueLabel" destination="oAZ-16-8VA" id="uTB-rP-L2B"/>
                         <outlet property="plotView" destination="e8B-o8-Vp0" id="Khh-SW-Jwe"/>
                         <outlet property="stringDiameterContainer" destination="pJC-S7-JAx" id="nxh-13-BMp"/>
                         <outlet property="stringDiameterLabel" destination="AB4-nN-X7Q" id="FA5-S9-0TQ"/>
@@ -696,7 +696,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="r6d-So-kcd" kind="show" id="ZjF-Di-0sO"/>
+                                            <segue destination="r6d-So-kcd" kind="show" identifier="StringOpeningSizePicking" id="ZjF-Di-0sO"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="MxE-Xo-7ui" customClass="DarkTableViewCell" customModule="TensionMaster" customModuleProvider="target">
@@ -918,7 +918,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="r6d-So-kcd" kind="show" id="DQR-Vi-Ltx"/>
+                                            <segue destination="r6d-So-kcd" kind="show" identifier="TypePicking" id="DQR-Vi-Ltx"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="qmr-tW-Xhk" customClass="DarkTableViewCell" customModule="TensionMaster" customModuleProvider="target">
@@ -1002,7 +1002,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="r6d-So-kcd" kind="show" id="7TQ-dh-9h3"/>
+                                            <segue destination="r6d-So-kcd" kind="show" identifier="CrossTypePicking" id="7TQ-dh-9h3"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -1179,8 +1179,6 @@
                         <outlet property="crossStringDiameterValueLabel" destination="v2x-aF-u3t" id="DVD-aF-l3t"/>
                         <outlet property="crossStringTypeCell" destination="FIl-Ky-2sf" id="oj4-DF-24m"/>
                         <outlet property="crossStringTypeValueLabel" destination="Kbv-pv-y3n" id="Ua9-EM-xJN"/>
-                        <outlet property="frameAndGrommetsCell" destination="Xrq-KV-Myf" id="KHa-cb-8Mo"/>
-                        <outlet property="frameAndGrommetsValueLabel" destination="SXy-8S-Jw8" id="5va-hP-b3R"/>
                         <outlet property="headSizeCell" destination="5dL-3q-s4c" id="rNe-W1-W8k"/>
                         <outlet property="headSizePicker" destination="9OZ-MU-006" id="HTB-uX-AsF"/>
                         <outlet property="headSizePickerCell" destination="3QV-ef-adG" id="wE1-g2-YuZ"/>
@@ -1189,6 +1187,8 @@
                         <outlet property="hybridStringingCell" destination="XBM-Uy-Sdo" id="9Ps-4b-fV6"/>
                         <outlet property="hybridStringingSwitch" destination="8xI-SI-Sbq" id="EK8-zE-zxL"/>
                         <outlet property="modeLabel" destination="dpm-m4-YM5" id="ia6-MG-2GT"/>
+                        <outlet property="openingSizeCell" destination="Xrq-KV-Myf" id="KHa-cb-8Mo"/>
+                        <outlet property="openingSizeValueLabel" destination="SXy-8S-Jw8" id="5va-hP-b3R"/>
                         <outlet property="stringDiameterCell" destination="5L8-h5-v7F" id="Zbi-u9-uXc"/>
                         <outlet property="stringDiameterLabel" destination="dPU-rf-IVG" id="J8k-5U-EVO"/>
                         <outlet property="stringDiameterPicker" destination="Vdh-MB-SaN" id="4LE-b7-aeX"/>
@@ -1450,22 +1450,66 @@
             </objects>
             <point key="canvasLocation" x="2241" y="-192"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Options Picker Table View Controller-->
         <scene sceneID="jKw-yf-Aa7">
             <objects>
-                <tableViewController id="r6d-So-kcd" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tjg-O3-Kyo">
+                <tableViewController id="r6d-So-kcd" customClass="OptionsPickerTableViewController" customModule="TensionMaster" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="tjg-O3-Kyo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="7zA-YQ-i1U">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="SimpleOption" textLabel="yo5-AH-dfn" style="IBUITableViewCellStyleDefault" id="7zA-YQ-i1U" customClass="DarkTableViewCell" customModule="TensionMaster" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7zA-YQ-i1U" id="KeD-X1-p4V">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="335" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Option" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yo5-AH-dfn" customClass="MainCellLabel" customModule="TensionMaster" customModuleProvider="target">
+                                            <rect key="frame" x="16" y="0.0" width="319" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="DetailedOption" rowHeight="72" id="gzn-Bz-LVM" customClass="DetailedOptionTableViewCell" customModule="TensionMaster" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="99.5" width="375" height="72"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gzn-Bz-LVM" id="WaR-4a-zpp">
+                                    <rect key="frame" x="0.0" y="0.0" width="335" height="71.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Option" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S40-U0-ws9" customClass="MainCellLabel" customModule="TensionMaster" customModuleProvider="target">
+                                            <rect key="frame" x="16" y="11" width="311" height="21.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Details" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S71-eU-lcO" customClass="SecondaryCellLabel" customModule="TensionMaster" customModuleProvider="target">
+                                            <rect key="frame" x="16" y="40.5" width="311" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="S40-U0-ws9" firstAttribute="leading" secondItem="WaR-4a-zpp" secondAttribute="leadingMargin" id="0bN-JQ-b1f"/>
+                                        <constraint firstItem="S71-eU-lcO" firstAttribute="leading" secondItem="WaR-4a-zpp" secondAttribute="leadingMargin" id="4VK-zZ-fna"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="S71-eU-lcO" secondAttribute="trailing" id="7jq-eH-P00"/>
+                                        <constraint firstItem="S71-eU-lcO" firstAttribute="top" secondItem="S40-U0-ws9" secondAttribute="bottom" constant="8" id="C91-Z7-aKG"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="S40-U0-ws9" secondAttribute="trailing" id="Cku-S9-yK3"/>
+                                        <constraint firstItem="S40-U0-ws9" firstAttribute="top" secondItem="WaR-4a-zpp" secondAttribute="topMargin" id="kjR-LU-uyy"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="S71-eU-lcO" secondAttribute="bottom" id="oiV-eZ-3zj"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="detailedLabel" destination="S71-eU-lcO" id="ZBn-Nt-ije"/>
+                                    <outlet property="optionLabel" destination="S40-U0-ws9" id="5Gz-xz-QVB"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -1476,7 +1520,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="erq-2R-tpY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2241" y="494"/>
+            <point key="canvasLocation" x="2240.8000000000002" y="493.40329835082463"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Jgq-v7-AGl">
@@ -1504,6 +1548,6 @@
         <image name="wave-filled-28" width="28" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="DQR-Vi-Ltx"/>
+        <segue reference="ZjF-Di-0sO"/>
     </inferredMetricsTieBreakers>
 </document>

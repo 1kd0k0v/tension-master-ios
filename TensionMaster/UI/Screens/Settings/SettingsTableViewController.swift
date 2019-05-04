@@ -26,8 +26,8 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet var tensionUnitsPicker: UIPickerView!
     @IBOutlet var tensionUnitsPickerMediator: TensionUnitPickerMediator!
     
-    @IBOutlet var frameAndGrommetsCell: UITableViewCell!
-    @IBOutlet var frameAndGrommetsValueLabel: UILabel!
+    @IBOutlet var openingSizeCell: UITableViewCell!
+    @IBOutlet var openingSizeValueLabel: UILabel!
     
     @IBOutlet var stringPatternCell: UITableViewCell!
     @IBOutlet var stringPatternValueLabel: UILabel!
@@ -69,6 +69,10 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet var versionLabel: UILabel!
     
     var expandedPickerCell: UITableViewCell?
+    // Keep track of options picker table view controllers.
+    weak var stringOpeningSizePickerTable: OptionsPickerTableViewController?
+    weak var stringTypePickerTable: OptionsPickerTableViewController?
+    weak var crossStringTypePickerTable: OptionsPickerTableViewController?
     
     lazy var versionString: String = {
         var fullVersion = ""
@@ -96,6 +100,44 @@ class SettingsTableViewController: UITableViewController {
         modeLabel.text = "\(Settings.shared.measureMode.rawValue)"
     }
     
+    // MARK: - Segue Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let optionsPicker = segue.destination as? OptionsPickerTableViewController {
+            let settings = Settings.shared
+            var title: String?
+            let options: [OptionsSection]
+            switch segue.identifier {
+            case "StringOpeningSizePicking":
+                title = "Opening Size"
+                stringOpeningSizePickerTable = optionsPicker
+                let footer = """
+                       Choose the average area size S of one string opening in the center of the stringbed (measured in square millimetres):
+                       S=a×b  (a,b  are the distances between 2 main and 2 cross neighbouring strings respectively in millimetres).
+                    """
+                options = [OptionsSection(headerText: nil,
+                                          footerText: footer,
+                                          rows: OpeningSize.allOptions(selected: settings.openingSize))]
+            case "TypePicking":
+                title = "String Type"
+                stringTypePickerTable = optionsPicker
+                options = [OptionsSection(headerText: nil,
+                                          footerText: nil,
+                                          rows: StringType.allOptions(selected: settings.stringType))]
+            case "CrossTypePicking":
+                title = "Cross String Type"
+                crossStringTypePickerTable = optionsPicker
+                options = [OptionsSection(headerText: nil,
+                                          footerText: nil,
+                                          rows: StringType.allOptions(selected: settings.crossStringType))]
+            default:
+                options = []
+            }
+            optionsPicker.title = title
+            optionsPicker.options = options
+            optionsPicker.delegate = self
+        }
+    }
+    
     // MARK: - Private Methods
     private func reloadSettings() {
         let settings = Settings.shared
@@ -112,12 +154,8 @@ class SettingsTableViewController: UITableViewController {
             headSizePicker.selectRow(index, inComponent: 0, animated: false)
         }
         headSizeValueLabel.text = "\(Int(headSize)) \(headSizeUnit)"
-        // Frame and Grommets.
-//        let frameAndGrommets = settings.frameAndGrommets.rawValue
-//        if let index = frameAndGrommetsPickerMediator.values.firstIndex(of: frameAndGrommets) {
-//            frameAndGrommetsPicker.selectRow(index, inComponent: 0, animated: false)
-//        }
-        frameAndGrommetsValueLabel.text = settings.frameAndGrommets.rawValue
+        // Opening size.
+        openingSizeValueLabel.text = settings.openingSize.rawValue
         // String pattern.
         let stringPattern = settings.stringPattern.rawValue
         if let index = stringPatternPickerMediator.values.firstIndex(of: stringPattern) {
@@ -146,10 +184,6 @@ class SettingsTableViewController: UITableViewController {
         }
         stringDiameterValueLabel.text = "\(settings.formattedStringDiameter) mm"
         // String type
-//        let stringType = settings.stringType.rawValue
-//        if let index = stringTypePickerMediator.stringTypes.firstIndex(of: stringType) {
-//            stringTypePicker.selectRow(index, inComponent: 0, animated: false)
-//        }
         stringTypeValueLabel.text = settings.stringType.rawValue
         // Cross string diameter
         let crossStringDiameter = settings.crossStringDiameter
@@ -158,10 +192,6 @@ class SettingsTableViewController: UITableViewController {
         }
         crossStringDiameterValueLabel.text = "\(settings.formattedCrossStringDiameter) mm"
         // Cross string type
-//        let crossStringType = settings.crossStringType.rawValue
-//        if let index = crossStringTypePickerMediator.stringTypes.firstIndex(of: crossStringType) {
-//            crossStringTypePicker.selectRow(index, inComponent: 0, animated: false)
-//        }
         crossStringTypeValueLabel.text = settings.crossStringType.rawValue
         // Tension unit
         let tensionUnit = settings.tensionUnit.rawValue
@@ -384,15 +414,6 @@ extension SettingsTableViewController: PickerMediatorDelegate {
             }
             // Display it.
             stringDiameterValueLabel.text = "\(selectedValue) mm"
-//        } else if picker == stringTypePicker {
-//            // String type picker.
-//            if let stringType = StringType(rawValue: selectedValue) {
-//                Settings.shared.stringType = stringType
-//            } else {
-//                assertionFailure("Cannot convert string to StringType: \(selectedValue)")
-//            }
-//            // Display it.
-//            stringTypeValueLabel.text = selectedValue
         } else if picker == crossStringDiameterPicker {
             // Cross string diameter picker.
             if let stringDiameter = Double(selectedValue) {
@@ -402,15 +423,6 @@ extension SettingsTableViewController: PickerMediatorDelegate {
             }
             // Display it.
             crossStringDiameterValueLabel.text = "\(selectedValue) mm"
-//        } else if picker == crossStringTypePicker {
-//            // Cross string type picker.
-//            if let stringType = StringType(rawValue: selectedValue) {
-//                Settings.shared.crossStringType = stringType
-//            } else {
-//                assertionFailure("Cannot convert string to StringType: \(selectedValue)")
-//            }
-//            // Display it.
-//            crossStringTypeValueLabel.text = selectedValue
         } else if picker == tensionUnitsPicker {
             // Tension units picker.
             if let tensionUnit = TensionUnit(rawValue: selectedValue) {
@@ -420,15 +432,6 @@ extension SettingsTableViewController: PickerMediatorDelegate {
             }
             // Display it.
             tensionUnitsValueLabel.text = selectedValue
-//        } else if picker == frameAndGrommetsPicker {
-//            // Frame and Grommets picker.
-//            if let frameAndGrommets = FrameAndGrommets(rawValue: selectedValue) {
-//                Settings.shared.frameAndGrommets = frameAndGrommets
-//            } else {
-//                assertionFailure("Cannot convert string to FrameAndGrommets: \(selectedValue)")
-//            }
-//            // Display it.
-//            frameAndGrommetsValueLabel.text = selectedValue
         } else if picker == stringPatternPicker {
             // String pattern picker.
             if let stringPattern = StringPattern(rawValue: selectedValue) {
@@ -452,3 +455,37 @@ extension SettingsTableViewController: PickerMediatorDelegate {
     
 }
 
+// MARK: - OptionsPickerTableViewControllerDelegate
+extension SettingsTableViewController: OptionsPickerTableViewControllerDelegate {
+    
+    func optionsPicker(_ picker: OptionsPickerTableViewController, didSelectOptionAt indexPath: IndexPath) {
+        let settings = Settings.shared
+        let value = picker.options[indexPath].text
+        if picker == stringOpeningSizePickerTable {
+            if let openingSize = OpeningSize(rawValue: value) {
+                settings.openingSize = openingSize
+            } else {
+                assertionFailure("Cannot convert string to OpeningSize: \(value)")
+            }
+            // Display it.
+            openingSizeValueLabel.text = value
+        } else if picker == stringTypePickerTable {
+            if let stringType = StringType(rawValue: value) {
+                settings.stringType = stringType
+            } else {
+                assertionFailure("Cannot convert string to StringType: \(value)")
+            }
+            // Display it.
+            stringTypeValueLabel.text = value
+        } else if picker == crossStringTypePickerTable {
+            if let stringType = StringType(rawValue: value) {
+                settings.crossStringType = stringType
+            } else {
+                assertionFailure("Cannot convert string to StringType: \(value)")
+            }
+            // Display it.
+            crossStringTypeValueLabel.text = value
+        }
+    }
+    
+}

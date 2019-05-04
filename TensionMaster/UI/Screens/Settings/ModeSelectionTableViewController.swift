@@ -73,10 +73,10 @@ class ModeSelectionTableViewController: UITableViewController {
         } else {
             return """
             Calibration:
-             1. Take a racquet with known string tension.
-             2. Enter this racquet and its string parameters in the settings.
-             3. Tap the string close to the microphone.
-             4. After the Factory measurement is done push the Calibrate button and enter the known tension.
+               1. Take a racquet with known string tension.
+               2. Enter this racquet and its string parameters in the settings.
+               3. Tap the string close to the microphone.
+               4. After the Factory measurement is done push the Calibrate button and enter the known tension.
             """
         }
     }
@@ -189,7 +189,7 @@ extension ModeSelectionTableViewController: AdjustTableViewCellDelegate {
         let message = "\nFactory measurement is \(tensionString)."
         let alert = UIAlertController(title: "Calibration", message: message, preferredStyle: .alert)
         alert.addTextField { textField in
-            textField.placeholder = "Enter Personal measurement"
+            textField.placeholder = "Enter measurement"
             textField.keyboardType = .decimalPad
         }
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in

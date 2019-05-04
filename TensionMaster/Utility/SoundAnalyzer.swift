@@ -19,7 +19,7 @@ struct SoundAnalyzerSample {
         let settings = Settings.shared
         let d1 = settings.stringDiameter
         let c1 = settings.stringType.coefficient
-        let frame = settings.frameAndGrommets.coefficient
+        let openingSize = settings.openingSize.coefficient
         let style = settings.stringerStyle.coefficient
         let patt = settings.stringPattern.coefficient
         var p = d1 * d1 * c1
@@ -33,7 +33,7 @@ struct SoundAnalyzerSample {
             s = s / 6.4516
         }
         
-        let tensionInKg = 3.5e-7 * p * s * frequency * frequency * frame * style * patt
+        let tensionInKg = 3.5e-7 * p * s * frequency * frequency * openingSize * style * patt
         if settings.tensionUnit == .kg {
             return tensionInKg
         } else {

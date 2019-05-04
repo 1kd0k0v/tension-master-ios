@@ -26,9 +26,9 @@ class MeasureViewController: UIViewController {
     @IBOutlet private var stringPatternContainer: UIGradientView!
     @IBOutlet private var stringPatternLabel: UILabel!
     @IBOutlet private var stringPatternValueLabel: UILabel!
-    @IBOutlet private var frameAndGrommetsContainer: UIGradientView!
-    @IBOutlet private var frameAndGrommetsLabel: UILabel!
-    @IBOutlet private var frameAndGrommetsValueLabel: UILabel!
+    @IBOutlet private var openingSizeContainer: UIGradientView!
+    @IBOutlet private var openingSizeLabel: UILabel!
+    @IBOutlet private var openingSizeValueLabel: UILabel!
     @IBOutlet private var stringDiameterContainer: UIGradientView!
     @IBOutlet private var stringDiameterLabel: UILabel!
     @IBOutlet private var stringDiameterValueLabel: UILabel!
@@ -111,7 +111,7 @@ class MeasureViewController: UIViewController {
         headSizeLabel.textColor = UIColor.accent
         stringerStyleLabel.textColor = UIColor.accent
         stringPatternLabel.textColor = UIColor.accent
-        frameAndGrommetsLabel.textColor = UIColor.accent
+        openingSizeLabel.textColor = UIColor.accent
         stringDiameterLabel.textColor = UIColor.accent
         stringTypeLabel.textColor = UIColor.accent
         crossStringDiameterLabel.textColor = UIColor.accent
@@ -130,7 +130,7 @@ class MeasureViewController: UIViewController {
         modifyContainerLayer(headSizeContainer.layer)
         modifyContainerLayer(stringerStyleContainer.layer)
         modifyContainerLayer(stringPatternContainer.layer)
-        modifyContainerLayer(frameAndGrommetsContainer.layer)
+        modifyContainerLayer(openingSizeContainer.layer)
         modifyContainerLayer(stringDiameterContainer.layer)
         modifyContainerLayer(stringTypeContainer.layer)
         modifyContainerLayer(crossStringDiameterContainer.layer)
@@ -181,7 +181,7 @@ class MeasureViewController: UIViewController {
         tensionUnitLabel.text = settings.tensionUnit.rawValue
         stringerStyleValueLabel.text = settings.stringerStyle.rawValue
         stringPatternValueLabel.text = settings.stringPattern.rawValue
-        frameAndGrommetsValueLabel.text = settings.frameAndGrommets.rawValue
+        openingSizeValueLabel.text = settings.openingSize.rawValue
         headSizeValueLabel.text = "\(Int(settings.headSize)) \(settings.headSizeUnit.rawValue)"
         stringDiameterValueLabel.text = "\(settings.formattedStringDiameter) mm"
         stringTypeValueLabel.text = settings.stringType.rawValue
