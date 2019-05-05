@@ -145,7 +145,7 @@ class MeasureViewController: UIViewController {
                                                         showCancelButton: false,
                                                         origin: self.view)
         case stringerStyleContainer:
-            actionSheetPicker = ActionSheetCustomPicker(title: "Stringer's Style",
+            actionSheetPicker = ActionSheetCustomPicker(title: "Stringing Type",
                                                         delegate: stringerStylePickerMediator,
                                                         showCancelButton: false,
                                                         origin: self.view)

@@ -165,9 +165,9 @@ enum StringPattern: String {
 
 enum StringerStyle: String {
     case veryTight = "very tight"
-    case tighter = "tighter"
+    case tighter = "tight"
     case normal = "normal"
-    case looser = "looser"
+    case looser = "loose"
     case veryLoose = "very loose"
     static var allRepresentations: [String] {
         return [veryTight.rawValue,
