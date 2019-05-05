@@ -89,8 +89,6 @@ class SettingsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         versionLabel.text = versionString
-        // Load settings data.
-        reloadSettings()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -98,6 +96,8 @@ class SettingsTableViewController: UITableViewController {
         
         // Load only the selected mode since this is the only thing that can change outside this screen.
         modeLabel.text = "\(Settings.shared.measureMode.rawValue)"
+        // Load settings data.
+        reloadSettings()
     }
     
     // MARK: - Segue Navigation
@@ -118,7 +118,7 @@ class SettingsTableViewController: UITableViewController {
                                           footerText: footer,
                                           rows: OpeningSize.allOptions(selected: settings.openingSize))]
             case "TypePicking":
-                title = "String Type"
+                title = settings.hybridStringing ? "Main String Type" : "String Type"
                 stringTypePickerTable = optionsPicker
                 options = [OptionsSection(headerText: nil,
                                           footerText: nil,
@@ -144,30 +144,16 @@ class SettingsTableViewController: UITableViewController {
         // Selected mode.
         modeLabel.text = "\(settings.measureMode.rawValue)"
         // Head size.
-        let headSizeUnit = settings.headSizeUnit.rawValue
-        let headSize = settings.headSize
-        if let index = headSizePickerMediator.headSizeUnits.firstIndex(of: headSizeUnit) {
-            headSizePickerMediator.mode = (index == 0) ? .inches : .cm
-            headSizePicker.selectRow(index, inComponent: 1, animated: false)
-        }
-        if let index = headSizePickerMediator.headSizes.firstIndex(of: headSize) {
-            headSizePicker.selectRow(index, inComponent: 0, animated: false)
-        }
-        headSizeValueLabel.text = "\(Int(headSize)) \(headSizeUnit)"
+        headSizePickerMediator.reloadSelections()
+        headSizeValueLabel.text = "\(Int(settings.headSize)) \(settings.headSizeUnit.rawValue)"
         // Opening size.
         openingSizeValueLabel.text = settings.openingSize.rawValue
         // String pattern.
-        let stringPattern = settings.stringPattern.rawValue
-        if let index = stringPatternPickerMediator.values.firstIndex(of: stringPattern) {
-            stringPatternPicker.selectRow(index, inComponent: 0, animated: false)
-        }
-        stringPatternValueLabel.text = stringPattern
+        stringPatternPickerMediator.reloadSelections()
+        stringPatternValueLabel.text = settings.stringPattern.rawValue
         // Stringer's style.
-        let stringerStyle = settings.stringerStyle.rawValue
-        if let index = stringerStylePickerMediator.values.firstIndex(of: stringerStyle) {
-            stringerStylePicker.selectRow(index, inComponent: 0, animated: false)
-        }
-        stringerStyleValueLabel.text = stringerStyle
+        stringerStylePickerMediator.reloadSelections()
+        stringerStyleValueLabel.text = settings.stringerStyle.rawValue
         // Hybrid stringng.
         hybridStringingSwitch.isOn = settings.hybridStringing
         if settings.hybridStringing {
@@ -178,27 +164,19 @@ class SettingsTableViewController: UITableViewController {
             stringTypeLabel.text = "Type"
         }
         // String diameter
-        let stringDiameter = settings.stringDiameter
-        if let index = stringDiameterPickerMediator.stringDiameters.firstIndex(of: stringDiameter) {
-            stringDiameterPicker.selectRow(index, inComponent: 0, animated: false)
-        }
+        stringDiameterPickerMediator.reloadSelections()
         stringDiameterValueLabel.text = "\(settings.formattedStringDiameter) mm"
         // String type
         stringTypeValueLabel.text = settings.stringType.rawValue
         // Cross string diameter
-        let crossStringDiameter = settings.crossStringDiameter
-        if let index = crossStringDiameterPickerMediator.stringDiameters.firstIndex(of: crossStringDiameter) {
-            crossStringDiameterPicker.selectRow(index, inComponent: 0, animated: false)
-        }
+        crossStringDiameterPickerMediator.cross = true
+        crossStringDiameterPickerMediator.reloadSelections()
         crossStringDiameterValueLabel.text = "\(settings.formattedCrossStringDiameter) mm"
         // Cross string type
         crossStringTypeValueLabel.text = settings.crossStringType.rawValue
         // Tension unit
-        let tensionUnit = settings.tensionUnit.rawValue
-        if let index = tensionUnitsPickerMediator.tensionUnits.firstIndex(of: tensionUnit) {
-            tensionUnitsPicker.selectRow(index, inComponent: 0, animated: false)
-        }
-        tensionUnitsValueLabel.text = tensionUnit
+        tensionUnitsPickerMediator.reloadSelections()
+        tensionUnitsValueLabel.text = settings.tensionUnit.rawValue
     }
 
     // MARK: - UITableViewDelegate

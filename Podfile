@@ -7,5 +7,6 @@ target 'TensionMaster' do
 
   # Pods for TensionMaster
   pod 'AudioKit', '~> 4.7.1'
+  pod 'ActionSheetPicker-3.0', '~> 2.3.0'
 
 end

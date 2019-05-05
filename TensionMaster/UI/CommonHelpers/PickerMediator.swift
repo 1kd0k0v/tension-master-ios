@@ -28,6 +28,10 @@ class PickerMediator: NSObject, UIPickerViewDelegate {
         return ""
     }
     
+    func reloadSelections() {
+        assertionFailure("Override this method in subclasses!")
+    }
+    
     func selectedValue(component: Int) -> String {
         return value(row: pickerView.selectedRow(inComponent: component), component: component)
     }

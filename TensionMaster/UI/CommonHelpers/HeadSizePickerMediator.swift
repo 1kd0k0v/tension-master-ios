@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import ActionSheetPicker_3_0
 
 enum HeadSizePickerMediatorMode {
     case inches
     case cm
 }
 
-class HeadSizePickerMediator: PickerMediator, UIPickerViewDataSource {
+class HeadSizePickerMediator: PickerMediator, ActionSheetCustomPickerDelegate {
 
     lazy var headSizesInches = Array(Settings.shared.headSizeInchRange).map(Double.init)
     lazy var headSizesCm = Array(Settings.shared.headSizeCmRange).map(Double.init)
@@ -26,7 +27,7 @@ class HeadSizePickerMediator: PickerMediator, UIPickerViewDataSource {
     lazy var headSizeUnits = SizeUnit.allRepresentations
     var mode = HeadSizePickerMediatorMode.inches
     // Applying a new mode animated.
-    func applyMode(_ mode: HeadSizePickerMediatorMode) {
+    private func applyMode(_ mode: HeadSizePickerMediatorMode) {
         if self.mode != mode {
             self.mode = mode
             pickerView.reloadComponent(0)
@@ -40,6 +41,21 @@ class HeadSizePickerMediator: PickerMediator, UIPickerViewDataSource {
         } else {
             return headSizeUnits[row]
         }
+    }
+    
+    override func reloadSelections() {
+        if let index = headSizeUnits.firstIndex(of: Settings.shared.headSizeUnit.rawValue) {
+            mode = (index == 0) ? .inches : .cm
+            pickerView.selectRow(index, inComponent: 1, animated: false)
+        }
+        if let index = headSizes.firstIndex(of: Settings.shared.headSize) {
+            pickerView.selectRow(index, inComponent: 0, animated: false)
+        }
+    }
+    
+    func actionSheetPicker(_ actionSheetPicker: AbstractActionSheetPicker!, configurePickerView pickerView: UIPickerView!) {
+        self.pickerView = pickerView
+        reloadSelections()
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

@@ -7,13 +7,25 @@
 //
 
 import UIKit
+import ActionSheetPicker_3_0
 
-class StringPatternPickerMediator: PickerMediator, UIPickerViewDataSource {
+class StringPatternPickerMediator: PickerMediator, ActionSheetCustomPickerDelegate {
     
     lazy var values = StringPattern.allRepresentations
     
     override func value(row: Int, component: Int) -> String {
         return values[row]
+    }
+    
+    override func reloadSelections() {
+        if let index = values.firstIndex(of: Settings.shared.stringPattern.rawValue) {
+            pickerView.selectRow(index, inComponent: 0, animated: false)
+        }
+    }
+    
+    func actionSheetPicker(_ actionSheetPicker: AbstractActionSheetPicker!, configurePickerView pickerView: UIPickerView!) {
+        self.pickerView = pickerView
+        reloadSelections()
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Measure-->
+        <!--Measure View Controller-->
         <scene sceneID="bhi-VS-J96">
             <objects>
                 <viewController id="gbc-IX-v5t" customClass="MeasureViewController" customModule="TensionMaster" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,14 +19,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2zx-1I-tjG" userLabel="Spacer">
-                                <rect key="frame" x="157.5" y="20" width="60" height="23"/>
+                                <rect key="frame" x="157.5" y="64" width="60" height="12"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="mrD-9g-K5w"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F2H-qq-hcx" customClass="UIGradientView" customModule="TensionMaster" customModuleProvider="target">
-                                <rect key="frame" x="112.5" y="43" width="150" height="150"/>
+                                <rect key="frame" x="112.5" y="76" width="150" height="150"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6On-cg-3di">
                                         <rect key="frame" x="59" y="46.5" width="32" height="57.5"/>
@@ -68,28 +68,28 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ygf-Eu-AMj" userLabel="Spacer">
-                                <rect key="frame" x="157.5" y="193" width="60" height="23"/>
+                                <rect key="frame" x="157.5" y="226" width="60" height="12"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="qFW-mC-Zrq"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e8B-o8-Vp0" customClass="EZAudioPlot">
-                                <rect key="frame" x="0.0" y="216" width="375" height="20"/>
+                                <rect key="frame" x="0.0" y="238" width="375" height="20"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="uod-9m-YQQ"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JfA-LE-0Fj" userLabel="Spacer">
-                                <rect key="frame" x="157.5" y="236" width="60" height="23"/>
+                                <rect key="frame" x="157.5" y="258" width="60" height="12"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="2Eq-Du-QNh"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7tF-DE-Bo2" userLabel="Additional Info Container">
-                                <rect key="frame" x="0.0" y="259" width="375" height="336"/>
+                                <rect key="frame" x="0.0" y="270" width="375" height="336"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oFv-yw-h9u">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="84"/>
@@ -461,7 +461,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2U3-Rf-G4a" userLabel="Spacer">
-                                <rect key="frame" x="157.5" y="595" width="60" height="23"/>
+                                <rect key="frame" x="157.5" y="606" width="60" height="12"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="cbe-eR-ng7"/>
@@ -493,7 +493,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rDw-jg-hHK"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Measure" image="wave-28" selectedImage="wave-filled-28" id="dLN-R2-PK4"/>
+                    <navigationItem key="navigationItem" id="0hm-6F-cXr"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="circleView" destination="F2H-qq-hcx" id="JZf-wm-qh4"/>
@@ -532,7 +532,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="djN-Do-dxH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="493.60000000000002" y="-535.68215892053979"/>
+            <point key="canvasLocation" x="918" y="-612"/>
+        </scene>
+        <!--Measure-->
+        <scene sceneID="wyn-nK-u3D">
+            <objects>
+                <navigationController id="MSt-M5-jed" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Measure" image="wave-28" selectedImage="wave-filled-28" id="L6A-OP-ZHs"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GSb-zL-Go7">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="gbc-IX-v5t" kind="relationship" relationship="rootViewController" id="xAu-TC-Gbi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lrh-P2-1Lf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="234" y="-612"/>
         </scene>
         <!--Settings-->
         <scene sceneID="Mbp-11-oIK">
@@ -929,13 +947,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cross Thickness" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HT4-O9-8GG" customClass="MainCellLabel" customModule="TensionMaster" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="11.5" width="126.5" height="21"/>
+                                                    <rect key="frame" x="16" y="11.5" width="126.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="diameter" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2x-aF-u3t" customClass="SecondaryCellLabel" customModule="TensionMaster" customModuleProvider="target">
-                                                    <rect key="frame" x="299" y="11.5" width="68" height="21"/>
+                                                    <rect key="frame" x="291" y="11.5" width="68" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -978,7 +996,7 @@
                                         <rect key="frame" x="0.0" y="1467.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FIl-Ky-2sf" id="Ar8-d0-qcF">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="349" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cross Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SrE-2F-l4S" customClass="MainCellLabel" customModule="TensionMaster" customModuleProvider="target">
@@ -1013,7 +1031,7 @@
                                         <rect key="frame" x="0.0" y="1567.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iZv-7Q-PH2" id="D2b-pg-bMR">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="349" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calibration" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sUx-gk-8AL" customClass="MainCellLabel" customModule="TensionMaster" customModuleProvider="target">
@@ -1453,7 +1471,7 @@
         <!--Options Picker Table View Controller-->
         <scene sceneID="jKw-yf-Aa7">
             <objects>
-                <tableViewController id="r6d-So-kcd" customClass="OptionsPickerTableViewController" customModule="TensionMaster" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController restorationIdentifier="OptionsPickerTableVC" storyboardIdentifier="OptionsPickerTableVC" id="r6d-So-kcd" customClass="OptionsPickerTableViewController" customModule="TensionMaster" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="tjg-O3-Kyo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1532,8 +1550,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="gbc-IX-v5t" kind="relationship" relationship="viewControllers" id="U8c-s8-9sp"/>
-                        <segue destination="Ifa-Do-hbD" kind="relationship" relationship="viewControllers" id="Xrq-2Z-aDy"/>
+                        <segue destination="MSt-M5-jed" kind="relationship" relationship="viewControllers" id="VA9-9e-g9n"/>
+                        <segue destination="Ifa-Do-hbD" kind="relationship" relationship="viewControllers" id="SKC-IZ-OdX"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u0g-JQ-Uge" userLabel="First Responder" sceneMemberID="firstResponder"/>
