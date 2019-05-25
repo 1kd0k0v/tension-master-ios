@@ -157,10 +157,9 @@ class MeasureViewController: UIViewController {
         case openingSizeContainer:
             let optionsPickerTable = storyboard.instantiateViewController(withIdentifier: "OptionsPickerTableVC") as! OptionsPickerTableViewController
             let footer = """
-                       Choose the average area size S of one string opening in the center of the stringbed (measured in square millimetres):
-                       S=a×b  (a,b  are the distances between 2 main and 2 cross neighbouring strings respectively in millimetres).
+                    Every racquet model has different density of the strings in the center of the stringbed. Measure with a ruler the distance "a" between 2 neighbouring main strings and the distance  "b" between 2 neighbouring  cross strings in millimetres. Calculate the area "S=a.b" of one string opening in mm². Choose your String opening size:
                     """
-            optionsPickerTable.title = "Opening Size"
+            optionsPickerTable.title = "String Opening Size"
             optionsPickerTable.delegate = self
             optionsPickerTable.options = [OptionsSection(headerText: nil,
                                       footerText: footer,
@@ -168,7 +167,7 @@ class MeasureViewController: UIViewController {
             navigationController?.pushViewController(optionsPickerTable, animated: true)
             stringOpeningSizePickerTable = optionsPickerTable
         case stringDiameterContainer:
-            let title = Settings.shared.hybridStringing ? "Main Thickness" : "Thickness"
+            let title = Settings.shared.hybridStringing ? "Main Thickness" : "String Thickness"
             actionSheetPicker = ActionSheetCustomPicker(title: title,
                                                         delegate: stringDiameterPickerMediator,
                                                         showCancelButton: false,
@@ -315,8 +314,8 @@ class MeasureViewController: UIViewController {
             crossContainerHeightConstraint.isActive = false
             crossStringDiameterContainer.isHidden = true
             crossStringTypeContainer.isHidden = true
-            stringDiameterLabel.text = "Thickness"
-            stringTypeLabel.text = "Type"
+            stringDiameterLabel.text = "String Thickness"
+            stringTypeLabel.text = "String Type"
         }
     }
     

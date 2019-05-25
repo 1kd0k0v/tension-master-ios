@@ -15,21 +15,21 @@ enum MeasureMode: String {
 }
 
 enum StringType: String {
-    case heavyPolyester = "Heavy polyester"
-    case polyester = "Avarage polyester"
-    case lightPolyester = "Light polyester"
-    case heavySynthetic = "Heavy synthetic"
-    case synthetic = "Avarage synthetic"
-    case lightSynthetic = "Light synthetic"
+    case heavyPolyester = "Heavy Polyester"
+    case polyester = "Avarage Polyester"
+    case lightPolyester = "Light Polyester"
+    case heavySynthetic = "Multifilament"
+    case synthetic = "Avarage Synthetic"
+    case lightSynthetic = "Light Synthetic"
     case naturalGut = "Natural Gut"
     var details: String? {
         switch self {
-        case .heavyPolyester: return "less stretchable, higher density"
+        case .heavyPolyester: return "less stretchable; higher density ingredients"
         case .polyester: return nil
-        case .lightPolyester: return "more stretchable, lower density"
-        case .heavySynthetic: return "less stretchable, higher density"
+        case .lightPolyester: return "more stretchable; lower density ingredients"
+        case .heavySynthetic: return nil
         case .synthetic: return nil
-        case .lightSynthetic: return "more stretchable, lower density"
+        case .lightSynthetic: return "more stretchable; lower density ingredients"
         case .naturalGut: return nil
         }
     }
@@ -93,11 +93,11 @@ enum OpeningSize: String {
     case XL = "XL"
     var details: String {
         switch self {
-        case .XS: return "88 mm2 or less"
-        case .S: return "89-104 mm2"
-        case .M: return "105-120 mm2"
-        case .L: return "121-136 mm2"
-        case .XL: return "137 mm2 or more"
+        case .XS: return "88 mm² or less"
+        case .S: return "89-104 mm²"
+        case .M: return "105-120 mm²"
+        case .L: return "121-136 mm²"
+        case .XL: return "137 mm² or more"
         }
     }
     var coefficient: Double {

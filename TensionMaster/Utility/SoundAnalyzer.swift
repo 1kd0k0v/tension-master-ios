@@ -13,7 +13,7 @@ struct SoundAnalyzerSample {
     let amplitude: Double
     let frequency: Double
     var isValid: Bool {
-        return amplitude > 0.05 && frequency > 400 && frequency < 700
+        return amplitude > 0.05 && frequency > 370 && frequency < 700
     }
     var tensionNumber: Double {
         let settings = Settings.shared

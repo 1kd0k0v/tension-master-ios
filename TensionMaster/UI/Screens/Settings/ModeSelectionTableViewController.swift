@@ -189,7 +189,7 @@ extension ModeSelectionTableViewController: AdjustTableViewCellDelegate {
         let message = "\nFactory measurement is \(tensionString)."
         let alert = UIAlertController(title: "Calibration", message: message, preferredStyle: .alert)
         alert.addTextField { textField in
-            textField.placeholder = "Enter measurement"
+            textField.placeholder = "Enter the preknown tension"
             textField.keyboardType = .decimalPad
         }
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in

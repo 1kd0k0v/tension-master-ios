@@ -108,11 +108,10 @@ class SettingsTableViewController: UITableViewController {
             let options: [OptionsSection]
             switch segue.identifier {
             case "StringOpeningSizePicking":
-                title = "Opening Size"
+                title = "String Opening Size"
                 stringOpeningSizePickerTable = optionsPicker
                 let footer = """
-                       Choose the average area size S of one string opening in the center of the stringbed (measured in square millimetres):
-                       S=a×b  (a,b  are the distances between 2 main and 2 cross neighbouring strings respectively in millimetres).
+                    Every racquet model has different density of the strings in the center of the stringbed. Measure with a ruler the distance "a" between 2 neighbouring main strings and the distance  "b" between 2 neighbouring  cross strings in millimetres. Calculate the area "S=a.b" of one string opening in mm². Choose your String opening size:
                     """
                 options = [OptionsSection(headerText: nil,
                                           footerText: footer,
@@ -160,8 +159,8 @@ class SettingsTableViewController: UITableViewController {
             stringDiameterLabel.text = "Main Thickness"
             stringTypeLabel.text = "Main Type"
         } else {
-            stringDiameterLabel.text = "Thickness"
-            stringTypeLabel.text = "Type"
+            stringDiameterLabel.text = "String Thickness"
+            stringTypeLabel.text = "String Type"
         }
         // String diameter
         stringDiameterPickerMediator.reloadSelections()
@@ -276,8 +275,8 @@ private extension SettingsTableViewController {
             stringDiameterLabel.text = "Main Thickness"
             stringTypeLabel.text = "Main Type"
         } else {
-            stringDiameterLabel.text = "Thickness"
-            stringTypeLabel.text = "Type"
+            stringDiameterLabel.text = "String Thickness"
+            stringTypeLabel.text = "String Type"
             if expandedPickerCell == crossStringDiameterPickerCell {
                 expandedPickerCell = nil
             }
@@ -289,12 +288,23 @@ private extension SettingsTableViewController {
     func instructionsPressed() {
         // Present alert with instructions.
         let message = """
-
-                     ∙ Remove the dampener!
-
-                     ∙ Tap gently the string once or more times with a stiff object - fingernails, another racquet, finger knuckles etc, while keeping the resonating string as near as possible and in front of the microphone (mounted usually at the bottom of the phone)!
-
-                     ∙ The measurement shows the average string tension between the main and cross strings of the racquet.
+                        ∙ The user has to learn how to produce the proper ringing sound close (2 to 10 cm) and in front of the phone microphone. Find the microphone which uses single, very small hole either at the top or at the bottom of the phone.
+                        
+                        ∙ Remove the dampener!
+                        
+                        ∙ Tap the racquet string very gently several times every 1 or 2 sec. with a stiff object. The best way is with pen or pencil, or use another racquet, fingernails, etc.
+                        
+                        ∙ While ringing, the resonating racquet string must stay 2 to 10 cm from the microphone, in front of it, especially in a noisier environment. It is shown well in the YouTube video provided for TennisTension mobile app for Google play and App store, or you can find it also in our website www.tennistension.app
+                        
+                        ∙ To receive the exact momentous string tension, define all the necessary racquet and string parameters. If you don't know some of the them, default average values are taken for the calculations, or the last values that the user put it in.
+                        
+                        ∙ TennisTension measures the average tension between main and cross strings of the racquet (for example, if a racquet is strung 25/24 kg, the measurement result will be 24.5 kg).
+                        
+                        ∙ String tensions of hybrid strings could be measured as well.
+                        
+                        ∙ The error of the measurement result is less than 0.2 kg.
+                        
+                        ∙ Calibration is provided, though it is not necessary to make it.
                     """
         let alert = UIAlertController(title: "Instructions", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
