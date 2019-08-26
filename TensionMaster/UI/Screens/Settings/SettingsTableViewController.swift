@@ -288,23 +288,23 @@ private extension SettingsTableViewController {
     func instructionsPressed() {
         // Present alert with instructions.
         let message = """
-                        ∙ The user has to learn how to produce the proper ringing sound close (2 to 10 cm) and in front of the phone microphone. Find the microphone which uses single, very small hole either at the top or at the bottom of the phone.
-                        
-                        ∙ Remove the dampener!
-                        
-                        ∙ Tap the racquet string very gently several times every 1 or 2 sec. with a stiff object. The best way is with pen or pencil, or use another racquet, fingernails, etc.
-                        
-                        ∙ While ringing, the resonating racquet string must stay 2 to 10 cm from the microphone, in front of it, especially in a noisier environment. It is shown well in the YouTube video provided for TennisTension mobile app for Google play and App store, or you can find it also in our website www.tennistension.app
-                        
-                        ∙ To receive the exact momentous string tension, define all the necessary racquet and string parameters. If you don't know some of the them, default average values are taken for the calculations, or the last values that the user put it in.
-                        
-                        ∙ TennisTension measures the average tension between main and cross strings of the racquet (for example, if a racquet is strung 25/24 kg, the measurement result will be 24.5 kg).
-                        
-                        ∙ String tensions of hybrid strings could be measured as well.
-                        
-                        ∙ The error of the measurement result is less than 0.2 kg.
-                        
-                        ∙ Calibration is provided, though it is not necessary to make it.
+                        ∙ For best results use the app in places with less noise!
+
+                        ∙ The user has to learn how to produce the proper ringing sound CLOSE (2 to 10 cm) and IN FRONT of the phone microphone. Find the microphone which uses single, very small hole either at the TOP or at the BOTTOM of the phone.
+
+                        ∙ REMOVE the dampener - if you have.
+
+                        ∙ Tap the racquet strings VERY GENTLY ANYWHERE  several times every 1 or 2 sec. with ANY STIFF object. KEEP the resonating RINGING strings CLOSE (2 to 10 cm) and IN FRONT OF the phone microphone. The best way is with a pen or pencil, or use another racquet, fingernails, etc. It is shown well in the YouTube video https://youtu.be/PNTyjG7jr98 provided for TennisTension mobile app, Google Play Store or on www.tennistension.app
+
+                        ∙ To receive the exact momentous string tension, define all the necessary racquet and string parameters. If you don't know some of them, default average values are taken for the calculations or the last values that the user put it in.
+
+                        ∙ TennisTension measures the average tension between main and cross strings of the racquet. For example, if a racquet is strung 25/24 kg, the measurement result will be 24.5 kg.
+
+                        ∙ String tensions of hybrid strings could be measured as well. In this case, define the parameters of both main and cross strings.
+
+                        ∙ The error of the measurement result is less than 0.2 kg when the accurate racquet, string, and stringer/stringing machine parameters are set.
+
+                        ∙ A Calibration for the app is provided in the case you want to cope COMPLETELY and SIMULTANEOUSLY with ALL specific characteristics of your PERSONAL racquet and string model. In this case, use a TRUSTED stringer.
                     """
         let alert = UIAlertController(title: "Instructions", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
@@ -312,7 +312,7 @@ private extension SettingsTableViewController {
     }
     
     func videoPressed() {
-        guard let url = URL(string: "https://www.youtube.com/watch?v=LFTkCCRR7ss&fbclid=IwAR1TVgW87ZbFw0hva-ekLWtdhGU4Zd2RgT1SLLSqpb1Pla8NcljwVGKihQo") else { return }
+        guard let url = URL(string: "https://www.youtube.com/watch?v=sucBKQ-4KaE&feature=youtu.be") else { return }
         if UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url)
         }
@@ -341,7 +341,7 @@ private extension SettingsTableViewController {
         composeVC.mailComposeDelegate = self
         
         // Configure the fields of the interface.
-        composeVC.setToRecipients(["ikdokov@gmail.com"])
+        composeVC.setToRecipients(["tennistension@gmail.com"])
         composeVC.setSubject("Tension Master")
         
         // Present the view controller modally.
