@@ -62,9 +62,21 @@ class SoundAnalyzer {
     private var frequencyTable = Array<Double>()
     
     // AudioKit releated.
-    lazy var mic = AKMicrophone()
+    var mic: AKMicrophone
     lazy var tracker = AKFrequencyTracker(mic)
     lazy var booster = AKBooster(tracker, gain: 0)
+    
+    init() {
+        // Set the AK sample rate to hardware supported sample rate
+        let inputAudioFormat = AKManager.engine.inputNode.inputFormat(forBus: 0)
+        let sampleRate = inputAudioFormat.sampleRate
+        AKSettings.sampleRate = sampleRate
+        if let mic = AKMicrophone(with: inputAudioFormat) {
+            self.mic = mic
+        } else {
+            fatalError("AKMicrophone cannot be created with format: \(inputAudioFormat)")
+        }
+    }
     
     func start(completion: @escaping (Bool) -> Void) {
         if isAnalyzing {
@@ -73,9 +85,9 @@ class SoundAnalyzer {
         let startAnalyzingBlock: () -> Void = {
             // Start audio kit processing.
             AKSettings.audioInputEnabled = true
-            AudioKit.output = self.booster
+            AKManager.output = self.booster
             do {
-                try AudioKit.start()
+                try AKManager.start()
                 print("AudioKit started.")
             } catch {
                 print("AudioKit did not start!")
@@ -146,7 +158,7 @@ class SoundAnalyzer {
             return
         }
         do {
-            try AudioKit.stop()
+            try AKManager.stop()
             print("AudioKit stopped.")
         } catch {
             print("Cannot stop the audio kit...")   // Check how to handle it better...
