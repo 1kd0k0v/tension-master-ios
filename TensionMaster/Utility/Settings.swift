@@ -178,11 +178,11 @@ enum StringerStyle: String {
     }
     var coefficient: Double {
         switch self {
-        case .veryTight: return 0.94
-        case .tighter: return 0.97
-        case .normal: return 1
-        case .looser: return 1.03
-        case .veryLoose: return 1.06
+        case .veryTight: return 0.85
+        case .tighter: return 0.90
+        case .normal: return 0.95
+        case .looser: return 1
+        case .veryLoose: return 1.08
         }
     }
 }
