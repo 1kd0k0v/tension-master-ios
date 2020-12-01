@@ -330,6 +330,8 @@ class MeasureViewController: UIViewController {
 
                         ∙ REMOVE the dampener - if you have.
 
+                        ∙ Do not touch the strings with your fingers while measuring.
+
                         ∙ Tap the racquet strings VERY GENTLY ANYWHERE  several times every 1 or 2 sec. with ANY STIFF object. KEEP the resonating RINGING strings CLOSE (2 to 10 cm) and IN FRONT OF the phone microphone. The best way is with a pen or pencil, or use another racquet, fingernails, etc. It is shown well in the YouTube video https://youtu.be/PNTyjG7jr98 provided for TennisTension mobile app, Google Play Store or on www.tennistension.app
 
                         ∙ To receive the exact momentous string tension, define all the necessary racquet and string parameters. If you don't know some of them, default average values are taken for the calculations or the last values that the user put it in.
