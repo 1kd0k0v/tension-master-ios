@@ -89,6 +89,7 @@ class SettingsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         versionLabel.text = versionString
+        tableView.backgroundColor = UIColor.backgroundDark
     }
     
     override func viewWillAppear(_ animated: Bool) {

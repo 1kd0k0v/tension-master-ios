@@ -60,6 +60,7 @@ class OptionsPickerTableViewController: UITableViewController {
 
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.backgroundColor = UIColor.backgroundDark
     }
 
     // MARK: - UITableViewDataSource

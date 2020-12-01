@@ -20,7 +20,8 @@ class ModeSelectionTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        tableView.backgroundColor = UIColor.backgroundDark
     }
     
     override func viewDidAppear(_ animated: Bool) {
